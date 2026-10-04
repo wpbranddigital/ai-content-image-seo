@@ -1,0 +1,18 @@
+{
+  "name": "ai-content-image-seo",
+  "version": "1.0.0",
+  "description": "AI-powered content generation, image metadata optimization, SEO assistance, and accessibility tools for WordPress and WooCommerce.",
+  "private": true,
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js src",
+    "lint:css": "wp-scripts lint-style \"src/**/*.scss\"",
+    "make-pot": "wp i18n make-pot . languages/ai-content-image-seo.pot --exclude=node_modules,vendor,src"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0",
+    "typescript": "^5.9.3"
+  }
+}

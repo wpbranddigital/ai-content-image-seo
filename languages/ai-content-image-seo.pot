@@ -1,0 +1,2454 @@
+# Copyright (C) 2026 bPlugins
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: AI Content & Image SEO Assistant 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ai-content-image-seo\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-04T07:00:19+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: ai-content-image-seo\n"
+
+#. Plugin Name of the plugin
+#: ai-content-image-seo.php
+#: admin/class-ai-cis-admin.php:346
+msgid "AI Content & Image SEO Assistant"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: ai-content-image-seo.php
+msgid "https://wordpress.org/plugins/ai-content-image-seo/"
+msgstr ""
+
+#. Description of the plugin
+#: ai-content-image-seo.php
+msgid "AI-powered content generation, image metadata optimization, SEO assistance, and accessibility tools for WordPress and WooCommerce."
+msgstr ""
+
+#. Author of the plugin
+#: ai-content-image-seo.php
+msgid "bPlugins"
+msgstr ""
+
+#. Author URI of the plugin
+#: ai-content-image-seo.php
+msgid "https://bplugins.com/"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:55
+#: src/admin/index.js:28
+msgid "Dashboard"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:60
+#: src/admin/index.js:29
+msgid "Content AI"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:65
+#: src/admin/index.js:30
+#: src/admin/pages/settings.js:585
+msgid "Image AI"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:70
+#: src/admin/index.js:31
+#: src/admin/pages/dashboard.js:285
+msgid "SEO Assistant"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:75
+msgid "WooCommerce"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:80
+#: src/admin/index.js:33
+msgid "Usage"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:85
+#: admin/class-ai-cis-admin.php:328
+#: src/admin/index.js:34
+msgid "Settings"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:105
+#: admin/class-ai-cis-admin.php:117
+#: admin/class-ai-cis-admin.php:147
+#: src/admin/index.js:46
+msgid "AI Content & Image SEO"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:106
+msgid "AI Content & SEO"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:149
+msgid "Loading…"
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:151
+msgid "AI Content & Image SEO requires JavaScript to be enabled."
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:343
+msgid "This site uses the AI Content & Image SEO Assistant plugin. When an editor uses an AI feature, or when automatic image optimization is enabled, the selected content (for example post text, image files and image context, product details, or the text and star ratings of product reviews) is sent to the AI provider configured by the site administrator to generate suggestions."
+msgstr ""
+
+#: admin/class-ai-cis-admin.php:344
+msgid "Reviewer names, email addresses, IP addresses, customer accounts, passwords and payment information are never sent. No data is sent to the plugin author."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:233
+msgid "No AI provider configured. Connect an AI provider from Settings → AI Provider."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:235
+msgid "You have reached your monthly AI limit. Your usage will reset next month."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:237
+msgid "Your AI provider rate limit was reached. Please try again later."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:239
+msgid "The AI provider rejected the API key. Please check your AI provider settings."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:241
+msgid "The AI provider took too long to respond. Please try again."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:243
+msgid "Could not connect to the AI provider. Please check your internet connection and try again."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:245
+msgid "The AI provider returned an unexpected response. Please try again."
+msgstr ""
+
+#: includes/class-ai-cis-ai-manager.php:247
+#: src/common/api.js:64
+msgid "Unable to generate content. Please check your AI provider settings and try again."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:93
+#: src/admin/pages/content-ai.js:120
+msgid "Please enter a topic."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:149
+#: src/admin/pages/content-ai.js:471
+msgid "There is no content to rewrite."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:154
+msgid "Unknown rewrite action."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:201
+msgid "Unknown field."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:211
+msgid "Add a title or some content first."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:263
+msgid "You are not allowed to create this content."
+msgstr ""
+
+#: includes/class-ai-cis-content-generator.php:278
+msgid "The draft could not be created."
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:29
+#: src/admin/pages/image-ai.js:632
+msgid "Alt Text"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:30
+#: src/admin/pages/content-ai.js:310
+#: src/admin/pages/image-ai.js:638
+msgid "Title"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:31
+msgid "Caption"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:32
+#: includes/integrations/class-ai-cis-woocommerce.php:49
+#: src/admin/pages/woocommerce.js:246
+msgid "Description"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:250
+#: includes/class-ai-cis-image-optimizer.php:422
+#: includes/class-ai-cis-rest-api.php:1234
+#: includes/class-ai-cis-rest-api.php:1291
+msgid "This file is not an image."
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:270
+#: includes/class-ai-cis-queue.php:172
+msgid "Select at least one field."
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:603
+msgid "All Images"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:604
+#: src/admin/pages/dashboard.js:167
+#: src/admin/pages/image-ai.js:404
+msgid "Missing Alt Text"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:605
+msgid "Missing Metadata"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:606
+msgid "Recently Uploaded"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:607
+msgid "Post Images"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:608
+msgid "Failed / Not Processed"
+msgstr ""
+
+#: includes/class-ai-cis-image-optimizer.php:611
+msgid "WooCommerce Images"
+msgstr ""
+
+#: includes/class-ai-cis-media-library.php:45
+msgid "AI Metadata"
+msgstr ""
+
+#: includes/class-ai-cis-media-library.php:48
+#: includes/class-ai-cis-media-library.php:73
+#: src/admin/pages/seo.js:439
+#: src/admin/pages/seo.js:451
+#: src/media/index.js:53
+msgid "Generate AI Metadata"
+msgstr ""
+
+#: includes/class-ai-cis-media-library.php:49
+msgid "Generate alt text, title, caption and description. You review everything before it is saved."
+msgstr ""
+
+#: includes/class-ai-cis-media-library.php:86
+msgid "Generate AI metadata (missing fields)"
+msgstr ""
+
+#: includes/class-ai-cis-media-library.php:165
+#: includes/class-ai-cis-queue.php:167
+msgid "A bulk optimization is already in progress. Resume or cancel it first."
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:27
+msgid "Professional"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:28
+msgid "Friendly"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:29
+msgid "Casual"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:30
+msgid "Persuasive"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:31
+#: src/common/image-metadata-panel.js:211
+msgid "Informative"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:32
+msgid "Enthusiastic"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:33
+msgid "Authoritative"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:47
+msgid "Blog Post"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:48
+msgid "How-to Guide"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:49
+msgid "Listicle"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:50
+msgid "News Article"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:51
+msgid "Review"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:52
+msgid "Landing Page"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:53
+msgid "About Page"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:54
+msgid "Service Page"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:55
+msgid "FAQ Page"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:70
+msgid "Short (~300 words)"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:74
+msgid "Medium (~700 words)"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:78
+msgid "Long (~1200 words)"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:95
+msgid "Improve Writing"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:99
+#: src/editor/index.js:56
+msgid "Fix Grammar"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:103
+msgid "Make SEO Friendly"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:107
+msgid "Make More Persuasive"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:111
+#: src/admin/pages/content-ai.js:337
+#: src/editor/index.js:55
+msgid "Shorten"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:115
+#: src/admin/pages/content-ai.js:341
+#: src/editor/index.js:54
+msgid "Expand"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:119
+msgid "Simplify"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:123
+msgid "Professional Tone"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:127
+msgid "Friendly Tone"
+msgstr ""
+
+#: includes/class-ai-cis-prompts.php:131
+#: src/admin/pages/content-ai.js:345
+#: src/admin/pages/content-ai.js:651
+#: src/editor/index.js:53
+msgid "Rewrite"
+msgstr ""
+
+#: includes/class-ai-cis-queue.php:179
+msgid "No images selected."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:772
+msgid "This field is required."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:873
+msgid "Connection successful. The AI provider responded."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:888
+msgid "This provider does not support model listing."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:1025
+msgid "(no title)"
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:1091
+msgid "The content could not be saved."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:1349
+msgid "WooCommerce is not active. Install and activate WooCommerce to use product features."
+msgstr ""
+
+#: includes/class-ai-cis-rest-api.php:1423
+msgid "Invalid value."
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:70
+msgid "AI Content & Image SEO (built-in)"
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:270
+msgid "This content is empty. Add a title or content first."
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:314
+msgid "This content is empty. Add content first."
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:369
+msgid "Content length"
+msgstr ""
+
+#. translators: %d: number of words.
+#: includes/class-ai-cis-seo-integration.php:372
+#, php-format
+msgid "%d word"
+msgid_plural "%d words"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-cis-seo-integration.php:375
+msgid "Title length"
+msgstr ""
+
+#. translators: %d: number of characters.
+#: includes/class-ai-cis-seo-integration.php:378
+#, php-format
+msgid "%d characters"
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:386
+msgid "Focus keyword in title"
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:388
+msgid "Yes"
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:388
+msgid "No"
+msgstr ""
+
+#: includes/class-ai-cis-seo-integration.php:391
+msgid "Focus keyword in content"
+msgstr ""
+
+#. translators: %d: number of keyword occurrences.
+#: includes/class-ai-cis-seo-integration.php:394
+#, php-format
+msgid "%d time"
+msgid_plural "%d times"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-ai-cis-settings.php:404
+msgid "English"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:405
+msgid "Bangla"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:406
+msgid "Spanish"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:407
+msgid "French"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:408
+msgid "German"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:409
+msgid "Japanese"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:410
+msgid "Chinese"
+msgstr ""
+
+#: includes/class-ai-cis-settings.php:411
+msgid "Arabic"
+msgstr ""
+
+#: includes/class-ai-cis-usage-manager.php:47
+msgid "AI content generations"
+msgstr ""
+
+#: includes/class-ai-cis-usage-manager.php:48
+msgid "Image metadata generations"
+msgstr ""
+
+#: includes/class-ai-cis-usage-manager.php:49
+msgid "WooCommerce product generations"
+msgstr ""
+
+#: includes/class-ai-cis-usage-manager.php:50
+msgid "Automatic image optimizations"
+msgstr ""
+
+#: includes/class-ai-cis-usage-manager.php:51
+#: src/admin/pages/settings.js:507
+msgid "Review summaries"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:89
+#: includes/integrations/class-ai-cis-woocommerce.php:211
+#: includes/integrations/class-ai-cis-woocommerce.php:344
+#: src/admin/pages/woocommerce.js:55
+msgid "WooCommerce is not active."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:93
+#: includes/integrations/class-ai-cis-woocommerce.php:215
+#: includes/integrations/class-ai-cis-woocommerce.php:348
+msgid "Product not found."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:98
+msgid "This product has no approved reviews yet, so there is nothing to summarize."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:177
+msgid "What customers say"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:180
+#: src/common/review-summary-panel.js:26
+#: src/common/review-summary-panel.js:46
+msgid "Pros"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:187
+#: src/common/review-summary-panel.js:31
+#: src/common/review-summary-panel.js:61
+msgid "Cons"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-review-summary.php:193
+msgid "AI-generated summary based on customer reviews."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:48
+msgid "Product Title"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:50
+#: src/admin/pages/woocommerce.js:224
+msgid "Short Description"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:51
+msgid "Tags"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:52
+msgid "Categories"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:53
+msgid "SEO Metadata"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:54
+msgid "Improve Existing Description"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:69
+#: src/admin/pages/woocommerce.js:188
+msgid "AI Product Assistant"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:85
+msgid "Loading AI Product Assistant…"
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:86
+msgid "The AI Product Assistant requires JavaScript."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:218
+#: includes/integrations/class-ai-cis-woocommerce.php:393
+msgid "Unknown product field."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:248
+msgid "Add a product name first so the AI knows what the product is."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:252
+msgid "This product has no description to improve yet. Generate one instead."
+msgstr ""
+
+#: includes/integrations/class-ai-cis-woocommerce.php:417
+msgid "You are not allowed to assign categories."
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-anthropic.php:32
+msgid "Anthropic Claude"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-base.php:77
+msgid "Auto (recommended)"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-base.php:110
+msgid "Add an API key for this provider first."
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-gemini.php:32
+msgid "Google Gemini"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-openai.php:32
+msgid "OpenAI"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-openrouter.php:32
+msgid "OpenRouter"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-openrouter.php:77
+msgid "OpenRouter Auto Router"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-wp-ai-connector.php:35
+msgid "WordPress AI Connector"
+msgstr ""
+
+#: includes/providers/class-ai-cis-provider-wp-ai-connector.php:82
+msgid "Auto (connector default)"
+msgstr ""
+
+#: src/admin/index.js:32
+msgid "WooCommerce AI"
+msgstr ""
+
+#: src/admin/index.js:66
+msgid "AI provider connected"
+msgstr ""
+
+#: src/admin/index.js:67
+msgid "No AI provider"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:49
+msgid "Custom…"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:54
+msgid "Same as original"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:66
+#: src/common/product-assistant.js:450
+#: src/editor/index.js:285
+msgid "Language"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:75
+msgid "Custom language"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:77
+msgid "e.g. Portuguese (Brazil)"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:137
+msgid "Content generated. Review the result below."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:161
+msgid "Content updated."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:194
+msgid "Generate Post Content"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:198
+#: src/editor/index.js:261
+msgid "Topic"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:199
+msgid "Describe what the content should be about."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:211
+msgid "Create as"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:216
+msgid "Post"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:220
+msgid "Page"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:228
+msgid "Content Type"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:236
+#: src/common/product-assistant.js:442
+#: src/editor/index.js:269
+msgid "Tone"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:244
+#: src/editor/index.js:277
+msgid "Length"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:257
+msgid "Keywords"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:258
+msgid "Optional, comma separated."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:267
+msgid "Extra instructions"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:280
+#: src/admin/pages/content-ai.js:650
+#: src/common/components.js:57
+msgid "Generating…"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:281
+#: src/editor/index.js:256
+#: src/editor/index.js:296
+msgid "Generate"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:287
+#: src/admin/pages/content-ai.js:691
+#: src/admin/pages/seo.js:189
+#: src/common/product-assistant.js:412
+#: src/common/review-summary-panel.js:205
+#: src/editor/index.js:180
+msgid "AI Result"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:295
+msgid "Nothing generated yet."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:299
+msgid "Enter a topic and click Generate. You can review and edit everything before creating a draft."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:317
+#: src/admin/pages/content-ai.js:620
+msgid "Content"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:321
+msgid "Updating content…"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:333
+#: src/editor/index.js:52
+msgid "Improve"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:362
+msgid "Excerpt"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:371
+#: src/admin/pages/seo.js:194
+#: src/common/product-assistant.js:348
+#: src/editor/index.js:514
+msgid "SEO Title"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:379
+#: src/admin/pages/seo.js:202
+#: src/common/product-assistant.js:356
+#: src/editor/index.js:520
+msgid "Meta Description"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:395
+msgid "Keywords:"
+msgstr ""
+
+#. translators: %s: post or page.
+#: src/admin/pages/content-ai.js:407
+#, js-format
+msgid "Insert into editor (new %s draft)"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:412
+msgid "page"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:413
+msgid "post"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:421
+#: src/common/product-assistant.js:428
+msgid "Copy HTML"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:428
+msgid "Regenerate, Improve, Shorten, Expand and Rewrite each count as one AI generation."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:493
+msgid "Rewrite ready. Compare the original and the AI result."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:514
+msgid "The text box now contains the AI result."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:518
+msgid "The AI result was added below your text."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:529
+msgid "Replace the content of this post with the AI result? A revision is kept so you can restore it."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:551
+msgid "Saved to the post."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:561
+#: src/common/product-assistant.js:58
+msgid "Improve Existing Content"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:569
+msgid "Content source"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:579
+msgid "Paste text"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:586
+msgid "Existing post or page"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:603
+msgid "Selected:"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:610
+#: src/admin/pages/seo.js:540
+msgid "Edit"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:631
+msgid "Action"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:655
+msgid "Your original content is never overwritten automatically."
+msgstr ""
+
+#: src/admin/pages/content-ai.js:675
+msgid "Compare"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:679
+#: src/common/product-assistant.js:406
+#: src/editor/index.js:176
+msgid "Original"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:704
+#: src/editor/index.js:185
+msgid "Replace"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:718
+msgid "Insert (append)"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:739
+#: src/admin/pages/dashboard.js:216
+msgid "Generate Content"
+msgstr ""
+
+#: src/admin/pages/content-ai.js:743
+msgid "Content Rewriter"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:32
+#: src/admin/pages/dashboard.js:40
+msgid "Open"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:81
+msgid "AI usage limit reached."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:86
+msgid "New images will remain unprocessed until the limit resets."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:96
+msgid "AI Usage This Month"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:102
+msgid "View details"
+msgstr ""
+
+#. translators: %d: total AI requests this month.
+#: src/admin/pages/dashboard.js:112
+#, js-format
+msgid "%d AI requests this month"
+msgstr ""
+
+#. translators: %s: reset date.
+#: src/admin/pages/dashboard.js:127
+#, js-format
+msgid "Counters reset on %s. All features are free; limits are optional and set by the site owner."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:140
+#: src/admin/pages/image-ai.js:380
+msgid "Media Library"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:146
+#: src/admin/pages/image-ai.js:442
+#: src/admin/pages/image-ai.js:881
+msgid "Bulk Optimizer"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:158
+#: src/admin/pages/image-ai.js:398
+msgid "Total Images"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:176
+#: src/admin/pages/image-ai.js:413
+msgid "Missing Title"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:185
+#: src/admin/pages/image-ai.js:422
+msgid "Missing Description"
+msgstr ""
+
+#. translators: %d: number of images.
+#: src/admin/pages/dashboard.js:198
+#, js-format
+msgid "%d new images waiting for automatic optimization."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:211
+msgid "Quick Actions"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:217
+msgid "Write a complete post or page with title, excerpt and SEO metadata."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:225
+msgid "Optimize Images"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:226
+msgid "Fill in missing image metadata across your media library in the background."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:233
+#: src/admin/pages/dashboard.js:276
+msgid "You need permission to upload files."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:242
+msgid "Optimize Products"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:243
+msgid "Generate product titles, descriptions, tags, categories and review summaries."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:250
+msgid "Requires WooCommerce to be installed and active."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:259
+msgid "Rewrite Content"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:260
+msgid "Improve, shorten, expand or fix grammar in existing content with a side-by-side preview."
+msgstr ""
+
+#: src/admin/pages/dashboard.js:268
+msgid "Generate Alt Text"
+msgstr ""
+
+#: src/admin/pages/dashboard.js:269
+msgid "Create accessible, context-aware alt text for a single image."
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/admin/pages/dashboard.js:288
+#, js-format
+msgid "Generate SEO titles and meta descriptions. Saves to: %s."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:38
+msgid "Select an image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:40
+msgid "Use this image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:61
+#: src/common/image-metadata-panel.js:269
+msgid "Generate Image Metadata"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:71
+msgid "Choose another image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:75
+#: src/admin/pages/image-ai.js:96
+msgid "Select Image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:83
+msgid "No image selected."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:87
+msgid "Pick an image from the Media Library to generate alt text, title, caption and description. You review everything before it is saved."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:110
+msgid "Optimizing Images"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:111
+msgid "Paused"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:112
+msgid "Completed"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:116
+msgid "Paused because the monthly image limit was reached. It can resume when the limit resets or is raised."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:120
+msgid "Paused because no AI provider is configured."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:124
+msgid "Paused because your AI provider rate limit was reached. Please resume in a few minutes."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:128
+msgid "Paused by you."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:135
+msgid "Bulk optimization progress"
+msgstr ""
+
+#. translators: 1: percent, 2: processed, 3: remaining.
+#: src/admin/pages/image-ai.js:143
+#, js-format
+msgid "%1$d%% · Processed: %2$d · Remaining: %3$d"
+msgstr ""
+
+#. translators: 1: optimized count, 2: skipped count, 3: failed count.
+#: src/admin/pages/image-ai.js:154
+#, js-format
+msgid "Updated: %1$d · Already complete: %2$d · Failed: %3$d"
+msgstr ""
+
+#. translators: %d: number of images not included.
+#: src/admin/pages/image-ai.js:167
+#, js-format
+msgid "%d image was not included because of the bulk batch limit."
+msgid_plural "%d images were not included because of the bulk batch limit."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin/pages/image-ai.js:187
+msgid "Pause"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:196
+msgid "Resume"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:206
+msgid "Cancel"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:214
+msgid "Clear"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:221
+msgid "Failed images"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:240
+msgid "Decorative (empty by design)"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:249
+msgid "Missing"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:316
+msgid "Bulk optimization completed."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:347
+msgid "Bulk optimization started."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:388
+msgid "Scan Library"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:431
+msgid "Decorative"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:446
+msgid "Bulk optimization is available to editors and administrators."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:456
+msgid "Fields to fill"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:478
+#: src/common/image-metadata-panel.js:396
+msgid "Overwrite existing metadata"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:484
+msgid "Existing values will be replaced."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:488
+msgid "Only empty fields (and default filename titles) are filled."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:502
+msgid "Filter"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:513
+msgid "Search images"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:525
+msgid "No images need optimization."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:532
+msgid "Your media library is already optimized."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:536
+msgid "No images match this filter."
+msgstr ""
+
+#. translators: %d: number of selected images.
+#: src/admin/pages/image-ai.js:559
+#, js-format
+msgid "Optimize Selected (%d)"
+msgstr ""
+
+#. translators: %d: number of matching images.
+#: src/admin/pages/image-ai.js:578
+#, js-format
+msgid "Optimize all %d matching images"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:587
+msgid "A job is already in progress."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:600
+msgid "Select all on this page"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:626
+msgid "Image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:644
+msgid "Used in"
+msgstr ""
+
+#. translators: %s: file name.
+#: src/admin/pages/image-ai.js:663
+#, js-format
+msgid "Select %s"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:711
+msgid "Failed"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:720
+msgid "Waiting for limit reset"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:729
+msgid "Queued"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:758
+#: src/admin/pages/woocommerce.js:148
+#: src/common/item-picker.js:132
+msgid "Previous"
+msgstr ""
+
+#. translators: 1: current page, 2: total pages.
+#: src/admin/pages/image-ai.js:763
+#: src/common/item-picker.js:137
+#, js-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:776
+#: src/admin/pages/woocommerce.js:155
+#: src/common/item-picker.js:147
+msgid "Next"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:783
+msgid "Images are processed a few at a time in the background (Action Scheduler or WP-Cron). Keeping this page open speeds things up. Each processed image counts as one image generation; images that already have the selected fields are skipped without using AI."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:805
+msgid "Automatic Image Optimization"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:811
+msgid "Status:"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:813
+msgid "Enabled. New uploads are optimized in the background."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:817
+msgid "Disabled."
+msgstr ""
+
+#. translators: %d: images waiting.
+#: src/admin/pages/image-ai.js:824
+#, js-format
+msgid "Images waiting in the queue: %d"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:834
+#: src/admin/pages/usage.js:75
+msgid "AI usage limit reached. New images will remain unprocessed until the limit resets."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:844
+msgid "Automation only fills empty fields, respects the monthly automation limit and never retries failed images automatically. Use the Bulk Optimizer with the \"Failed / Not Processed\" filter to retry."
+msgstr ""
+
+#: src/admin/pages/image-ai.js:854
+msgid "Automation Settings"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:885
+msgid "Single Image"
+msgstr ""
+
+#: src/admin/pages/image-ai.js:889
+#: src/admin/pages/settings.js:645
+msgid "Automation"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:92
+msgid "The WordPress AI Client is not available on this site. Go back and choose another provider."
+msgstr ""
+
+#: src/admin/pages/onboarding.js:97
+msgid "WordPress AI is configured. No API key is needed here."
+msgstr ""
+
+#: src/admin/pages/onboarding.js:102
+msgid "Configure a provider in Settings → Connectors, then come back. You can also go back and pick another provider."
+msgstr ""
+
+#: src/admin/pages/onboarding.js:108
+msgid "Choose AI Provider"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:109
+msgid "Configure API"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:110
+msgid "Choose Default Language"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:111
+msgid "Choose Alt Text Style"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:118
+msgid "Welcome to AI Content & Image SEO"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:124
+msgid "Every feature is free to use. Let’s connect an AI provider and set a few defaults."
+msgstr ""
+
+#: src/admin/pages/onboarding.js:132
+msgid "Setup steps"
+msgstr ""
+
+#. translators: 1: step number, 2: step name.
+#: src/admin/pages/onboarding.js:142
+#, js-format
+msgid "Step %1$d: %2$s"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:162
+#: src/admin/pages/settings.js:102
+msgid "Provider"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:173
+#: src/admin/pages/settings.js:116
+msgid "ready"
+msgstr ""
+
+#. translators: %s: provider name.
+#: src/admin/pages/onboarding.js:198
+#, js-format
+msgid "%s API Key"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:207
+msgid "A key is already saved — leave empty to keep it"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:219
+#: src/admin/pages/settings.js:211
+msgid "Get an API key"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:226
+msgid "Your key is stored encrypted on your own site and is only sent to this provider."
+msgstr ""
+
+#: src/admin/pages/onboarding.js:245
+#: src/admin/pages/settings.js:588
+#: src/common/image-metadata-panel.js:230
+msgid "Alt Text Style"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:252
+msgid "Balanced (recommended)"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:259
+#: src/common/image-metadata-panel.js:239
+msgid "Accessibility First"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:266
+#: src/admin/pages/settings.js:611
+#: src/common/image-metadata-panel.js:246
+msgid "SEO Focused"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:282
+msgid "Back"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:291
+msgid "Continue"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:300
+msgid "Finish Setup"
+msgstr ""
+
+#: src/admin/pages/onboarding.js:308
+msgid "Skip setup"
+msgstr ""
+
+#: src/admin/pages/seo.js:48
+msgid "SEO metadata generated. Review the Google preview before saving."
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/admin/pages/seo.js:89
+#: src/editor/index.js:473
+#, js-format
+msgid "Saved to %s."
+msgstr ""
+
+#: src/admin/pages/seo.js:105
+msgid "SEO Title & Meta Description"
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/admin/pages/seo.js:113
+#, js-format
+msgid "Metadata is saved to: %s. Nothing is changed until you click Save."
+msgstr ""
+
+#: src/admin/pages/seo.js:121
+msgid "Current"
+msgstr ""
+
+#: src/admin/pages/seo.js:135
+msgid "Generate SEO Title & Meta Description"
+msgstr ""
+
+#: src/admin/pages/seo.js:145
+msgid "Suggest Focus Keywords"
+msgstr ""
+
+#: src/admin/pages/seo.js:154
+msgid "Keyword suggestions"
+msgstr ""
+
+#: src/admin/pages/seo.js:160
+msgid "Keyword suggestions (click to use as focus keyword)"
+msgstr ""
+
+#: src/admin/pages/seo.js:214
+#: src/common/product-assistant.js:368
+#: src/editor/index.js:532
+msgid "Focus Keyword"
+msgstr ""
+
+#: src/admin/pages/seo.js:227
+#: src/common/product-assistant.js:380
+#: src/editor/index.js:545
+msgid "Save SEO Metadata"
+msgstr ""
+
+#: src/admin/pages/seo.js:268
+msgid "Content analysis ready."
+msgstr ""
+
+#: src/admin/pages/seo.js:276
+msgid "High priority"
+msgstr ""
+
+#: src/admin/pages/seo.js:277
+msgid "Medium priority"
+msgstr ""
+
+#: src/admin/pages/seo.js:278
+msgid "Low priority"
+msgstr ""
+
+#: src/admin/pages/seo.js:282
+msgid "Content Optimization"
+msgstr ""
+
+#: src/admin/pages/seo.js:291
+msgid "Analyze Again"
+msgstr ""
+
+#: src/admin/pages/seo.js:292
+msgid "Analyze Content"
+msgstr ""
+
+#: src/admin/pages/seo.js:296
+msgid "Analyzing…"
+msgstr ""
+
+#. translators: %d: SEO score.
+#: src/admin/pages/seo.js:305
+#, js-format
+msgid "AI SEO score: %d / 100"
+msgstr ""
+
+#: src/admin/pages/seo.js:331
+msgid "Passed:"
+msgstr ""
+
+#: src/admin/pages/seo.js:335
+msgid "Needs work:"
+msgstr ""
+
+#: src/admin/pages/seo.js:347
+msgid "Suggestions"
+msgstr ""
+
+#: src/admin/pages/seo.js:367
+msgid "Use the Content Rewriter to apply improvements"
+msgstr ""
+
+#: src/admin/pages/seo.js:384
+msgid "Image SEO"
+msgstr ""
+
+#: src/admin/pages/seo.js:387
+msgid "No images found in this content."
+msgstr ""
+
+#: src/admin/pages/seo.js:409
+msgid "Decorative (empty alt by design)"
+msgstr ""
+
+#: src/admin/pages/seo.js:418
+msgid "Alt:"
+msgstr ""
+
+#: src/admin/pages/seo.js:426
+msgid "Missing alt text"
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/admin/pages/seo.js:496
+#, js-format
+msgid "%s detected. SEO metadata is read from and saved to it."
+msgstr ""
+
+#: src/admin/pages/seo.js:502
+msgid "No SEO plugin detected (Yoast SEO, Rank Math and All in One SEO are supported). Metadata is stored by this plugin and output in your page head."
+msgstr ""
+
+#: src/admin/pages/seo.js:510
+msgid "Choose content"
+msgstr ""
+
+#: src/admin/pages/seo.js:524
+msgid "Select a post, page or product."
+msgstr ""
+
+#: src/admin/pages/seo.js:528
+msgid "Then generate an SEO title and meta description, get keyword ideas, analyze the content and check image alt text."
+msgstr ""
+
+#: src/admin/pages/settings.js:90
+msgid "Model list updated."
+msgstr ""
+
+#: src/admin/pages/settings.js:100
+#: src/admin/pages/settings.js:471
+msgid "AI Provider"
+msgstr ""
+
+#: src/admin/pages/settings.js:117
+msgid "not configured"
+msgstr ""
+
+#: src/admin/pages/settings.js:130
+msgid "WordPress AI is available. Requests use the provider configured in Settings → Connectors."
+msgstr ""
+
+#: src/admin/pages/settings.js:134
+msgid "WordPress AI Client is available, but no text-generation connector is configured yet."
+msgstr ""
+
+#: src/admin/pages/settings.js:139
+msgid "Open Connectors"
+msgstr ""
+
+#: src/admin/pages/settings.js:147
+msgid "The WordPress AI Client is not available on this site (it ships with WordPress 7.0+). Choose another provider and add an API key instead."
+msgstr ""
+
+#. translators: %s: constant name.
+#: src/admin/pages/settings.js:162
+#, js-format
+msgid "The API key is defined in wp-config.php (%s)."
+msgstr ""
+
+#: src/admin/pages/settings.js:176
+msgid "API Key"
+msgstr ""
+
+#. translators: %s: last characters of the key.
+#: src/admin/pages/settings.js:190
+#, js-format
+msgid "Saved key %s — leave empty to keep it"
+msgstr ""
+
+#: src/admin/pages/settings.js:196
+msgid "Paste your API key"
+msgstr ""
+
+#: src/admin/pages/settings.js:204
+msgid "Stored encrypted in your database and never shown in the browser again. You can also define it in wp-config.php."
+msgstr ""
+
+#: src/admin/pages/settings.js:230
+msgid "Key will be removed on save"
+msgstr ""
+
+#: src/admin/pages/settings.js:234
+msgid "Remove saved key"
+msgstr ""
+
+#: src/admin/pages/settings.js:252
+msgid "Model"
+msgstr ""
+
+#: src/admin/pages/settings.js:260
+msgid "Custom model ID…"
+msgstr ""
+
+#: src/admin/pages/settings.js:279
+msgid "Custom model ID"
+msgstr ""
+
+#: src/admin/pages/settings.js:296
+msgid "Load models from provider"
+msgstr ""
+
+#: src/admin/pages/settings.js:307
+msgid "Temperature"
+msgstr ""
+
+#: src/admin/pages/settings.js:308
+msgid "Lower is more focused, higher is more creative."
+msgstr ""
+
+#: src/admin/pages/settings.js:325
+msgid "Max Tokens"
+msgstr ""
+
+#: src/admin/pages/settings.js:337
+msgid "Request timeout (seconds)"
+msgstr ""
+
+#: src/admin/pages/settings.js:355
+msgid "Test Connection"
+msgstr ""
+
+#: src/admin/pages/settings.js:358
+msgid "Tests the saved settings. Save changes first. Tests are not counted as usage."
+msgstr ""
+
+#: src/admin/pages/settings.js:444
+#: src/admin/pages/settings.js:870
+msgid "Settings saved."
+msgstr ""
+
+#: src/admin/pages/settings.js:475
+#: src/admin/pages/settings.js:548
+msgid "Content & Language"
+msgstr ""
+
+#: src/admin/pages/settings.js:479
+msgid "Images & Automation"
+msgstr ""
+
+#: src/admin/pages/settings.js:484
+msgid "SEO & WooCommerce"
+msgstr ""
+
+#: src/admin/pages/settings.js:485
+msgid "SEO"
+msgstr ""
+
+#: src/admin/pages/settings.js:489
+#: src/admin/pages/settings.js:724
+msgid "Custom Prompts"
+msgstr ""
+
+#: src/admin/pages/settings.js:491
+#: src/admin/pages/settings.js:749
+msgid "Usage Limits"
+msgstr ""
+
+#: src/admin/pages/settings.js:494
+#: src/admin/pages/settings.js:799
+msgid "Privacy & Data"
+msgstr ""
+
+#: src/admin/pages/settings.js:502
+msgid "Content generation"
+msgstr ""
+
+#: src/admin/pages/settings.js:503
+msgid "Content rewriting"
+msgstr ""
+
+#: src/admin/pages/settings.js:504
+msgid "Image metadata"
+msgstr ""
+
+#: src/admin/pages/settings.js:505
+msgid "WooCommerce products"
+msgstr ""
+
+#: src/admin/pages/settings.js:506
+msgid "SEO metadata"
+msgstr ""
+
+#: src/admin/pages/settings.js:511
+msgid "AI content generations per month"
+msgstr ""
+
+#: src/admin/pages/settings.js:515
+msgid "Image metadata generations per month"
+msgstr ""
+
+#: src/admin/pages/settings.js:519
+msgid "WooCommerce product generations per month"
+msgstr ""
+
+#: src/admin/pages/settings.js:523
+msgid "Automatic image optimizations per month"
+msgstr ""
+
+#: src/admin/pages/settings.js:527
+msgid "Review summaries per month"
+msgstr ""
+
+#: src/admin/pages/settings.js:528
+#: src/admin/pages/usage.js:158
+msgid "Bulk items per batch"
+msgstr ""
+
+#: src/admin/pages/settings.js:571
+msgid "Default tone"
+msgstr ""
+
+#: src/admin/pages/settings.js:597
+msgid "Balanced (default)"
+msgstr ""
+
+#: src/admin/pages/settings.js:604
+msgid "Accessibility First — concise, factual, no keyword stuffing"
+msgstr ""
+
+#: src/admin/pages/settings.js:619
+msgid "Default fields for single and bulk generation"
+msgstr ""
+
+#: src/admin/pages/settings.js:630
+msgid "Send the image to the AI provider for visual analysis"
+msgstr ""
+
+#: src/admin/pages/settings.js:634
+msgid "Recommended for accurate alt text. When off, only the filename and surrounding context are used."
+msgstr ""
+
+#: src/admin/pages/settings.js:649
+msgid "Automatically optimize new images"
+msgstr ""
+
+#: src/admin/pages/settings.js:653
+msgid "New uploads are processed in the background. Only empty fields are filled, the automation limit is respected and failed images are not retried."
+msgstr ""
+
+#: src/admin/pages/settings.js:662
+msgid "Fields"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: src/admin/pages/settings.js:682
+#, js-format
+msgid "Detected SEO plugin: %s. SEO metadata is saved there."
+msgstr ""
+
+#: src/admin/pages/settings.js:688
+msgid "No SEO plugin detected. Supported: Yoast SEO, Rank Math, All in One SEO."
+msgstr ""
+
+#: src/admin/pages/settings.js:695
+msgid "Output SEO title and meta description when no SEO plugin is active"
+msgstr ""
+
+#: src/admin/pages/settings.js:705
+msgid "Show saved AI review summaries above product reviews"
+msgstr ""
+
+#: src/admin/pages/settings.js:709
+msgid "You can also place a summary anywhere with the [ai_cis_review_summary] shortcode."
+msgstr ""
+
+#: src/admin/pages/settings.js:727
+msgid "Extra instructions appended to every prompt in a group, for example your brand voice or words to avoid. Developers can replace prompts entirely with the ai_cis_*_prompt filters."
+msgstr ""
+
+#: src/admin/pages/settings.js:757
+msgid "All features are free and unlimited by default. Set a number to cap monthly usage on this site (for example to control AI provider costs). 0 = unlimited."
+msgstr ""
+
+#: src/admin/pages/settings.js:785
+#: src/admin/pages/usage.js:140
+#: src/admin/pages/usage.js:148
+#: src/admin/pages/usage.js:167
+msgid "Unlimited"
+msgstr ""
+
+#: src/admin/pages/settings.js:802
+msgid "AI requests send the content you select (post text, image files and context, product details, or review text and star ratings) to the AI provider configured above. Nothing is sent without a user action or enabled automation."
+msgstr ""
+
+#: src/admin/pages/settings.js:808
+msgid "Never sent: passwords, payment information, customer accounts, reviewer names, emails or IP addresses. The plugin has no tracking and sends nothing to its author."
+msgstr ""
+
+#: src/admin/pages/settings.js:814
+msgid "Review your AI provider’s data policy before use. Suggested text has been added to Settings → Privacy → Policy Guide."
+msgstr ""
+
+#: src/admin/pages/settings.js:821
+msgid "Delete plugin settings on uninstall"
+msgstr ""
+
+#: src/admin/pages/settings.js:825
+msgid "Removes settings, API keys and usage data when the plugin is deleted. Your posts, products, media and generated content are never deleted."
+msgstr ""
+
+#: src/admin/pages/settings.js:837
+msgid "Run the setup wizard again"
+msgstr ""
+
+#: src/admin/pages/settings.js:866
+msgid "Save Settings"
+msgstr ""
+
+#: src/admin/pages/usage.js:30
+msgid "Reset this month’s usage counters to zero?"
+msgstr ""
+
+#: src/admin/pages/usage.js:62
+msgid "Every feature is available for free. Usage is tracked so you can see how much AI you use; limits are optional and can be set in Settings → Usage Limits (0 = unlimited)."
+msgstr ""
+
+#. translators: %s: period YYYY-MM.
+#: src/admin/pages/usage.js:86
+#, js-format
+msgid "Usage for %s"
+msgstr ""
+
+#: src/admin/pages/usage.js:96
+msgid "Edit Limits"
+msgstr ""
+
+#: src/admin/pages/usage.js:104
+msgid "Reset Counters"
+msgstr ""
+
+#: src/admin/pages/usage.js:120
+#: src/common/item-picker.js:67
+msgid "Type"
+msgstr ""
+
+#: src/admin/pages/usage.js:123
+msgid "Used"
+msgstr ""
+
+#: src/admin/pages/usage.js:126
+msgid "Limit"
+msgstr ""
+
+#: src/admin/pages/usage.js:129
+msgid "Remaining"
+msgstr ""
+
+#. translators: %s: date.
+#: src/admin/pages/usage.js:179
+#, js-format
+msgid "Counters reset automatically on %s (site timezone). Regenerating a result counts as a new generation. Connection tests are never counted."
+msgstr ""
+
+#: src/admin/pages/usage.js:188
+msgid "History"
+msgstr ""
+
+#: src/admin/pages/usage.js:191
+msgid "No history yet."
+msgstr ""
+
+#: src/admin/pages/usage.js:195
+msgid "Monthly totals appear here after your first full month."
+msgstr ""
+
+#: src/admin/pages/usage.js:205
+msgid "Month"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:59
+msgid "Install and activate WooCommerce to use product AI features."
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:78
+#: src/common/item-picker.js:48
+msgid "Products"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:81
+msgid "Search products"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:92
+msgid "No products found."
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:96
+msgid "Create a product in WooCommerce first, then come back to generate its content."
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:131
+msgid "no description"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:165
+msgid "Select a product."
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:169
+msgid "Generate titles, descriptions, tags, category suggestions, SEO metadata and review summaries. Every result is previewed before it is saved."
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:180
+msgid "Edit product"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:195
+msgid "AI Review Summary"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:202
+msgid "Current Content"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:238
+#: src/admin/pages/woocommerce.js:258
+#: src/common/image-metadata-panel.js:338
+msgid "(empty)"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:267
+msgid "Categories:"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:277
+msgid "Tags:"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:286
+msgid "SEO title:"
+msgstr ""
+
+#: src/admin/pages/woocommerce.js:294
+msgid "Meta description:"
+msgstr ""
+
+#. translators: %d: review count.
+#: src/admin/pages/woocommerce.js:305
+#, js-format
+msgid "Approved reviews: %d"
+msgstr ""
+
+#: src/common/components.js:59
+msgid "Please wait."
+msgstr ""
+
+#: src/common/components.js:90
+msgid "Open AI Provider settings"
+msgstr ""
+
+#: src/common/components.js:105
+msgid "Hide technical details"
+msgstr ""
+
+#: src/common/components.js:109
+msgid "Show technical details"
+msgstr ""
+
+#: src/common/components.js:140
+msgid "No AI provider configured."
+msgstr ""
+
+#: src/common/components.js:146
+msgid "Connect an AI provider from Settings → AI Provider."
+msgstr ""
+
+#: src/common/components.js:150
+msgid "Ask a site administrator to connect an AI provider."
+msgstr ""
+
+#: src/common/components.js:158
+msgid "Connect AI Provider"
+msgstr ""
+
+#: src/common/components.js:181
+msgid "Copied to clipboard."
+msgstr ""
+
+#: src/common/components.js:182
+msgid "Copy failed. Select the text and copy it manually."
+msgstr ""
+
+#: src/common/components.js:194
+msgid "Copied!"
+msgstr ""
+
+#: src/common/components.js:195
+msgid "Copy"
+msgstr ""
+
+#. translators: %d: number used.
+#: src/common/components.js:230
+#, js-format
+msgid "Used: %d (unlimited)"
+msgstr ""
+
+#. translators: 1: number used, 2: limit.
+#: src/common/components.js:235
+#, js-format
+msgid "Used: %1$d / %2$d"
+msgstr ""
+
+#: src/common/components.js:307
+msgid "AI result preview"
+msgstr ""
+
+#: src/common/components.js:329
+#: src/common/components.js:332
+msgid "Google Preview"
+msgstr ""
+
+#: src/common/components.js:336
+msgid "(no SEO title)"
+msgstr ""
+
+#: src/common/components.js:340
+msgid "(no meta description)"
+msgstr ""
+
+#. translators: 1: title length, 2: description length.
+#: src/common/components.js:345
+#, js-format
+msgid "Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)"
+msgstr ""
+
+#: src/common/components.js:381
+#: src/editor/index.js:396
+msgid "Use This"
+msgstr ""
+
+#: src/common/components.js:391
+#: src/common/image-metadata-panel.js:280
+msgid "Regenerate"
+msgstr ""
+
+#: src/common/components.js:407
+msgid "The selected content is sent to your configured AI provider only when you click a generate button."
+msgstr ""
+
+#: src/common/image-metadata-panel.js:110
+msgid "AI metadata generated. Review it before applying."
+msgstr ""
+
+#: src/common/image-metadata-panel.js:137
+msgid "Metadata saved."
+msgstr ""
+
+#. translators: %s: parent post title.
+#: src/common/image-metadata-panel.js:177
+#, js-format
+msgid "Attached to: %s"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:189
+msgid "Fields to generate"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:206
+msgid "Image Type"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:215
+msgid "Decorative (alt text stays empty)"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:222
+msgid "Unsure"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:235
+msgid "Balanced"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:268
+msgid "Mark as Decorative"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:291
+msgid "Review AI result"
+msgstr ""
+
+#. translators: %s: field label.
+#: src/common/image-metadata-panel.js:310
+#, js-format
+msgid "Apply %s"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:329
+msgid "Current:"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:348
+msgid "Decorative image: the alt text will be saved as empty so screen readers skip it."
+msgstr ""
+
+#. translators: %s: field label.
+#: src/common/image-metadata-panel.js:360
+#, js-format
+msgid "AI %s"
+msgstr ""
+
+#: src/common/image-metadata-panel.js:383
+msgid "This field already has a value and will be kept unless you enable \"Overwrite existing metadata\"."
+msgstr ""
+
+#: src/common/image-metadata-panel.js:411
+msgid "Apply Selected"
+msgstr ""
+
+#. translators: %s: list of fields.
+#: src/common/image-metadata-panel.js:428
+#, js-format
+msgid "Saved: %s."
+msgstr ""
+
+#: src/common/image-metadata-panel.js:433
+msgid "Nothing was changed."
+msgstr ""
+
+#. translators: %s: list of fields.
+#: src/common/image-metadata-panel.js:440
+#, js-format
+msgid "Kept existing: %s."
+msgstr ""
+
+#: src/common/item-picker.js:41
+msgid "All content"
+msgstr ""
+
+#: src/common/item-picker.js:42
+msgid "Posts"
+msgstr ""
+
+#: src/common/item-picker.js:43
+msgid "Pages"
+msgstr ""
+
+#: src/common/item-picker.js:57
+msgid "Search content"
+msgstr ""
+
+#: src/common/item-picker.js:81
+msgid "No content found."
+msgstr ""
+
+#: src/common/item-picker.js:82
+msgid "Try a different search, or create a post first."
+msgstr ""
+
+#: src/common/item-picker.js:110
+msgid "has meta description"
+msgstr ""
+
+#: src/common/item-picker.js:115
+msgid "no meta description"
+msgstr ""
+
+#: src/common/product-assistant.js:38
+msgid "Generate Title"
+msgstr ""
+
+#: src/common/product-assistant.js:41
+msgid "Generate Description"
+msgstr ""
+
+#: src/common/product-assistant.js:45
+msgid "Generate Short Description"
+msgstr ""
+
+#: src/common/product-assistant.js:49
+msgid "Generate SEO Metadata"
+msgstr ""
+
+#: src/common/product-assistant.js:51
+msgid "Generate Tags"
+msgstr ""
+
+#: src/common/product-assistant.js:54
+msgid "Suggest Categories"
+msgstr ""
+
+#: src/common/product-assistant.js:115
+msgid "AI result ready. Review it before using it."
+msgstr ""
+
+#: src/common/product-assistant.js:158
+msgid "Title inserted. Click \"Update\" to save the product."
+msgstr ""
+
+#: src/common/product-assistant.js:166
+msgid "Product title saved."
+msgstr ""
+
+#: src/common/product-assistant.js:178
+msgid "Inserted into the editor. Click \"Update\" to save the product."
+msgstr ""
+
+#: src/common/product-assistant.js:186
+msgid "Product content saved."
+msgstr ""
+
+#: src/common/product-assistant.js:192
+msgid "Tags added. Click \"Update\" to save the product."
+msgstr ""
+
+#: src/common/product-assistant.js:200
+msgid "Tags added to the product."
+msgstr ""
+
+#: src/common/product-assistant.js:211
+msgid "Categories assigned."
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/common/product-assistant.js:225
+#, js-format
+msgid "SEO metadata saved to %s."
+msgstr ""
+
+#: src/common/product-assistant.js:249
+msgid "Choose a title"
+msgstr ""
+
+#: src/common/product-assistant.js:273
+msgid "Select tags to add"
+msgstr ""
+
+#: src/common/product-assistant.js:277
+msgid "Select categories to assign"
+msgstr ""
+
+#. translators: %s: category name.
+#: src/common/product-assistant.js:292
+#, js-format
+msgid "%s (new category)"
+msgstr ""
+
+#: src/common/product-assistant.js:315
+msgid "Categories are never assigned automatically. Only the categories you select are added."
+msgstr ""
+
+#: src/common/product-assistant.js:325
+msgid "Add Selected Tags"
+msgstr ""
+
+#: src/common/product-assistant.js:329
+msgid "Assign Selected Categories"
+msgstr ""
+
+#: src/common/product-assistant.js:419
+msgid "Insert into Editor"
+msgstr ""
+
+#: src/common/product-assistant.js:420
+msgid "Save to Product"
+msgstr ""
+
+#: src/common/review-summary-panel.js:107
+msgid "Review summary generated."
+msgstr ""
+
+#: src/common/review-summary-panel.js:124
+msgid "Summary saved. It is shown above the reviews on the product page."
+msgstr ""
+
+#: src/common/review-summary-panel.js:128
+msgid "Summary saved. Enable \"Show review summary on product pages\" in Settings, or use the [ai_cis_review_summary] shortcode."
+msgstr ""
+
+#: src/common/review-summary-panel.js:147
+msgid "No reviews yet."
+msgstr ""
+
+#: src/common/review-summary-panel.js:148
+msgid "A summary can be generated once this product has approved customer reviews. Summaries only use real review content."
+msgstr ""
+
+#. translators: %d: number of reviews.
+#: src/common/review-summary-panel.js:159
+#, js-format
+msgid "Based on %d approved review. Only review text and star ratings are sent to the AI, never reviewer names or emails."
+msgid_plural "Based on %d approved reviews. Only review text and star ratings are sent to the AI, never reviewer names or emails."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/common/review-summary-panel.js:172
+msgid "Saved summary"
+msgstr ""
+
+#: src/common/review-summary-panel.js:188
+msgid "Generate New Summary"
+msgstr ""
+
+#: src/common/review-summary-panel.js:192
+msgid "Generate Review Summary"
+msgstr ""
+
+#: src/common/review-summary-panel.js:209
+msgid "Summary"
+msgstr ""
+
+#: src/common/review-summary-panel.js:218
+msgid "Save Summary"
+msgstr ""
+
+#: src/editor/index.js:57
+#: src/editor/index.js:486
+msgid "SEO Optimize"
+msgstr ""
+
+#: src/editor/index.js:119
+msgid "AI result ready."
+msgstr ""
+
+#: src/editor/index.js:130
+msgid "Block replaced with the AI result."
+msgstr ""
+
+#: src/editor/index.js:141
+msgid "AI result inserted below."
+msgstr ""
+
+#: src/editor/index.js:146
+msgid "Selected Block"
+msgstr ""
+
+#: src/editor/index.js:151
+msgid "Select a paragraph, heading, list item or quote with text to improve, rewrite, expand or shorten it."
+msgstr ""
+
+#: src/editor/index.js:190
+msgid "Insert below"
+msgstr ""
+
+#: src/editor/index.js:231
+msgid "Content generated."
+msgstr ""
+
+#: src/editor/index.js:250
+msgid "Content inserted into the editor."
+msgstr ""
+
+#: src/editor/index.js:308
+msgid "Insert into editor"
+msgstr ""
+
+#: src/editor/index.js:356
+msgid "Title & Excerpt"
+msgstr ""
+
+#: src/editor/index.js:366
+msgid "Suggest Titles"
+msgstr ""
+
+#: src/editor/index.js:374
+msgid "Generate Excerpt"
+msgstr ""
+
+#: src/editor/index.js:389
+msgid "Title updated."
+msgstr ""
+
+#: src/editor/index.js:406
+msgid "AI Excerpt"
+msgstr ""
+
+#: src/editor/index.js:414
+msgid "Excerpt updated."
+msgstr ""
+
+#: src/editor/index.js:477
+msgid "SEO metadata saved."
+msgstr ""
+
+#. translators: %s: SEO plugin name.
+#: src/editor/index.js:492
+#, js-format
+msgid "Saves to: %s. Nothing is saved until you confirm."
+msgstr ""
+
+#: src/editor/index.js:505
+msgid "Generate SEO Title & Meta"
+msgstr ""
+
+#: src/editor/index.js:555
+msgid "Tip: reload the editor before your next save so your SEO plugin panel shows the new values."
+msgstr ""
+
+#: src/editor/index.js:579
+#: src/editor/index.js:583
+msgid "AI Content Assistant"
+msgstr ""
+
+#: src/product/index.js:18
+msgid "Assistant"
+msgstr ""
+
+#: src/product/index.js:22
+msgid "Review Summary"
+msgstr ""

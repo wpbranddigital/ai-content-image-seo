@@ -1,0 +1,12 @@
+/.git
+/node_modules
+/tests
+/docs
+/bin
+/.distignore
+/.gitignore
+/.stylelintrc.json
+/phpcs.xml.dist
+/README.md
+/package-lock.json
+.DS_Store
