@@ -68,6 +68,18 @@ Pick a model per provider, load the current model list from the provider, or ent
 * Translation-ready, accessible admin UI built with WordPress components.
 * Lightweight: no assets load on the frontend, admin scripts load only on the screens that use them.
 
+== Development ==
+
+Public source code repository:
+https://github.com/wpbranddigital/ai-content-image-seo
+
+Build Instructions:
+
+1. npm install
+2. npm run build
+3. npm run start (development)
+AI Content & Image SEO Assistant is built using @wordpress/scripts.
+
 == External services ==
 
 This plugin connects to a third-party AI service to generate text. Requests are only sent when a logged-in user clicks a generate/analyze button, when the administrator clicks "Test Connection" or "Load models from provider", or when the administrator has enabled automatic optimization of new images. No data is ever sent to the plugin author.

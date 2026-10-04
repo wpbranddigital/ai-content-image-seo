@@ -1,4 +1,1253 @@
-(()=>{"use strict";const e={n:t=>{const n=t&&t.__esModule?()=>t.default:()=>t;return e.d(n,{a:n}),n},d:(t,n)=>{for(var i in n)e.o(n,i)&&!e.o(t,i)&&Object.defineProperty(t,i,{enumerable:!0,get:n[i]})},o:(e,t)=>Object.hasOwn(e,t)},t=window.wp.plugins,n=window.wp.editor,i=window.wp.blockEditor,s=window.wp.blocks,a=window.wp.data,o=window.wp.components,r=window.wp.element,c=window.wp.i18n,l=window.wp.a11y,d=window.wp.apiFetch;var u=e.n(d);const _=window.wp.url,m="/ai-cis/v1",g=()=>window.aiCisData||{},p=()=>Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10);function x(e,{method:t="GET",data:n,query:i,signal:s}={}){const a=i?(0,_.addQueryArgs)(m+e,i):m+e;return u()({path:a,method:t,data:n,signal:s})}function h(e){return e?"AbortError"===e.name?{message:"",details:"",code:"abort"}:{message:e.message||(0,c.__)("Unable to generate content. Please check your AI provider settings and try again.","ai-content-image-seo"),details:e.data&&e.data.details||"",code:e.code||""}:{message:"",details:"",code:""}}function j(e){return((new window.DOMParser).parseFromString(e||"","text/html").body.textContent||"").trim()}const w=window.ReactJSXRuntime;function v({label:e}){return(0,w.jsxs)("div",{className:"ai-cis-loading",role:"status","aria-live":"polite",children:[(0,w.jsx)(o.Spinner,{}),(0,w.jsxs)("span",{children:[(0,w.jsx)("strong",{children:e||(0,c.__)("Generating…","ai-content-image-seo")})," ",(0,c.__)("Please wait.","ai-content-image-seo")]})]})}function y({error:e,onDismiss:t}){const[n,i]=(0,r.useState)(!1);if(!e||!e.message)return null;const s="ai_cis_no_provider"===e.code;return(0,w.jsxs)(o.Notice,{status:"error",isDismissible:!!t,onRemove:t,className:"ai-cis-notice",children:[(0,w.jsx)("p",{children:e.message}),s&&g().isManager&&(0,w.jsx)("p",{children:(0,w.jsx)("a",{href:g().pages.settings,children:(0,c.__)("Open AI Provider settings","ai-content-image-seo")})}),e.details&&(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(o.Button,{variant:"link",onClick:()=>i(!n),"aria-expanded":n,children:n?(0,c.__)("Hide technical details","ai-content-image-seo"):(0,c.__)("Show technical details","ai-content-image-seo")}),n&&(0,w.jsx)("p",{className:"ai-cis-details",children:e.details})]})]})}function S(){return g().providerReady?null:(0,w.jsxs)(o.Notice,{status:"warning",isDismissible:!1,className:"ai-cis-notice",children:[(0,w.jsxs)("p",{children:[(0,w.jsx)("strong",{children:(0,c.__)("No AI provider configured.","ai-content-image-seo")})," ",g().isManager?(0,c.__)("Connect an AI provider from Settings → AI Provider.","ai-content-image-seo"):(0,c.__)("Ask a site administrator to connect an AI provider.","ai-content-image-seo")]}),g().isManager&&(0,w.jsx)("p",{children:(0,w.jsx)(o.Button,{variant:"secondary",href:g().pages.settings,children:(0,c.__)("Connect AI Provider","ai-content-image-seo")})})]})}function b({text:e,label:t}){const[n,i]=(0,r.useState)(!1);return(0,w.jsx)(o.Button,{variant:"secondary",onClick:async()=>{const t=await async function(e){try{if(window.navigator.clipboard&&window.isSecureContext)return await window.navigator.clipboard.writeText(e),!0}catch(e){}const t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select();let n=!1;try{n=document.execCommand("copy")}catch(e){n=!1}return document.body.removeChild(t),n}(e);i(t),(0,l.speak)(t?(0,c.__)("Copied to clipboard.","ai-content-image-seo"):(0,c.__)("Copy failed. Select the text and copy it manually.","ai-content-image-seo")),t&&setTimeout(()=>i(!1),2e3)},disabled:!e,children:n?(0,c.__)("Copied!","ai-content-image-seo"):t||(0,c.__)("Copy","ai-content-image-seo")})}function f({html:e}){return(0,w.jsx)("div",{className:"ai-cis-html-preview",tabIndex:0,"aria-label":(0,c.__)("AI result preview","ai-content-image-seo"),children:(0,w.jsx)(r.RawHTML,{children:e})})}function C({title:e,description:t,url:n}){const i=(e||"").length,s=(t||"").length;return(0,w.jsxs)("div",{className:"ai-cis-serp","aria-label":(0,c.__)("Google Preview","ai-content-image-seo"),children:[(0,w.jsx)("p",{className:"ai-cis-serp__label",children:(0,c.__)("Google Preview","ai-content-image-seo")}),n&&(0,w.jsx)("div",{className:"ai-cis-serp__url",children:n}),(0,w.jsx)("div",{className:"ai-cis-serp__title",children:e||(0,c.__)("(no SEO title)","ai-content-image-seo")}),(0,w.jsx)("div",{className:"ai-cis-serp__desc",children:t||(0,c.__)("(no meta description)","ai-content-image-seo")}),(0,w.jsx)("p",{className:"ai-cis-serp__meta",children:(0,c.sprintf)(/* translators: 1: title length, 2: description length. */ /* translators: 1: title length, 2: description length. */
-(0,c.__)("Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)","ai-content-image-seo"),i,s)})]})}function k({onUse:e,useLabel:t,copyText:n,onRegenerate:i,busy:s,children:a}){return(0,w.jsxs)("div",{className:"ai-cis-actions",children:[e&&(0,w.jsx)(o.Button,{variant:"primary",onClick:e,disabled:s,children:t||(0,c.__)("Use This","ai-content-image-seo")}),"string"==typeof n&&(0,w.jsx)(b,{text:n}),i&&(0,w.jsx)(o.Button,{variant:"tertiary",onClick:i,disabled:s,children:(0,c.__)("Regenerate","ai-content-image-seo")}),a]})}const B=["core/paragraph","core/heading","core/list-item","core/quote","core/verse","core/preformatted"],N=[["improve",(0,c.__)("Improve","ai-content-image-seo")],["rewrite",(0,c.__)("Rewrite","ai-content-image-seo")],["expand",(0,c.__)("Expand","ai-content-image-seo")],["shorten",(0,c.__)("Shorten","ai-content-image-seo")],["grammar",(0,c.__)("Fix Grammar","ai-content-image-seo")],["seo",(0,c.__)("SEO Optimize","ai-content-image-seo")]],P=e=>{const t=e?.attributes?.content;return t?"string"==typeof t?t:String(t):""};function T(){const e=(0,a.useSelect)(e=>e(i.store).getSelectedBlock(),[]),{updateBlockAttributes:t,insertBlocks:n}=(0,a.useDispatch)(i.store),d=(0,a.useSelect)(t=>e?t(i.store).getBlockIndex(e.clientId):-1,[e]),u=(0,a.useSelect)(t=>e?t(i.store).getBlockRootClientId(e.clientId):void 0,[e]),[_,m]=(0,r.useState)(""),[g,S]=(0,r.useState)(null),[b,C]=(0,r.useState)(null),T=e&&B.includes(e.name)&&""!==P(e).trim(),I=async t=>{m(t),S(null);try{const n=await x("/rewrite",{method:"POST",data:{content:P(e),action:t,request_id:p()}});C({...n,clientId:e.clientId}),(0,l.speak)((0,c.__)("AI result ready.","ai-content-image-seo"))}catch(e){S(h(e))}m("")};return(0,w.jsxs)(o.PanelBody,{title:(0,c.__)("Selected Block","ai-content-image-seo"),initialOpen:!0,children:[T?(0,w.jsx)("div",{className:"ai-cis-button-grid",children:N.map(([e,t])=>(0,w.jsx)(o.Button,{variant:"secondary",onClick:()=>I(e),disabled:!!_,isBusy:_===e,children:t},e))}):(0,w.jsx)("p",{className:"description",children:(0,c.__)("Select a paragraph, heading, list item or quote with text to improve, rewrite, expand or shorten it.","ai-content-image-seo")}),_&&(0,w.jsx)(v,{}),(0,w.jsx)(y,{error:g,onDismiss:()=>S(null)}),b&&!_&&(0,w.jsxs)("div",{className:"ai-cis-result",children:[(0,w.jsx)("p",{className:"ai-cis-label",children:(0,c.__)("Original","ai-content-image-seo")}),(0,w.jsx)(f,{html:b.original}),(0,w.jsx)("p",{className:"ai-cis-label",children:(0,c.__)("AI Result","ai-content-image-seo")}),(0,w.jsx)(f,{html:b.result}),(0,w.jsx)(k,{onUse:()=>{t(b.clientId,{content:b.result}),C(null),(0,l.speak)((0,c.__)("Block replaced with the AI result.","ai-content-image-seo"))},useLabel:(0,c.__)("Replace","ai-content-image-seo"),copyText:j(b.result),onRegenerate:()=>I(b.action),children:(0,w.jsx)(o.Button,{variant:"secondary",onClick:()=>{n((0,s.createBlock)("core/paragraph",{content:b.result}),d+1,u),C(null),(0,l.speak)((0,c.__)("AI result inserted below.","ai-content-image-seo"))},children:(0,c.__)("Insert below","ai-content-image-seo")})})]})]})}function I(){const e=g(),t=(0,a.useSelect)(e=>e(n.store).getCurrentPostType(),[]),{insertBlocks:d}=(0,a.useDispatch)(i.store),{editPost:u}=(0,a.useDispatch)(n.store),[_,m]=(0,r.useState)(""),[S,b]=(0,r.useState)(e.defaults.tone),[C,B]=(0,r.useState)("medium"),[N,P]=(0,r.useState)(e.defaults.language),[T,I]=(0,r.useState)(!1),[O,A]=(0,r.useState)(null),[D,E]=(0,r.useState)(null),M=async()=>{I(!0),A(null);try{const e=await x("/generate-content",{method:"POST",data:{topic:_,tone:S,length:C,language:N,post_type:"page"===t?"page":"post",request_id:p()}});E(e),(0,l.speak)((0,c.__)("Content generated.","ai-content-image-seo"))}catch(e){A(h(e))}I(!1)};return(0,w.jsxs)(o.PanelBody,{title:(0,c.__)("Generate","ai-content-image-seo"),initialOpen:!1,children:[(0,w.jsx)(o.TextareaControl,{__nextHasNoMarginBottom:!0,label:(0,c.__)("Topic","ai-content-image-seo"),value:_,onChange:m,rows:3}),(0,w.jsx)(o.SelectControl,{__nextHasNoMarginBottom:!0,__next40pxDefaultSize:!0,label:(0,c.__)("Tone","ai-content-image-seo"),value:S,options:e.options.tones,onChange:b}),(0,w.jsx)(o.SelectControl,{__nextHasNoMarginBottom:!0,__next40pxDefaultSize:!0,label:(0,c.__)("Length","ai-content-image-seo"),value:C,options:e.options.lengths,onChange:B}),(0,w.jsx)(o.SelectControl,{__nextHasNoMarginBottom:!0,__next40pxDefaultSize:!0,label:(0,c.__)("Language","ai-content-image-seo"),value:N,options:e.options.languages,onChange:P}),(0,w.jsx)(o.Button,{variant:"primary",onClick:M,disabled:T||!_.trim(),isBusy:T,children:(0,c.__)("Generate","ai-content-image-seo")}),T&&(0,w.jsx)(v,{}),(0,w.jsx)(y,{error:O,onDismiss:()=>A(null)}),D&&!T&&(0,w.jsxs)("div",{className:"ai-cis-result",children:[(0,w.jsx)("p",{children:(0,w.jsx)("strong",{children:D.title})}),(0,w.jsx)(f,{html:D.content}),(0,w.jsx)(k,{onUse:()=>{d((0,s.rawHandler)({HTML:D.content}));const e={};D.title&&(e.title=D.title),D.excerpt&&(e.excerpt=D.excerpt),u(e),E(null),(0,l.speak)((0,c.__)("Content inserted into the editor.","ai-content-image-seo"))},useLabel:(0,c.__)("Insert into editor","ai-content-image-seo"),copyText:j(D.content),onRegenerate:M})]})]})}function O(){const{title:e,content:t}=(0,a.useSelect)(e=>({title:e(n.store).getEditedPostAttribute("title"),content:e(n.store).getEditedPostContent()}),[]),{editPost:i}=(0,a.useDispatch)(n.store),[s,d]=(0,r.useState)(""),[u,_]=(0,r.useState)(null),[m,g]=(0,r.useState)([]),[j,S]=(0,r.useState)(""),b=async n=>{d(n),_(null);try{const i=await x("/generate-field",{method:"POST",data:{field:n,title:e,content:t,request_id:p()}});"title"===n?g(i.options||[]):S(i.value||"")}catch(e){_(h(e))}d("")};return(0,w.jsxs)(o.PanelBody,{title:(0,c.__)("Title & Excerpt","ai-content-image-seo"),initialOpen:!1,children:[(0,w.jsxs)("div",{className:"ai-cis-button-grid",children:[(0,w.jsx)(o.Button,{variant:"secondary",onClick:()=>b("title"),disabled:!!s,isBusy:"title"===s,children:(0,c.__)("Suggest Titles","ai-content-image-seo")}),(0,w.jsx)(o.Button,{variant:"secondary",onClick:()=>b("excerpt"),disabled:!!s,isBusy:"excerpt"===s,children:(0,c.__)("Generate Excerpt","ai-content-image-seo")})]}),s&&(0,w.jsx)(v,{}),(0,w.jsx)(y,{error:u,onDismiss:()=>_(null)}),m.length>0&&(0,w.jsx)("ul",{className:"ai-cis-option-list",children:m.map(e=>(0,w.jsxs)("li",{children:[(0,w.jsx)("span",{children:e}),(0,w.jsx)(o.Button,{variant:"link",onClick:()=>{i({title:e}),(0,l.speak)((0,c.__)("Title updated.","ai-content-image-seo"))},children:(0,c.__)("Use This","ai-content-image-seo")})]},e))}),j&&(0,w.jsxs)("div",{className:"ai-cis-result",children:[(0,w.jsx)(o.TextareaControl,{__nextHasNoMarginBottom:!0,label:(0,c.__)("AI Excerpt","ai-content-image-seo"),value:j,onChange:S}),(0,w.jsx)(k,{onUse:()=>{i({excerpt:j}),(0,l.speak)((0,c.__)("Excerpt updated.","ai-content-image-seo"))},copyText:j,onRegenerate:()=>b("excerpt")})]})]})}function A(){const{postId:e,title:t,content:i,link:s}=(0,a.useSelect)(e=>({postId:e(n.store).getCurrentPostId(),title:e(n.store).getEditedPostAttribute("title"),content:e(n.store).getEditedPostContent(),link:e(n.store).getPermalink()}),[]),[d,u]=(0,r.useState)(!1),[_,m]=(0,r.useState)(!1),[j,S]=(0,r.useState)(null),[b,f]=(0,r.useState)(null),[B,N]=(0,r.useState)(""),P=async()=>{u(!0),S(null),N("");try{const n=await x("/seo/generate",{method:"POST",data:{post_id:e,title:t,content:i,request_id:p()}});f(n)}catch(e){S(h(e))}u(!1)};return(0,w.jsxs)(o.PanelBody,{title:(0,c.__)("SEO Optimize","ai-content-image-seo"),initialOpen:!1,children:[(0,w.jsx)("p",{className:"description",children:(0,c.sprintf)(/* translators: %s: SEO plugin name. */ /* translators: %s: SEO plugin name. */
-(0,c.__)("Saves to: %s. Nothing is saved until you confirm.","ai-content-image-seo"),g().seoPluginLabel)}),(0,w.jsx)(o.Button,{variant:"secondary",onClick:P,disabled:d,isBusy:d,children:(0,c.__)("Generate SEO Title & Meta","ai-content-image-seo")}),d&&(0,w.jsx)(v,{}),(0,w.jsx)(y,{error:j,onDismiss:()=>S(null)}),b&&!d&&(0,w.jsxs)("div",{className:"ai-cis-result",children:[(0,w.jsx)(o.TextControl,{__nextHasNoMarginBottom:!0,__next40pxDefaultSize:!0,label:(0,c.__)("SEO Title","ai-content-image-seo"),value:b.seo_title,onChange:e=>f({...b,seo_title:e})}),(0,w.jsx)(o.TextareaControl,{__nextHasNoMarginBottom:!0,label:(0,c.__)("Meta Description","ai-content-image-seo"),value:b.meta_description,onChange:e=>f({...b,meta_description:e})}),(0,w.jsx)(o.TextControl,{__nextHasNoMarginBottom:!0,__next40pxDefaultSize:!0,label:(0,c.__)("Focus Keyword","ai-content-image-seo"),value:b.focus_keyword,onChange:e=>f({...b,focus_keyword:e})}),(0,w.jsx)(C,{title:b.seo_title,description:b.meta_description,url:s}),(0,w.jsx)(k,{onUse:async()=>{m(!0);try{const t=await x("/seo/save",{method:"POST",data:{post_id:e,...b}});N((0,c.sprintf)(/* translators: %s: SEO plugin name. */ /* translators: %s: SEO plugin name. */
-(0,c.__)("Saved to %s.","ai-content-image-seo"),t.target)),(0,l.speak)((0,c.__)("SEO metadata saved.","ai-content-image-seo"))}catch(e){S(h(e))}m(!1)},useLabel:(0,c.__)("Save SEO Metadata","ai-content-image-seo"),busy:_,copyText:b.seo_title+"\n"+b.meta_description,onRegenerate:P}),g().seoPlugin&&(0,w.jsx)("p",{className:"description",children:(0,c.__)("Tip: reload the editor before your next save so your SEO plugin panel shows the new values.","ai-content-image-seo")})]}),B&&(0,w.jsx)(o.Notice,{status:"success",onRemove:()=>N(""),children:(0,w.jsx)("p",{children:B})})]})}(0,t.registerPlugin)("ai-content-image-seo",{render:function(){return(0,w.jsxs)(w.Fragment,{children:[(0,w.jsx)(n.PluginSidebarMoreMenuItem,{target:"ai-cis-assistant",icon:"superhero-alt",children:(0,c.__)("AI Content Assistant","ai-content-image-seo")}),(0,w.jsx)(n.PluginSidebar,{name:"ai-cis-assistant",title:(0,c.__)("AI Content Assistant","ai-content-image-seo"),icon:"superhero-alt",children:(0,w.jsxs)("div",{className:"ai-cis-editor-sidebar",children:[(0,w.jsx)(S,{}),(0,w.jsx)(T,{}),(0,w.jsx)(I,{}),(0,w.jsx)(O,{}),(0,w.jsx)(A,{})]})})]})}})})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/common/api.js"
+/*!***************************!*\
+  !*** ./src/common/api.js ***!
+  \***************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   copyText: () => (/* binding */ copyText),
+/* harmony export */   data: () => (/* binding */ data),
+/* harmony export */   errorInfo: () => (/* binding */ errorInfo),
+/* harmony export */   htmlToText: () => (/* binding */ htmlToText),
+/* harmony export */   newRequestId: () => (/* binding */ newRequestId),
+/* harmony export */   request: () => (/* binding */ request)
+/* harmony export */ });
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/url */ "@wordpress/url");
+/* harmony import */ var _wordpress_url__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_url__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ * REST helpers. Authentication uses the WordPress REST nonce that core
+ * attaches to apiFetch automatically; no secrets ever live in JavaScript.
+ */
+
+
+
+const NAMESPACE = '/ai-cis/v1';
+
+/**
+ * Global bootstrap data printed by PHP.
+ *
+ * @return {Object} Data.
+ */
+const data = () => window.aiCisData || {};
+
+/**
+ * Generates a unique request ID so usage is never double counted.
+ *
+ * @return {string} ID.
+ */
+const newRequestId = () => Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+
+/**
+ * Calls a plugin REST endpoint.
+ *
+ * @param {string} path           Route, e.g. "/usage".
+ * @param {Object} options        Options.
+ * @param {string} options.method HTTP method.
+ * @param {Object} options.data   Body for POST.
+ * @param {Object} options.query  Query args for GET.
+ * @param {Object} options.signal AbortSignal.
+ * @return {Promise<*>} Response.
+ */
+function request(path, {
+  method = 'GET',
+  data: body,
+  query,
+  signal
+} = {}) {
+  const url = query ? (0,_wordpress_url__WEBPACK_IMPORTED_MODULE_2__.addQueryArgs)(NAMESPACE + path, query) : NAMESPACE + path;
+  return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+    path: url,
+    method,
+    data: body,
+    signal
+  });
+}
+
+/**
+ * Turns an apiFetch error into display text.
+ *
+ * @param {Object} error Error.
+ * @return {{message: string, details: string, code: string}} Error info.
+ */
+function errorInfo(error) {
+  if (!error) {
+    return {
+      message: '',
+      details: '',
+      code: ''
+    };
+  }
+  if (error.name === 'AbortError') {
+    return {
+      message: '',
+      details: '',
+      code: 'abort'
+    };
+  }
+  const message = error.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unable to generate content. Please check your AI provider settings and try again.', 'ai-content-image-seo');
+  return {
+    message,
+    details: error.data && error.data.details || '',
+    code: error.code || ''
+  };
+}
+
+/**
+ * Copies text to the clipboard.
+ *
+ * @param {string} text Text.
+ * @return {Promise<boolean>} Whether it worked.
+ */
+async function copyText(text) {
+  try {
+    if (window.navigator.clipboard && window.isSecureContext) {
+      await window.navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (e) {
+    // Fall through to the legacy approach.
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'absolute';
+  textarea.style.left = '-9999px';
+  document.body.appendChild(textarea);
+  textarea.select();
+  let ok = false;
+  try {
+    // eslint-disable-next-line @wordpress/no-global-active-element
+    ok = document.execCommand('copy');
+  } catch (e) {
+    ok = false;
+  }
+  document.body.removeChild(textarea);
+  return ok;
+}
+
+/**
+ * Strips HTML for plain-text copy.
+ *
+ * @param {string} html HTML.
+ * @return {string} Text.
+ */
+function htmlToText(html) {
+  const doc = new window.DOMParser().parseFromString(html || '', 'text/html');
+  return (doc.body.textContent || '').trim();
+}
+
+/***/ },
+
+/***/ "./src/common/components.js"
+/*!**********************************!*\
+  !*** ./src/common/components.js ***!
+  \**********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CopyButton: () => (/* binding */ CopyButton),
+/* harmony export */   EmptyState: () => (/* binding */ EmptyState),
+/* harmony export */   ErrorNotice: () => (/* binding */ ErrorNotice),
+/* harmony export */   ExternalLink: () => (/* reexport safe */ _wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ExternalLink),
+/* harmony export */   GooglePreview: () => (/* binding */ GooglePreview),
+/* harmony export */   HtmlPreview: () => (/* binding */ HtmlPreview),
+/* harmony export */   Loading: () => (/* binding */ Loading),
+/* harmony export */   PrivacyHint: () => (/* binding */ PrivacyHint),
+/* harmony export */   ProgressBar: () => (/* binding */ ProgressBar),
+/* harmony export */   ProviderNotice: () => (/* binding */ ProviderNotice),
+/* harmony export */   ResultActions: () => (/* binding */ ResultActions),
+/* harmony export */   Section: () => (/* binding */ Section),
+/* harmony export */   UsageMeter: () => (/* binding */ UsageMeter)
+/* harmony export */ });
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/a11y */ "@wordpress/a11y");
+/* harmony import */ var _wordpress_a11y__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./api */ "./src/common/api.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/**
+ * Shared UI building blocks.
+ */
+
+
+
+
+
+
+/**
+ * Section card with a heading.
+ *
+ * @param {Object} props           Props.
+ * @param {string} props.title     Heading.
+ * @param {*}      props.actions   Header actions.
+ * @param {*}      props.children  Content.
+ * @param {string} props.className Extra class.
+ * @return {Element} Card.
+ */
+
+function Section({
+  title,
+  actions,
+  children,
+  className = ''
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Card, {
+    className: 'ai-cis-card ' + className,
+    children: [title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CardHeader, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+        className: "ai-cis-card__title",
+        children: title
+      }), actions && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "ai-cis-card__actions",
+        children: actions
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CardBody, {
+      children: children
+    })]
+  });
+}
+
+/**
+ * Loading state announced to screen readers.
+ *
+ * @param {Object} props       Props.
+ * @param {string} props.label Label.
+ * @return {Element} Loading.
+ */
+function Loading({
+  label
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "ai-cis-loading",
+    role: "status",
+    "aria-live": "polite",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
+        children: label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'ai-content-image-seo')
+      }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please wait.', 'ai-content-image-seo')]
+    })]
+  });
+}
+
+/**
+ * Error notice with optional technical details (administrators only).
+ *
+ * @param {Object}   props           Props.
+ * @param {Object}   props.error     Error info from errorInfo().
+ * @param {Function} props.onDismiss Dismiss handler.
+ * @return {Element|null} Notice.
+ */
+function ErrorNotice({
+  error,
+  onDismiss
+}) {
+  const [open, setOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  if (!error || !error.message) {
+    return null;
+  }
+  const isProvider = error.code === 'ai_cis_no_provider';
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
+    status: "error",
+    isDismissible: !!onDismiss,
+    onRemove: onDismiss,
+    className: "ai-cis-notice",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      children: error.message
+    }), isProvider && (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+        href: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.settings,
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open AI Provider settings', 'ai-content-image-seo')
+      })
+    }), error.details && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+        variant: "link",
+        onClick: () => setOpen(!open),
+        "aria-expanded": open,
+        children: open ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hide technical details', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show technical details', 'ai-content-image-seo')
+      }), open && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        className: "ai-cis-details",
+        children: error.details
+      })]
+    })]
+  });
+}
+
+/**
+ * Notice shown when no provider is configured.
+ *
+ * @return {Element|null} Notice.
+ */
+function ProviderNotice() {
+  if ((0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().providerReady) {
+    return null;
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
+    status: "warning",
+    isDismissible: false,
+    className: "ai-cis-notice",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No AI provider configured.', 'ai-content-image-seo')
+      }), ' ', (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect an AI provider from Settings → AI Provider.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ask a site administrator to connect an AI provider.', 'ai-content-image-seo')]
+    }), (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+        variant: "secondary",
+        href: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.settings,
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect AI Provider', 'ai-content-image-seo')
+      })
+    })]
+  });
+}
+
+/**
+ * Copy button with accessible feedback.
+ *
+ * @param {Object} props       Props.
+ * @param {string} props.text  Text to copy.
+ * @param {string} props.label Label.
+ * @return {Element} Button.
+ */
+function CopyButton({
+  text,
+  label
+}) {
+  const [copied, setCopied] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const onClick = async () => {
+    const ok = await (0,_api__WEBPACK_IMPORTED_MODULE_4__.copyText)(text);
+    setCopied(ok);
+    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)(ok ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied to clipboard.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy failed. Select the text and copy it manually.', 'ai-content-image-seo'));
+    if (ok) {
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+    variant: "secondary",
+    onClick: onClick,
+    disabled: !text,
+    children: copied ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied!', 'ai-content-image-seo') : label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy', 'ai-content-image-seo')
+  });
+}
+
+/**
+ * Empty state.
+ *
+ * @param {Object} props          Props.
+ * @param {string} props.title    Title.
+ * @param {string} props.text     Text.
+ * @param {*}      props.children Actions.
+ * @return {Element} Empty state.
+ */
+function EmptyState({
+  title,
+  text,
+  children
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "ai-cis-empty",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "ai-cis-empty__title",
+      children: title
+    }), text && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      children: text
+    }), children]
+  });
+}
+
+/**
+ * Usage meter. Shows numbers in text so meaning never depends on color.
+ *
+ * @param {Object} props      Props.
+ * @param {Object} props.type Usage row from the report.
+ * @return {Element} Meter.
+ */
+function UsageMeter({
+  type
+}) {
+  const valueText = type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number used. */
+  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %d (unlimited)', 'ai-content-image-seo'), type.used) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: number used, 2: limit. */
+  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %1$d / %2$d', 'ai-content-image-seo'), type.used, type.limit);
+  const percent = type.unlimited ? 0 : type.percent;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "ai-cis-meter",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "ai-cis-meter__label",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        children: type.label
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+        children: valueText
+      })]
+    }), !type.unlimited && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: 'ai-cis-meter__track' + (percent >= 90 ? ' is-high' : ''),
+      role: "progressbar",
+      "aria-valuemin": 0,
+      "aria-valuemax": 100,
+      "aria-valuenow": percent,
+      "aria-valuetext": valueText,
+      "aria-label": type.label,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "ai-cis-meter__fill",
+        style: {
+          width: percent + '%'
+        }
+      })
+    })]
+  });
+}
+
+/**
+ * Progress bar for bulk jobs.
+ *
+ * @param {Object} props         Props.
+ * @param {number} props.percent Percent.
+ * @param {string} props.label   Label.
+ * @return {Element} Bar.
+ */
+function ProgressBar({
+  percent,
+  label
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "ai-cis-meter__track ai-cis-progress",
+    role: "progressbar",
+    "aria-valuemin": 0,
+    "aria-valuemax": 100,
+    "aria-valuenow": percent,
+    "aria-label": label,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "ai-cis-meter__fill",
+      style: {
+        width: percent + '%'
+      }
+    })
+  });
+}
+
+/**
+ * Renders server-sanitized HTML (already filtered with wp_kses_post).
+ *
+ * @param {Object} props      Props.
+ * @param {string} props.html HTML.
+ * @return {Element} Preview.
+ */
+function HtmlPreview({
+  html
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "ai-cis-html-preview",
+    tabIndex: 0,
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI result preview', 'ai-content-image-seo'),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
+      children: html
+    })
+  });
+}
+
+/**
+ * Google search result preview.
+ *
+ * @param {Object} props             Props.
+ * @param {string} props.title       SEO title.
+ * @param {string} props.description Meta description.
+ * @param {string} props.url         URL.
+ * @return {Element} Preview.
+ */
+function GooglePreview({
+  title,
+  description,
+  url
+}) {
+  const titleLen = (title || '').length;
+  const descLen = (description || '').length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "ai-cis-serp",
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'ai-content-image-seo'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "ai-cis-serp__label",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'ai-content-image-seo')
+    }), url && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "ai-cis-serp__url",
+      children: url
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "ai-cis-serp__title",
+      children: title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no SEO title)', 'ai-content-image-seo')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "ai-cis-serp__desc",
+      children: description || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no meta description)', 'ai-content-image-seo')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      className: "ai-cis-serp__meta",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: title length, 2: description length. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)', 'ai-content-image-seo'), titleLen, descLen)
+    })]
+  });
+}
+
+/**
+ * Standard actions for an AI result.
+ *
+ * @param {Object}   props              Props.
+ * @param {Function} props.onUse        "Use This" handler (omit to hide).
+ * @param {string}   props.useLabel     Label for the use button.
+ * @param {string}   props.copyText     Text to copy.
+ * @param {Function} props.onRegenerate Regenerate handler.
+ * @param {boolean}  props.busy         Busy flag.
+ * @param {*}        props.children     Extra buttons.
+ * @return {Element} Actions.
+ */
+function ResultActions({
+  onUse,
+  useLabel,
+  copyText: text,
+  onRegenerate,
+  busy,
+  children
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    className: "ai-cis-actions",
+    children: [onUse && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+      variant: "primary",
+      onClick: onUse,
+      disabled: busy,
+      children: useLabel || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use This', 'ai-content-image-seo')
+    }), typeof text === 'string' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(CopyButton, {
+      text: text
+    }), onRegenerate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+      variant: "tertiary",
+      onClick: onRegenerate,
+      disabled: busy,
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate', 'ai-content-image-seo')
+    }), children]
+  });
+}
+
+/**
+ * Small privacy hint shown near AI actions.
+ *
+ * @return {Element} Hint.
+ */
+function PrivacyHint() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+    className: "description ai-cis-privacy-hint",
+    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The selected content is sent to your configured AI provider only when you click a generate button.', 'ai-content-image-seo')
+  });
+}
+
+
+/***/ },
+
+/***/ "./src/common/ai-cis.scss"
+/*!********************************!*\
+  !*** ./src/common/ai-cis.scss ***!
+  \********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ },
+
+/***/ "react/jsx-runtime"
+/*!**********************************!*\
+  !*** external "ReactJSXRuntime" ***!
+  \**********************************/
+(module) {
+
+module.exports = window["ReactJSXRuntime"];
+
+/***/ },
+
+/***/ "@wordpress/a11y"
+/*!******************************!*\
+  !*** external ["wp","a11y"] ***!
+  \******************************/
+(module) {
+
+module.exports = window["wp"]["a11y"];
+
+/***/ },
+
+/***/ "@wordpress/api-fetch"
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+(module) {
+
+module.exports = window["wp"]["apiFetch"];
+
+/***/ },
+
+/***/ "@wordpress/block-editor"
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+(module) {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ },
+
+/***/ "@wordpress/blocks"
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+(module) {
+
+module.exports = window["wp"]["blocks"];
+
+/***/ },
+
+/***/ "@wordpress/components"
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ },
+
+/***/ "@wordpress/data"
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+(module) {
+
+module.exports = window["wp"]["data"];
+
+/***/ },
+
+/***/ "@wordpress/editor"
+/*!********************************!*\
+  !*** external ["wp","editor"] ***!
+  \********************************/
+(module) {
+
+module.exports = window["wp"]["editor"];
+
+/***/ },
+
+/***/ "@wordpress/element"
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+(module) {
+
+module.exports = window["wp"]["element"];
+
+/***/ },
+
+/***/ "@wordpress/i18n"
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+(module) {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ },
+
+/***/ "@wordpress/plugins"
+/*!*********************************!*\
+  !*** external ["wp","plugins"] ***!
+  \*********************************/
+(module) {
+
+module.exports = window["wp"]["plugins"];
+
+/***/ },
+
+/***/ "@wordpress/url"
+/*!*****************************!*\
+  !*** external ["wp","url"] ***!
+  \*****************************/
+(module) {
+
+module.exports = window["wp"]["url"];
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	const __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = (module) => {
+/******/ 		const getter = module && module.__esModule ?
+/******/ 			() => (module['default']) :
+/******/ 			() => (module);
+/******/ 		__webpack_require__.d(getter, { a: getter });
+/******/ 		return getter;
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 			}
+/******/ 		}
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.hasOwn(obj, prop));
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/ 	
+/************************************************************************/
+let __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!*****************************!*\
+  !*** ./src/editor/index.js ***!
+  \*****************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/a11y */ "@wordpress/a11y");
+/* harmony import */ var _wordpress_a11y__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _common_api__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../common/api */ "./src/common/api.js");
+/* harmony import */ var _common_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../common/components */ "./src/common/components.js");
+/* harmony import */ var _common_ai_cis_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../common/ai-cis.scss */ "./src/common/ai-cis.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__);
+/**
+ * Block editor integration: "AI Content Assistant" sidebar.
+ * Uses the editor data stores; never touches the editor DOM directly.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+const TEXT_BLOCKS = ['core/paragraph', 'core/heading', 'core/list-item', 'core/quote', 'core/verse', 'core/preformatted'];
+const BLOCK_ACTIONS = [['improve', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Improve', 'ai-content-image-seo')], ['rewrite', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Rewrite', 'ai-content-image-seo')], ['expand', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Expand', 'ai-content-image-seo')], ['shorten', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Shorten', 'ai-content-image-seo')], ['grammar', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Fix Grammar', 'ai-content-image-seo')], ['seo', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('SEO Optimize', 'ai-content-image-seo')]];
+
+/**
+ * Block text content as an HTML string.
+ *
+ * @param {Object} block Block.
+ * @return {string} HTML.
+ */
+const blockHtml = block => {
+  const content = block?.attributes?.content;
+  if (!content) {
+    return '';
+  }
+  return typeof content === 'string' ? content : String(content);
+};
+function SelectedBlockPanel() {
+  const block = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.store).getSelectedBlock(), []);
+  const {
+    updateBlockAttributes,
+    insertBlocks
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.store);
+  const blockIndex = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => block ? select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.store).getBlockIndex(block.clientId) : -1, [block]);
+  const rootClientId = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => block ? select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.store).getBlockRootClientId(block.clientId) : undefined, [block]);
+  const [busy, setBusy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('');
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const [result, setResult] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const supported = block && TEXT_BLOCKS.includes(block.name) && blockHtml(block).trim() !== '';
+  const run = async action => {
+    setBusy(action);
+    setError(null);
+    try {
+      const res = await (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.request)('/rewrite', {
+        method: 'POST',
+        data: {
+          content: blockHtml(block),
+          action,
+          request_id: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.newRequestId)()
+        }
+      });
+      setResult({
+        ...res,
+        clientId: block.clientId
+      });
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI result ready.', 'ai-content-image-seo'));
+    } catch (e) {
+      setError((0,_common_api__WEBPACK_IMPORTED_MODULE_9__.errorInfo)(e));
+    }
+    setBusy('');
+  };
+  const replace = () => {
+    updateBlockAttributes(result.clientId, {
+      content: result.result
+    });
+    setResult(null);
+    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Block replaced with the AI result.', 'ai-content-image-seo'));
+  };
+  const insertBelow = () => {
+    insertBlocks((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.createBlock)('core/paragraph', {
+      content: result.result
+    }), blockIndex + 1, rootClientId);
+    setResult(null);
+    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI result inserted below.', 'ai-content-image-seo'));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Selected Block', 'ai-content-image-seo'),
+    initialOpen: true,
+    children: [!supported ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      className: "description",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Select a paragraph, heading, list item or quote with text to improve, rewrite, expand or shorten it.', 'ai-content-image-seo')
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+      className: "ai-cis-button-grid",
+      children: BLOCK_ACTIONS.map(([action, label]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        variant: "secondary",
+        onClick: () => run(action),
+        disabled: !!busy,
+        isBusy: busy === action,
+        children: label
+      }, action))
+    }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ErrorNotice, {
+      error: error,
+      onDismiss: () => setError(null)
+    }), result && !busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "ai-cis-result",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+        className: "ai-cis-label",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Original', 'ai-content-image-seo')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.HtmlPreview, {
+        html: result.original
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+        className: "ai-cis-label",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI Result', 'ai-content-image-seo')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.HtmlPreview, {
+        html: result.result
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ResultActions, {
+        onUse: replace,
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Replace', 'ai-content-image-seo'),
+        copyText: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.htmlToText)(result.result),
+        onRegenerate: () => run(result.action),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+          variant: "secondary",
+          onClick: insertBelow,
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Insert below', 'ai-content-image-seo')
+        })
+      })]
+    })]
+  });
+}
+function GeneratePanel() {
+  const d = (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.data)();
+  const postType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getCurrentPostType(), []);
+  const {
+    insertBlocks
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.store);
+  const {
+    editPost
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store);
+  const [topic, setTopic] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('');
+  const [tone, setTone] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(d.defaults.tone);
+  const [length, setLength] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('medium');
+  const [language, setLanguage] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(d.defaults.language);
+  const [busy, setBusy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(false);
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const [result, setResult] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const generate = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.request)('/generate-content', {
+        method: 'POST',
+        data: {
+          topic,
+          tone,
+          length,
+          language,
+          post_type: postType === 'page' ? 'page' : 'post',
+          request_id: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.newRequestId)()
+        }
+      });
+      setResult(res);
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Content generated.', 'ai-content-image-seo'));
+    } catch (e) {
+      setError((0,_common_api__WEBPACK_IMPORTED_MODULE_9__.errorInfo)(e));
+    }
+    setBusy(false);
+  };
+  const insert = () => {
+    insertBlocks((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.rawHandler)({
+      HTML: result.content
+    }));
+    const edits = {};
+    if (result.title) {
+      edits.title = result.title;
+    }
+    if (result.excerpt) {
+      edits.excerpt = result.excerpt;
+    }
+    editPost(edits);
+    setResult(null);
+    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Content inserted into the editor.', 'ai-content-image-seo'));
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Generate', 'ai-content-image-seo'),
+    initialOpen: false,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextareaControl, {
+      __nextHasNoMarginBottom: true,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Topic', 'ai-content-image-seo'),
+      value: topic,
+      onChange: setTopic,
+      rows: 3
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
+      __nextHasNoMarginBottom: true,
+      __next40pxDefaultSize: true,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Tone', 'ai-content-image-seo'),
+      value: tone,
+      options: d.options.tones,
+      onChange: setTone
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
+      __nextHasNoMarginBottom: true,
+      __next40pxDefaultSize: true,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Length', 'ai-content-image-seo'),
+      value: length,
+      options: d.options.lengths,
+      onChange: setLength
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
+      __nextHasNoMarginBottom: true,
+      __next40pxDefaultSize: true,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Language', 'ai-content-image-seo'),
+      value: language,
+      options: d.options.languages,
+      onChange: setLanguage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+      variant: "primary",
+      onClick: generate,
+      disabled: busy || !topic.trim(),
+      isBusy: busy,
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Generate', 'ai-content-image-seo')
+    }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ErrorNotice, {
+      error: error,
+      onDismiss: () => setError(null)
+    }), result && !busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "ai-cis-result",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("strong", {
+          children: result.title
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.HtmlPreview, {
+        html: result.content
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ResultActions, {
+        onUse: insert,
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Insert into editor', 'ai-content-image-seo'),
+        copyText: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.htmlToText)(result.content),
+        onRegenerate: generate
+      })]
+    })]
+  });
+}
+function TitleExcerptPanel() {
+  const {
+    title,
+    content
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => ({
+    title: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getEditedPostAttribute('title'),
+    content: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getEditedPostContent()
+  }), []);
+  const {
+    editPost
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store);
+  const [busy, setBusy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('');
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const [titles, setTitles] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)([]);
+  const [excerpt, setExcerpt] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('');
+  const gen = async field => {
+    setBusy(field);
+    setError(null);
+    try {
+      const res = await (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.request)('/generate-field', {
+        method: 'POST',
+        data: {
+          field,
+          title,
+          content,
+          request_id: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.newRequestId)()
+        }
+      });
+      if (field === 'title') {
+        setTitles(res.options || []);
+      } else {
+        setExcerpt(res.value || '');
+      }
+    } catch (e) {
+      setError((0,_common_api__WEBPACK_IMPORTED_MODULE_9__.errorInfo)(e));
+    }
+    setBusy('');
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Title & Excerpt', 'ai-content-image-seo'),
+    initialOpen: false,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "ai-cis-button-grid",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        variant: "secondary",
+        onClick: () => gen('title'),
+        disabled: !!busy,
+        isBusy: busy === 'title',
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Suggest Titles', 'ai-content-image-seo')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        variant: "secondary",
+        onClick: () => gen('excerpt'),
+        disabled: !!busy,
+        isBusy: busy === 'excerpt',
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Generate Excerpt', 'ai-content-image-seo')
+      })]
+    }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ErrorNotice, {
+      error: error,
+      onDismiss: () => setError(null)
+    }), titles.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("ul", {
+      className: "ai-cis-option-list",
+      children: titles.map(t => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
+          children: t
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+          variant: "link",
+          onClick: () => {
+            editPost({
+              title: t
+            });
+            (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Title updated.', 'ai-content-image-seo'));
+          },
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Use This', 'ai-content-image-seo')
+        })]
+      }, t))
+    }), excerpt && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "ai-cis-result",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextareaControl, {
+        __nextHasNoMarginBottom: true,
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI Excerpt', 'ai-content-image-seo'),
+        value: excerpt,
+        onChange: setExcerpt
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ResultActions, {
+        onUse: () => {
+          editPost({
+            excerpt
+          });
+          (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Excerpt updated.', 'ai-content-image-seo'));
+        },
+        copyText: excerpt,
+        onRegenerate: () => gen('excerpt')
+      })]
+    })]
+  });
+}
+function SeoPanel() {
+  const {
+    postId,
+    title,
+    content,
+    link
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => ({
+    postId: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getCurrentPostId(),
+    title: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getEditedPostAttribute('title'),
+    content: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getEditedPostContent(),
+    link: select(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.store).getPermalink()
+  }), []);
+  const [busy, setBusy] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(false);
+  const [saving, setSaving] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(false);
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const [seo, setSeo] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)(null);
+  const [notice, setNotice] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_6__.useState)('');
+  const generate = async () => {
+    setBusy(true);
+    setError(null);
+    setNotice('');
+    try {
+      const res = await (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.request)('/seo/generate', {
+        method: 'POST',
+        data: {
+          post_id: postId,
+          title,
+          content,
+          request_id: (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.newRequestId)()
+        }
+      });
+      setSeo(res);
+    } catch (e) {
+      setError((0,_common_api__WEBPACK_IMPORTED_MODULE_9__.errorInfo)(e));
+    }
+    setBusy(false);
+  };
+  const save = async () => {
+    setSaving(true);
+    try {
+      const res = await (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.request)('/seo/save', {
+        method: 'POST',
+        data: {
+          post_id: postId,
+          ...seo
+        }
+      });
+      setNotice((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.sprintf)(/* translators: %s: SEO plugin name. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Saved to %s.', 'ai-content-image-seo'), res.target));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_8__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('SEO metadata saved.', 'ai-content-image-seo'));
+    } catch (e) {
+      setError((0,_common_api__WEBPACK_IMPORTED_MODULE_9__.errorInfo)(e));
+    }
+    setSaving(false);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('SEO Optimize', 'ai-content-image-seo'),
+    initialOpen: false,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      className: "description",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.sprintf)(/* translators: %s: SEO plugin name. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Saves to: %s. Nothing is saved until you confirm.', 'ai-content-image-seo'), (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.data)().seoPluginLabel)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+      variant: "secondary",
+      onClick: generate,
+      disabled: busy,
+      isBusy: busy,
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Generate SEO Title & Meta', 'ai-content-image-seo')
+    }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ErrorNotice, {
+      error: error,
+      onDismiss: () => setError(null)
+    }), seo && !busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      className: "ai-cis-result",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('SEO Title', 'ai-content-image-seo'),
+        value: seo.seo_title,
+        onChange: v => setSeo({
+          ...seo,
+          seo_title: v
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextareaControl, {
+        __nextHasNoMarginBottom: true,
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Meta Description', 'ai-content-image-seo'),
+        value: seo.meta_description,
+        onChange: v => setSeo({
+          ...seo,
+          meta_description: v
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Focus Keyword', 'ai-content-image-seo'),
+        value: seo.focus_keyword,
+        onChange: v => setSeo({
+          ...seo,
+          focus_keyword: v
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.GooglePreview, {
+        title: seo.seo_title,
+        description: seo.meta_description,
+        url: link
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ResultActions, {
+        onUse: save,
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Save SEO Metadata', 'ai-content-image-seo'),
+        busy: saving,
+        copyText: seo.seo_title + '\n' + seo.meta_description,
+        onRegenerate: generate
+      }), (0,_common_api__WEBPACK_IMPORTED_MODULE_9__.data)().seoPlugin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+        className: "description",
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Tip: reload the editor before your next save so your SEO plugin panel shows the new values.', 'ai-content-image-seo')
+      })]
+    }), notice && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Notice, {
+      status: "success",
+      onRemove: () => setNotice(''),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+        children: notice
+      })
+    })]
+  });
+}
+function AssistantSidebar() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
+      target: "ai-cis-assistant",
+      icon: "superhero-alt",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI Content Assistant', 'ai-content-image-seo')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
+      name: "ai-cis-assistant",
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('AI Content Assistant', 'ai-content-image-seo'),
+      icon: "superhero-alt",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+        className: "ai-cis-editor-sidebar",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_10__.ProviderNotice, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(SelectedBlockPanel, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(GeneratePanel, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(TitleExcerptPanel, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(SeoPanel, {})]
+      })
+    })]
+  });
+}
+;(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('ai-content-image-seo', {
+  render: AssistantSidebar
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=editor.js.map
