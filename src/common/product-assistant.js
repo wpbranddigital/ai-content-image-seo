@@ -35,27 +35,39 @@ import {
 } from './classic-editor';
 
 const ACTIONS = [
-	{ field: 'title', label: __( 'Generate Title', 'ai-content-image-seo' ) },
+	{
+		field: 'title',
+		label: __( 'Generate Title', 'wbd-content-image-seo-assistant' ),
+	},
 	{
 		field: 'description',
-		label: __( 'Generate Description', 'ai-content-image-seo' ),
+		label: __( 'Generate Description', 'wbd-content-image-seo-assistant' ),
 	},
 	{
 		field: 'short_description',
-		label: __( 'Generate Short Description', 'ai-content-image-seo' ),
+		label: __(
+			'Generate Short Description',
+			'wbd-content-image-seo-assistant'
+		),
 	},
 	{
 		field: 'seo',
-		label: __( 'Generate SEO Metadata', 'ai-content-image-seo' ),
+		label: __( 'Generate SEO Metadata', 'wbd-content-image-seo-assistant' ),
 	},
-	{ field: 'tags', label: __( 'Generate Tags', 'ai-content-image-seo' ) },
+	{
+		field: 'tags',
+		label: __( 'Generate Tags', 'wbd-content-image-seo-assistant' ),
+	},
 	{
 		field: 'categories',
-		label: __( 'Suggest Categories', 'ai-content-image-seo' ),
+		label: __( 'Suggest Categories', 'wbd-content-image-seo-assistant' ),
 	},
 	{
 		field: 'improve',
-		label: __( 'Improve Existing Content', 'ai-content-image-seo' ),
+		label: __(
+			'Improve Existing Content',
+			'wbd-content-image-seo-assistant'
+		),
 	},
 ];
 
@@ -114,7 +126,7 @@ export default function ProductAssistant( {
 			speak(
 				__(
 					'AI result ready. Review it before using it.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			);
 		} catch ( e ) {
@@ -157,13 +169,16 @@ export default function ProductAssistant( {
 					done(
 						__(
 							'Title inserted. Click "Update" to save the product.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						)
 					);
 				} else {
 					await saveDirect( choice );
 					done(
-						__( 'Product title saved.', 'ai-content-image-seo' )
+						__(
+							'Product title saved.',
+							'wbd-content-image-seo-assistant'
+						)
 					);
 				}
 			} else if (
@@ -177,13 +192,16 @@ export default function ProductAssistant( {
 					done(
 						__(
 							'Inserted into the editor. Click "Update" to save the product.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						)
 					);
 				} else {
 					await saveDirect( result.value );
 					done(
-						__( 'Product content saved.', 'ai-content-image-seo' )
+						__(
+							'Product content saved.',
+							'wbd-content-image-seo-assistant'
+						)
 					);
 				}
 			} else if ( target === 'tags' ) {
@@ -191,7 +209,7 @@ export default function ProductAssistant( {
 					done(
 						__(
 							'Tags added. Click "Update" to save the product.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						)
 					);
 				} else {
@@ -199,7 +217,7 @@ export default function ProductAssistant( {
 					done(
 						__(
 							'Tags added to the product.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						)
 					);
 				}
@@ -208,7 +226,12 @@ export default function ProductAssistant( {
 				if ( isEditor ) {
 					checkCategoriesInForm( res.terms || [] );
 				}
-				done( __( 'Categories assigned.', 'ai-content-image-seo' ) );
+				done(
+					__(
+						'Categories assigned.',
+						'wbd-content-image-seo-assistant'
+					)
+				);
 			} else if ( target === 'seo' ) {
 				const seo = {
 					seo_title: result.seo_title,
@@ -224,7 +247,7 @@ export default function ProductAssistant( {
 						/* translators: %s: SEO plugin name. */
 						__(
 							'SEO metadata saved to %s.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						),
 						data().seoPluginLabel
 					)
@@ -246,7 +269,10 @@ export default function ProductAssistant( {
 			return (
 				<>
 					<RadioControl
-						label={ __( 'Choose a title', 'ai-content-image-seo' ) }
+						label={ __(
+							'Choose a title',
+							'wbd-content-image-seo-assistant'
+						) }
 						selected={ choice }
 						options={ result.options.map( ( o ) => ( {
 							label: o,
@@ -272,11 +298,11 @@ export default function ProductAssistant( {
 							{ target === 'tags'
 								? __(
 										'Select tags to add',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'Select categories to assign',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  ) }
 						</legend>
 						{ result.options.map( ( option ) => (
@@ -291,7 +317,7 @@ export default function ProductAssistant( {
 												/* translators: %s: category name. */
 												__(
 													'%s (new category)',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												),
 												option
 										  )
@@ -314,7 +340,7 @@ export default function ProductAssistant( {
 						<p className="description">
 							{ __(
 								'Categories are never assigned automatically. Only the categories you select are added.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 					) }
@@ -324,11 +350,11 @@ export default function ProductAssistant( {
 							target === 'tags'
 								? __(
 										'Add Selected Tags',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'Assign Selected Categories',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 						}
 						busy={ saving }
@@ -345,7 +371,10 @@ export default function ProductAssistant( {
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'SEO Title', 'ai-content-image-seo' ) }
+						label={ __(
+							'SEO Title',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ result.seo_title }
 						onChange={ ( v ) =>
 							setResult( { ...result, seo_title: v } )
@@ -355,7 +384,7 @@ export default function ProductAssistant( {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Meta Description',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						value={ result.meta_description }
 						onChange={ ( v ) =>
@@ -365,7 +394,10 @@ export default function ProductAssistant( {
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Focus Keyword', 'ai-content-image-seo' ) }
+						label={ __(
+							'Focus Keyword',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ result.focus_keyword }
 						onChange={ ( v ) =>
 							setResult( { ...result, focus_keyword: v } )
@@ -379,7 +411,7 @@ export default function ProductAssistant( {
 						onUse={ use }
 						useLabel={ __(
 							'Save SEO Metadata',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						busy={ saving }
 						copyText={
@@ -403,21 +435,30 @@ export default function ProductAssistant( {
 				{ target === 'improve' && original && (
 					<details className="ai-cis-original">
 						<summary>
-							{ __( 'Original', 'ai-content-image-seo' ) }
+							{ __(
+								'Original',
+								'wbd-content-image-seo-assistant'
+							) }
 						</summary>
 						<HtmlPreview html={ original } />
 					</details>
 				) }
 				<p className="ai-cis-label">
-					{ __( 'AI Result', 'ai-content-image-seo' ) }
+					{ __( 'AI Result', 'wbd-content-image-seo-assistant' ) }
 				</p>
 				<HtmlPreview html={ result.value } />
 				<ResultActions
 					onUse={ use }
 					useLabel={
 						isEditor
-							? __( 'Insert into Editor', 'ai-content-image-seo' )
-							: __( 'Save to Product', 'ai-content-image-seo' )
+							? __(
+									'Insert into Editor',
+									'wbd-content-image-seo-assistant'
+							  )
+							: __(
+									'Save to Product',
+									'wbd-content-image-seo-assistant'
+							  )
 					}
 					busy={ saving }
 					copyText={ htmlToText( result.value ) }
@@ -425,7 +466,10 @@ export default function ProductAssistant( {
 				>
 					<CopyButton
 						text={ result.value }
-						label={ __( 'Copy HTML', 'ai-content-image-seo' ) }
+						label={ __(
+							'Copy HTML',
+							'wbd-content-image-seo-assistant'
+						) }
 					/>
 				</ResultActions>
 			</>
@@ -439,7 +483,7 @@ export default function ProductAssistant( {
 				<SelectControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					label={ __( 'Tone', 'ai-content-image-seo' ) }
+					label={ __( 'Tone', 'wbd-content-image-seo-assistant' ) }
 					value={ tone }
 					options={ data().options.tones }
 					onChange={ setTone }
@@ -447,7 +491,10 @@ export default function ProductAssistant( {
 				<SelectControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					label={ __( 'Language', 'ai-content-image-seo' ) }
+					label={ __(
+						'Language',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ language }
 					options={ data().options.languages }
 					onChange={ setLanguage }

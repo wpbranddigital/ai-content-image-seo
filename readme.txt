@@ -1,10 +1,10 @@
-=== AI Content & Image SEO Assistant ===
+=== WBD Content & Image SEO Assistant ===
 Contributors: wpbranddigital25
 Tags: ai, alt text, seo, woocommerce, content generator
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ AI-powered content generation, image metadata optimization, SEO assistance, and 
 
 == Description ==
 
-AI Content & Image SEO Assistant brings AI writing, accessible image metadata, SEO metadata and WooCommerce product content into one plugin, using the AI provider you choose.
+WBD Content & Image SEO Assistant brings AI writing, accessible image metadata, SEO metadata and WooCommerce product content into one plugin, using the AI provider you choose.
 
 **Every feature is free. Nothing is locked.** There are no "Pro-only" features, no upgrade prompts and no account to create with the plugin author. Usage is tracked so you can see how much AI you use, and site owners can optionally set monthly caps (0 = unlimited, the default).
 
@@ -52,11 +52,7 @@ Loaded only when WooCommerce is active.
 
 = AI providers =
 
-* WordPress AI Connector (uses the provider configured in Settings → Connectors on WordPress 7.0+; detected automatically, never required)
-* OpenAI
-* Google Gemini
-* Anthropic Claude
-* OpenRouter
+* WordPress AI Connector (uses the provider configured in Settings → Connectors on WordPress 7.0+; detected automatically)
 
 Pick a model per provider, load the current model list from the provider, or enter a custom model ID. Temperature, max tokens and timeout are configurable. A "Test Connection" button verifies your setup.
 
@@ -71,14 +67,14 @@ Pick a model per provider, load the current model list from the provider, or ent
 == Development ==
 
 Public source code repository:
-https://github.com/wpbranddigital/ai-content-image-seo
+https://github.com/wpbranddigital/wbd-content-image-seo-assistant
 
 Build Instructions:
 
 1. npm install
 2. npm run build
 3. npm run start (development)
-AI Content & Image SEO Assistant is built using @wordpress/scripts.
+WBD Content & Image SEO Assistant is built using @wordpress/scripts.
 
 == External services ==
 
@@ -87,22 +83,16 @@ This plugin connects to a third-party AI service to generate text. Requests are 
 Only the provider selected in Settings → AI Provider is contacted. Depending on the feature, the request contains: the prompt instructions; the text you selected or the post/page/product content being processed; for image features a resized copy of the image (can be disabled) with its filename, title, caption and parent post or product details; for review summaries the text and star rating of approved reviews. Customer data, reviewer names, emails, IP addresses, passwords and payment information are never sent.
 
 * **WordPress AI Connector** – sends requests through the WordPress AI Client to the provider you configured in Settings → Connectors. That provider's terms and privacy policy apply.
-* **OpenAI** (api.openai.com) – used when "OpenAI" is selected. [Terms of use](https://openai.com/policies/terms-of-use/), [Privacy policy](https://openai.com/policies/privacy-policy/).
-* **Google Gemini API** (generativelanguage.googleapis.com) – used when "Google Gemini" is selected. [Terms of service](https://ai.google.dev/gemini-api/terms), [Privacy policy](https://policies.google.com/privacy).
-* **Anthropic API** (api.anthropic.com) – used when "Anthropic Claude" is selected. [Terms](https://www.anthropic.com/legal/commercial-terms), [Privacy policy](https://www.anthropic.com/legal/privacy).
-* **OpenRouter** (openrouter.ai) – used when "OpenRouter" is selected. Your site URL and the plugin name are sent as attribution headers. [Terms of service](https://openrouter.ai/terms), [Privacy policy](https://openrouter.ai/privacy).
 
-You need your own account and API key with the provider you choose (not required for the WordPress AI Connector option). Provider usage may be billed by the provider.
+Provider usage may be billed by the provider.
 
 == Installation ==
 
 1. Upload the plugin through Plugins → Add New → Upload Plugin, or install it from the WordPress.org directory.
 2. Activate it. The setup wizard opens (you can skip it).
-3. Choose an AI provider and paste your API key (or use the WordPress AI Connector on WordPress 7.0+).
+3. Use the WordPress AI Connector on WordPress 7.0+.
 4. Choose your default language and alt text style.
 5. Open **AI Content & SEO** in the admin menu.
-
-API keys can also be defined in wp-config.php, for example `define( 'AI_CIS_OPENAI_API_KEY', '...' );` (also `AI_CIS_GEMINI_API_KEY`, `AI_CIS_ANTHROPIC_API_KEY`, `AI_CIS_OPENROUTER_API_KEY`).
 
 == Frequently Asked Questions ==
 
@@ -112,7 +102,7 @@ No. Every feature is available. Usage is tracked and the site owner can optional
 
 = Do I need an AI account? =
 
-Yes, with the AI provider of your choice (OpenAI, Google, Anthropic or OpenRouter), or a provider configured in WordPress' own Connectors screen. You never need an account with the plugin author.
+Yes, with a provider configured in WordPress' own Connectors screen. You never need an account with the plugin author.
 
 = Will the plugin overwrite my content or metadata? =
 
@@ -124,7 +114,7 @@ Yes. WooCommerce features appear only when WooCommerce is active. SEO metadata i
 
 = How are API keys stored? =
 
-Keys are encrypted with your site's salts before being saved in the database, are never sent to the browser, and are never included in REST responses. You can also define them as constants in wp-config.php.
+API keys are not used by this plugin directly; the WordPress AI Connector manages its own keys.
 
 = How does bulk optimization work on large libraries? =
 
@@ -151,10 +141,16 @@ The unminified source is included in the `src/` folder. Build it with `npm insta
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed: Updated text domains, plugin slug, and resolved plugin review issues.
+
 = 1.0.0 =
 * Initial release: Content AI, Content Rewriter, Image AI with accessibility modes and decorative images, Media Library integration, Bulk Optimizer and automatic optimization, SEO Assistant with Yoast SEO / Rank Math / All in One SEO adapters, WooCommerce product AI and review summaries, five AI provider adapters, usage tracking with optional limits, REST API, block editor sidebar and setup wizard.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Minor bug fixes and compliance updates.
 
 = 1.0.0 =
 First release.

@@ -67,7 +67,7 @@ final class AI_CIS_SEO_Integration {
 			'aioseo'   => 'All in One SEO',
 		);
 		$active = self::detect();
-		return isset( $labels[ $active ] ) ? $labels[ $active ] : __( 'AI Content & Image SEO (built-in)', 'ai-content-image-seo' );
+		return isset( $labels[ $active ] ) ? $labels[ $active ] : __( 'WBD Content & Image SEO (built-in)', 'wbd-content-image-seo-assistant' );
 	}
 
 	/**
@@ -267,7 +267,7 @@ final class AI_CIS_SEO_Integration {
 		);
 
 		if ( '' === $context['title'] && '' === $context['content'] ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This content is empty. Add a title or content first.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This content is empty. Add a title or content first.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$result = AI_CIS_AI_Manager::run(
@@ -311,7 +311,7 @@ final class AI_CIS_SEO_Integration {
 		);
 
 		if ( '' === $context['content'] ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This content is empty. Add content first.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This content is empty. Add content first.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$result = AI_CIS_AI_Manager::run(
@@ -366,16 +366,16 @@ final class AI_CIS_SEO_Integration {
 		$words  = str_word_count( $text );
 		$checks = array(
 			array(
-				'label' => __( 'Content length', 'ai-content-image-seo' ),
+				'label' => __( 'Content length', 'wbd-content-image-seo-assistant' ),
 				'pass'  => $words >= 300,
 				/* translators: %d: number of words. */
-				'note'  => sprintf( _n( '%d word', '%d words', $words, 'ai-content-image-seo' ), $words ),
+				'note'  => sprintf( _n( '%d word', '%d words', $words, 'wbd-content-image-seo-assistant' ), $words ),
 			),
 			array(
-				'label' => __( 'Title length', 'ai-content-image-seo' ),
+				'label' => __( 'Title length', 'wbd-content-image-seo-assistant' ),
 				'pass'  => strlen( $title ) >= 20 && strlen( $title ) <= 70,
 				/* translators: %d: number of characters. */
-				'note'  => sprintf( __( '%d characters', 'ai-content-image-seo' ), strlen( $title ) ),
+				'note'  => sprintf( __( '%d characters', 'wbd-content-image-seo-assistant' ), strlen( $title ) ),
 			),
 		);
 
@@ -383,15 +383,15 @@ final class AI_CIS_SEO_Integration {
 			$in_title = false !== stripos( $title, $keyword );
 			$count    = substr_count( strtolower( $text ), strtolower( $keyword ) );
 			$checks[] = array(
-				'label' => __( 'Focus keyword in title', 'ai-content-image-seo' ),
+				'label' => __( 'Focus keyword in title', 'wbd-content-image-seo-assistant' ),
 				'pass'  => $in_title,
-				'note'  => $in_title ? __( 'Yes', 'ai-content-image-seo' ) : __( 'No', 'ai-content-image-seo' ),
+				'note'  => $in_title ? __( 'Yes', 'wbd-content-image-seo-assistant' ) : __( 'No', 'wbd-content-image-seo-assistant' ),
 			);
 			$checks[] = array(
-				'label' => __( 'Focus keyword in content', 'ai-content-image-seo' ),
+				'label' => __( 'Focus keyword in content', 'wbd-content-image-seo-assistant' ),
 				'pass'  => $count > 0,
 				/* translators: %d: number of keyword occurrences. */
-				'note'  => sprintf( _n( '%d time', '%d times', $count, 'ai-content-image-seo' ), $count ),
+				'note'  => sprintf( _n( '%d time', '%d times', $count, 'wbd-content-image-seo-assistant' ), $count ),
 			);
 		}
 

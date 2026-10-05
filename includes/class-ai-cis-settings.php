@@ -31,7 +31,7 @@ final class AI_CIS_Settings {
 	 * @return string[]
 	 */
 	public static function key_providers() {
-		return array( 'openai', 'gemini', 'anthropic', 'openrouter' );
+		return array();
 	}
 
 	/**
@@ -44,10 +44,6 @@ final class AI_CIS_Settings {
 			'provider'               => 'wp_ai_connector',
 			'provider_models'        => array(
 				'wp_ai_connector' => 'auto',
-				'openai'          => 'auto',
-				'gemini'          => 'auto',
-				'anthropic'       => 'auto',
-				'openrouter'      => 'auto',
 			),
 			'temperature'            => 0.7,
 			'max_tokens'             => 1500,
@@ -401,14 +397,14 @@ final class AI_CIS_Settings {
 	 */
 	public static function languages() {
 		$languages = array(
-			'English'  => __( 'English', 'ai-content-image-seo' ),
-			'Bangla'   => __( 'Bangla', 'ai-content-image-seo' ),
-			'Spanish'  => __( 'Spanish', 'ai-content-image-seo' ),
-			'French'   => __( 'French', 'ai-content-image-seo' ),
-			'German'   => __( 'German', 'ai-content-image-seo' ),
-			'Japanese' => __( 'Japanese', 'ai-content-image-seo' ),
-			'Chinese'  => __( 'Chinese', 'ai-content-image-seo' ),
-			'Arabic'   => __( 'Arabic', 'ai-content-image-seo' ),
+			'English'  => __( 'English', 'wbd-content-image-seo-assistant' ),
+			'Bangla'   => __( 'Bangla', 'wbd-content-image-seo-assistant' ),
+			'Spanish'  => __( 'Spanish', 'wbd-content-image-seo-assistant' ),
+			'French'   => __( 'French', 'wbd-content-image-seo-assistant' ),
+			'German'   => __( 'German', 'wbd-content-image-seo-assistant' ),
+			'Japanese' => __( 'Japanese', 'wbd-content-image-seo-assistant' ),
+			'Chinese'  => __( 'Chinese', 'wbd-content-image-seo-assistant' ),
+			'Arabic'   => __( 'Arabic', 'wbd-content-image-seo-assistant' ),
 		);
 
 		/**

@@ -24,13 +24,13 @@ final class AI_CIS_Prompts {
 		return apply_filters(
 			'ai_cis_tones',
 			array(
-				'professional'  => __( 'Professional', 'ai-content-image-seo' ),
-				'friendly'      => __( 'Friendly', 'ai-content-image-seo' ),
-				'casual'        => __( 'Casual', 'ai-content-image-seo' ),
-				'persuasive'    => __( 'Persuasive', 'ai-content-image-seo' ),
-				'informative'   => __( 'Informative', 'ai-content-image-seo' ),
-				'enthusiastic'  => __( 'Enthusiastic', 'ai-content-image-seo' ),
-				'authoritative' => __( 'Authoritative', 'ai-content-image-seo' ),
+				'professional'  => __( 'Professional', 'wbd-content-image-seo-assistant' ),
+				'friendly'      => __( 'Friendly', 'wbd-content-image-seo-assistant' ),
+				'casual'        => __( 'Casual', 'wbd-content-image-seo-assistant' ),
+				'persuasive'    => __( 'Persuasive', 'wbd-content-image-seo-assistant' ),
+				'informative'   => __( 'Informative', 'wbd-content-image-seo-assistant' ),
+				'enthusiastic'  => __( 'Enthusiastic', 'wbd-content-image-seo-assistant' ),
+				'authoritative' => __( 'Authoritative', 'wbd-content-image-seo-assistant' ),
 			)
 		);
 	}
@@ -44,15 +44,15 @@ final class AI_CIS_Prompts {
 		return apply_filters(
 			'ai_cis_content_types',
 			array(
-				'blog_post'    => __( 'Blog Post', 'ai-content-image-seo' ),
-				'how_to'       => __( 'How-to Guide', 'ai-content-image-seo' ),
-				'listicle'     => __( 'Listicle', 'ai-content-image-seo' ),
-				'news'         => __( 'News Article', 'ai-content-image-seo' ),
-				'review'       => __( 'Review', 'ai-content-image-seo' ),
-				'landing_page' => __( 'Landing Page', 'ai-content-image-seo' ),
-				'about_page'   => __( 'About Page', 'ai-content-image-seo' ),
-				'service_page' => __( 'Service Page', 'ai-content-image-seo' ),
-				'faq'          => __( 'FAQ Page', 'ai-content-image-seo' ),
+				'blog_post'    => __( 'Blog Post', 'wbd-content-image-seo-assistant' ),
+				'how_to'       => __( 'How-to Guide', 'wbd-content-image-seo-assistant' ),
+				'listicle'     => __( 'Listicle', 'wbd-content-image-seo-assistant' ),
+				'news'         => __( 'News Article', 'wbd-content-image-seo-assistant' ),
+				'review'       => __( 'Review', 'wbd-content-image-seo-assistant' ),
+				'landing_page' => __( 'Landing Page', 'wbd-content-image-seo-assistant' ),
+				'about_page'   => __( 'About Page', 'wbd-content-image-seo-assistant' ),
+				'service_page' => __( 'Service Page', 'wbd-content-image-seo-assistant' ),
+				'faq'          => __( 'FAQ Page', 'wbd-content-image-seo-assistant' ),
 			)
 		);
 	}
@@ -67,15 +67,15 @@ final class AI_CIS_Prompts {
 			'ai_cis_lengths',
 			array(
 				'short'  => array(
-					'label' => __( 'Short (~300 words)', 'ai-content-image-seo' ),
+					'label' => __( 'Short (~300 words)', 'wbd-content-image-seo-assistant' ),
 					'words' => 300,
 				),
 				'medium' => array(
-					'label' => __( 'Medium (~700 words)', 'ai-content-image-seo' ),
+					'label' => __( 'Medium (~700 words)', 'wbd-content-image-seo-assistant' ),
 					'words' => 700,
 				),
 				'long'   => array(
-					'label' => __( 'Long (~1200 words)', 'ai-content-image-seo' ),
+					'label' => __( 'Long (~1200 words)', 'wbd-content-image-seo-assistant' ),
 					'words' => 1200,
 				),
 			)
@@ -92,43 +92,43 @@ final class AI_CIS_Prompts {
 			'ai_cis_rewrite_actions',
 			array(
 				'improve'      => array(
-					'label'       => __( 'Improve Writing', 'ai-content-image-seo' ),
+					'label'       => __( 'Improve Writing', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Improve clarity, flow and readability while keeping the meaning, facts and approximate length.',
 				),
 				'grammar'      => array(
-					'label'       => __( 'Fix Grammar', 'ai-content-image-seo' ),
+					'label'       => __( 'Fix Grammar', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Fix grammar, spelling and punctuation only. Do not change style, meaning or structure.',
 				),
 				'seo'          => array(
-					'label'       => __( 'Make SEO Friendly', 'ai-content-image-seo' ),
+					'label'       => __( 'Make SEO Friendly', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Make the text more SEO friendly: clear headings, natural use of the main topic keywords, short paragraphs and scannable structure. Never keyword-stuff.',
 				),
 				'persuasive'   => array(
-					'label'       => __( 'Make More Persuasive', 'ai-content-image-seo' ),
+					'label'       => __( 'Make More Persuasive', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Make the text more persuasive and compelling, with clear benefits and a call to action, without exaggerating or inventing claims.',
 				),
 				'shorten'      => array(
-					'label'       => __( 'Shorten', 'ai-content-image-seo' ),
+					'label'       => __( 'Shorten', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Shorten the text to roughly half its length while keeping the key points.',
 				),
 				'expand'       => array(
-					'label'       => __( 'Expand', 'ai-content-image-seo' ),
+					'label'       => __( 'Expand', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Expand the text with more helpful detail, explanation and examples. Do not invent statistics, quotes or facts.',
 				),
 				'simplify'     => array(
-					'label'       => __( 'Simplify', 'ai-content-image-seo' ),
+					'label'       => __( 'Simplify', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Rewrite in plain, simple language that is easy to understand for a general audience.',
 				),
 				'professional' => array(
-					'label'       => __( 'Professional Tone', 'ai-content-image-seo' ),
+					'label'       => __( 'Professional Tone', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Rewrite in a professional, polished tone.',
 				),
 				'friendly'     => array(
-					'label'       => __( 'Friendly Tone', 'ai-content-image-seo' ),
+					'label'       => __( 'Friendly Tone', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Rewrite in a warm, friendly and conversational tone.',
 				),
 				'rewrite'      => array(
-					'label'       => __( 'Rewrite', 'ai-content-image-seo' ),
+					'label'       => __( 'Rewrite', 'wbd-content-image-seo-assistant' ),
 					'instruction' => 'Rewrite the text with fresh wording while keeping the same meaning and facts.',
 				),
 			)

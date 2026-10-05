@@ -26,10 +26,10 @@ final class AI_CIS_Image_Optimizer {
 	 */
 	public static function fields() {
 		return array(
-			'alt'         => __( 'Alt Text', 'ai-content-image-seo' ),
-			'title'       => __( 'Title', 'ai-content-image-seo' ),
-			'caption'     => __( 'Caption', 'ai-content-image-seo' ),
-			'description' => __( 'Description', 'ai-content-image-seo' ),
+			'alt'         => __( 'Alt Text', 'wbd-content-image-seo-assistant' ),
+			'title'       => __( 'Title', 'wbd-content-image-seo-assistant' ),
+			'caption'     => __( 'Caption', 'wbd-content-image-seo-assistant' ),
+			'description' => __( 'Description', 'wbd-content-image-seo-assistant' ),
 		);
 	}
 
@@ -247,7 +247,7 @@ final class AI_CIS_Image_Optimizer {
 	 */
 	public static function generate( $attachment_id, $args = array() ) {
 		if ( ! self::is_image( $attachment_id ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$args = wp_parse_args(
@@ -267,7 +267,7 @@ final class AI_CIS_Image_Optimizer {
 		$style      = in_array( $args['style'], array( 'balanced', 'accessibility', 'seo' ), true ) ? $args['style'] : 'balanced';
 
 		if ( empty( $fields ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Select at least one field.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Select at least one field.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$output = array_fill_keys( $fields, '' );
@@ -419,7 +419,7 @@ final class AI_CIS_Image_Optimizer {
 	 */
 	public static function process( $attachment_id, $fields, $overwrite, $usage_type = 'image' ) {
 		if ( ! self::is_image( $attachment_id ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'ai-content-image-seo' ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'wbd-content-image-seo-assistant' ) );
 		}
 
 		$fields     = self::sanitize_fields( $fields );
@@ -612,15 +612,15 @@ final class AI_CIS_Image_Optimizer {
 	 */
 	public static function filters() {
 		$filters = array(
-			'all'              => __( 'All Images', 'ai-content-image-seo' ),
-			'missing_alt'      => __( 'Missing Alt Text', 'ai-content-image-seo' ),
-			'missing_metadata' => __( 'Missing Metadata', 'ai-content-image-seo' ),
-			'recent'           => __( 'Recently Uploaded', 'ai-content-image-seo' ),
-			'post_images'      => __( 'Post Images', 'ai-content-image-seo' ),
-			'failed'           => __( 'Failed / Not Processed', 'ai-content-image-seo' ),
+			'all'              => __( 'All Images', 'wbd-content-image-seo-assistant' ),
+			'missing_alt'      => __( 'Missing Alt Text', 'wbd-content-image-seo-assistant' ),
+			'missing_metadata' => __( 'Missing Metadata', 'wbd-content-image-seo-assistant' ),
+			'recent'           => __( 'Recently Uploaded', 'wbd-content-image-seo-assistant' ),
+			'post_images'      => __( 'Post Images', 'wbd-content-image-seo-assistant' ),
+			'failed'           => __( 'Failed / Not Processed', 'wbd-content-image-seo-assistant' ),
 		);
 		if ( class_exists( 'WooCommerce' ) ) {
-			$filters['woocommerce'] = __( 'WooCommerce Images', 'ai-content-image-seo' );
+			$filters['woocommerce'] = __( 'WooCommerce Images', 'wbd-content-image-seo-assistant' );
 		}
 		return $filters;
 	}

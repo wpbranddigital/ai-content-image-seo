@@ -74,7 +74,7 @@ abstract class AI_CIS_Provider_Base implements AI_CIS_Provider_Interface {
 	 * @return array
 	 */
 	public function get_models() {
-		$models = array( 'auto' => __( 'Auto (recommended)', 'ai-content-image-seo' ) );
+		$models = array( 'auto' => __( 'Auto (recommended)', 'wbd-content-image-seo-assistant' ) );
 		$models = array_merge( $models, $this->suggested_models() );
 
 		$remote = get_transient( 'ai_cis_models_' . $this->get_id() );
@@ -107,7 +107,7 @@ abstract class AI_CIS_Provider_Base implements AI_CIS_Provider_Interface {
 	 */
 	public function refresh_models() {
 		if ( ! $this->is_available() ) {
-			return new WP_Error( 'ai_cis_no_provider', __( 'Add an API key for this provider first.', 'ai-content-image-seo' ) );
+			return new WP_Error( 'ai_cis_no_provider', __( 'Add an API key for this provider first.', 'wbd-content-image-seo-assistant' ) );
 		}
 		$models = $this->request_remote_models();
 		if ( is_wp_error( $models ) ) {

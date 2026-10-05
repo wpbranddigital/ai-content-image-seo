@@ -2,8 +2,8 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: AI Content & Image SEO Assistant 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ai-content-image-seo\n"
+"Project-Id-Version: WBD Content & Image SEO Assistant 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wbd-content-image-seo-assistant\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,31 +12,31 @@ msgstr ""
 "POT-Creation-Date: 2026-10-04T07:00:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: ai-content-image-seo\n"
+"X-Domain: wbd-content-image-seo-assistant\n"
 
 #. Plugin Name of the plugin
-#: ai-content-image-seo.php
+#: wbd-content-image-seo-assistant.php
 #: admin/class-ai-cis-admin.php:346
-msgid "AI Content & Image SEO Assistant"
+msgid "WBD Content & Image SEO Assistant"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: ai-content-image-seo.php
-msgid "https://wordpress.org/plugins/ai-content-image-seo/"
+#: wbd-content-image-seo-assistant.php
+msgid "https://wordpress.org/plugins/wbd-content-image-seo-assistant/"
 msgstr ""
 
 #. Description of the plugin
-#: ai-content-image-seo.php
+#: wbd-content-image-seo-assistant.php
 msgid "AI-powered content generation, image metadata optimization, SEO assistance, and accessibility tools for WordPress and WooCommerce."
 msgstr ""
 
 #. Author of the plugin
-#: ai-content-image-seo.php
+#: wbd-content-image-seo-assistant.php
 msgid "wpbranddigital25"
 msgstr ""
 
 #. Author URI of the plugin
-#: ai-content-image-seo.php
+#: wbd-content-image-seo-assistant.php
 msgid "https://wpbranddigital25.com/"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 #: admin/class-ai-cis-admin.php:117
 #: admin/class-ai-cis-admin.php:147
 #: src/admin/index.js:46
-msgid "AI Content & Image SEO"
+msgid "WBD Content & Image SEO"
 msgstr ""
 
 #: admin/class-ai-cis-admin.php:106
@@ -93,11 +93,11 @@ msgid "Loading…"
 msgstr ""
 
 #: admin/class-ai-cis-admin.php:151
-msgid "AI Content & Image SEO requires JavaScript to be enabled."
+msgid "WBD Content & Image SEO requires JavaScript to be enabled."
 msgstr ""
 
 #: admin/class-ai-cis-admin.php:343
-msgid "This site uses the AI Content & Image SEO Assistant plugin. When an editor uses an AI feature, or when automatic image optimization is enabled, the selected content (for example post text, image files and image context, product details, or the text and star ratings of product reviews) is sent to the AI provider configured by the site administrator to generate suggestions."
+msgid "This site uses the WBD Content & Image SEO Assistant plugin. When an editor uses an AI feature, or when automatic image optimization is enabled, the selected content (for example post text, image files and image context, product details, or the text and star ratings of product reviews) is sent to the AI provider configured by the site administrator to generate suggestions."
 msgstr ""
 
 #: admin/class-ai-cis-admin.php:344
@@ -413,7 +413,7 @@ msgid "Invalid value."
 msgstr ""
 
 #: includes/class-ai-cis-seo-integration.php:70
-msgid "AI Content & Image SEO (built-in)"
+msgid "WBD Content & Image SEO (built-in)"
 msgstr ""
 
 #: includes/class-ai-cis-seo-integration.php:270
@@ -1344,7 +1344,7 @@ msgid "Choose Alt Text Style"
 msgstr ""
 
 #: src/admin/pages/onboarding.js:118
-msgid "Welcome to AI Content & Image SEO"
+msgid "Welcome to WBD Content & Image SEO"
 msgstr ""
 
 #: src/admin/pages/onboarding.js:124

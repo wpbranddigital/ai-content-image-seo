@@ -54,11 +54,11 @@ export default function WooCommercePage() {
 				<EmptyState
 					title={ __(
 						'WooCommerce is not active.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					text={ __(
 						'Install and activate WooCommerce to use product AI features.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				/>
 			</Section>
@@ -75,10 +75,15 @@ export default function WooCommercePage() {
 
 	return (
 		<div className="ai-cis-sidebar-layout">
-			<Section title={ __( 'Products', 'ai-content-image-seo' ) }>
+			<Section
+				title={ __( 'Products', 'wbd-content-image-seo-assistant' ) }
+			>
 				<SearchControl
 					__nextHasNoMarginBottom
-					label={ __( 'Search products', 'ai-content-image-seo' ) }
+					label={ __(
+						'Search products',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ search }
 					onChange={ ( v ) => {
 						setSearch( v );
@@ -91,11 +96,11 @@ export default function WooCommercePage() {
 					<EmptyState
 						title={ __(
 							'No products found.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						text={ __(
 							'Create a product in WooCommerce first, then come back to generate its content.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					/>
 				) }
@@ -130,7 +135,7 @@ export default function WooCommercePage() {
 											' · ' +
 												__(
 													'no description',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												) }
 									</span>
 								</Button>
@@ -145,14 +150,17 @@ export default function WooCommercePage() {
 							disabled={ page <= 1 }
 							onClick={ () => setPage( page - 1 ) }
 						>
-							{ __( 'Previous', 'ai-content-image-seo' ) }
+							{ __(
+								'Previous',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 						<Button
 							variant="secondary"
 							disabled={ page >= list.total_pages }
 							onClick={ () => setPage( page + 1 ) }
 						>
-							{ __( 'Next', 'ai-content-image-seo' ) }
+							{ __( 'Next', 'wbd-content-image-seo-assistant' ) }
 						</Button>
 					</div>
 				) }
@@ -164,11 +172,11 @@ export default function WooCommercePage() {
 						<EmptyState
 							title={ __(
 								'Select a product.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							text={ __(
 								'Generate titles, descriptions, tags, category suggestions, SEO metadata and review summaries. Every result is previewed before it is saved.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						/>
 					</Section>
@@ -177,7 +185,10 @@ export default function WooCommercePage() {
 						<h2 className="ai-cis-section-title">
 							{ product.name }{ ' ' }
 							<a href={ product.edit_link }>
-								{ __( 'Edit product', 'ai-content-image-seo' ) }
+								{ __(
+									'Edit product',
+									'wbd-content-image-seo-assistant'
+								) }
 							</a>
 						</h2>
 						<TabPanel
@@ -187,21 +198,21 @@ export default function WooCommercePage() {
 									name: 'assistant',
 									title: __(
 										'AI Product Assistant',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									),
 								},
 								{
 									name: 'reviews',
 									title: __(
 										'AI Review Summary',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									),
 								},
 								{
 									name: 'current',
 									title: __(
 										'Current Content',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									),
 								},
 							] }
@@ -223,7 +234,7 @@ export default function WooCommercePage() {
 											<p className="ai-cis-label">
 												{ __(
 													'Short Description',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												) }
 											</p>
 											{ product.short_description ? (
@@ -237,7 +248,7 @@ export default function WooCommercePage() {
 													<em>
 														{ __(
 															'(empty)',
-															'ai-content-image-seo'
+															'wbd-content-image-seo-assistant'
 														) }
 													</em>
 												</p>
@@ -245,7 +256,7 @@ export default function WooCommercePage() {
 											<p className="ai-cis-label">
 												{ __(
 													'Description',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												) }
 											</p>
 											{ product.description ? (
@@ -257,7 +268,7 @@ export default function WooCommercePage() {
 													<em>
 														{ __(
 															'(empty)',
-															'ai-content-image-seo'
+															'wbd-content-image-seo-assistant'
 														) }
 													</em>
 												</p>
@@ -266,7 +277,7 @@ export default function WooCommercePage() {
 												<strong>
 													{ __(
 														'Categories:',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													) }
 												</strong>{ ' ' }
 												{ product.categories.join(
@@ -276,7 +287,7 @@ export default function WooCommercePage() {
 												<strong>
 													{ __(
 														'Tags:',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													) }
 												</strong>{ ' ' }
 												{ product.tags.join( ', ' ) ||
@@ -285,7 +296,7 @@ export default function WooCommercePage() {
 												<strong>
 													{ __(
 														'SEO title:',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													) }
 												</strong>{ ' ' }
 												{ product.seo.seo_title || '—' }
@@ -293,7 +304,7 @@ export default function WooCommercePage() {
 												<strong>
 													{ __(
 														'Meta description:',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													) }
 												</strong>{ ' ' }
 												{ product.seo
@@ -304,7 +315,7 @@ export default function WooCommercePage() {
 													/* translators: %d: review count. */
 													__(
 														'Approved reviews: %d',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													),
 													product.review_count
 												) }

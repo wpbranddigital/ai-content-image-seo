@@ -23,12 +23,12 @@ const asText = ( s ) =>
 	[
 		s.summary,
 		s.pros?.length
-			? __( 'Pros', 'ai-content-image-seo' ) +
+			? __( 'Pros', 'wbd-content-image-seo-assistant' ) +
 			  ':\n' +
 			  s.pros.map( ( p ) => '✓ ' + p ).join( '\n' )
 			: '',
 		s.cons?.length
-			? __( 'Cons', 'ai-content-image-seo' ) +
+			? __( 'Cons', 'wbd-content-image-seo-assistant' ) +
 			  ':\n' +
 			  s.cons.map( ( c ) => '• ' + c ).join( '\n' )
 			: '',
@@ -43,7 +43,7 @@ function SummaryView( { summary } ) {
 			{ summary.pros?.length > 0 && (
 				<>
 					<p className="ai-cis-label">
-						{ __( 'Pros', 'ai-content-image-seo' ) }
+						{ __( 'Pros', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<ul className="ai-cis-pros">
 						{ summary.pros.map( ( p ) => (
@@ -58,7 +58,7 @@ function SummaryView( { summary } ) {
 			{ summary.cons?.length > 0 && (
 				<>
 					<p className="ai-cis-label">
-						{ __( 'Cons', 'ai-content-image-seo' ) }
+						{ __( 'Cons', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<ul className="ai-cis-cons">
 						{ summary.cons.map( ( c ) => (
@@ -104,7 +104,12 @@ export default function ReviewSummaryPanel( { productId } ) {
 				},
 			} );
 			setResult( res );
-			speak( __( 'Review summary generated.', 'ai-content-image-seo' ) );
+			speak(
+				__(
+					'Review summary generated.',
+					'wbd-content-image-seo-assistant'
+				)
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -123,11 +128,11 @@ export default function ReviewSummaryPanel( { productId } ) {
 				info?.display
 					? __(
 							'Summary saved. It is shown above the reviews on the product page.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  )
 					: __(
 							'Summary saved. Enable "Show review summary on product pages" in Settings, or use the [ai_cis_review_summary] shortcode.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  )
 			);
 		} catch ( e ) {
@@ -144,10 +149,13 @@ export default function ReviewSummaryPanel( { productId } ) {
 		<div className="ai-cis-review-panel">
 			{ info && info.review_count === 0 ? (
 				<EmptyState
-					title={ __( 'No reviews yet.', 'ai-content-image-seo' ) }
+					title={ __(
+						'No reviews yet.',
+						'wbd-content-image-seo-assistant'
+					) }
 					text={ __(
 						'A summary can be generated once this product has approved customer reviews. Summaries only use real review content.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				/>
 			) : (
@@ -160,7 +168,7 @@ export default function ReviewSummaryPanel( { productId } ) {
 									'Based on %d approved review. Only review text and star ratings are sent to the AI, never reviewer names or emails.',
 									'Based on %d approved reviews. Only review text and star ratings are sent to the AI, never reviewer names or emails.',
 									info.review_count,
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								info.review_count
 							) }
@@ -171,7 +179,7 @@ export default function ReviewSummaryPanel( { productId } ) {
 							<p className="ai-cis-label">
 								{ __(
 									'Saved summary',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</p>
 							<SummaryView summary={ info.saved } />
@@ -187,11 +195,11 @@ export default function ReviewSummaryPanel( { productId } ) {
 							{ info?.saved
 								? __(
 										'Generate New Summary',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'Generate Review Summary',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  ) }
 						</Button>
 					</div>
@@ -202,11 +210,14 @@ export default function ReviewSummaryPanel( { productId } ) {
 			{ result && ! busy && (
 				<div className="ai-cis-result">
 					<p className="ai-cis-label">
-						{ __( 'AI Result', 'ai-content-image-seo' ) }
+						{ __( 'AI Result', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<TextareaControl
 						__nextHasNoMarginBottom
-						label={ __( 'Summary', 'ai-content-image-seo' ) }
+						label={ __(
+							'Summary',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ result.summary }
 						onChange={ ( v ) =>
 							setResult( { ...result, summary: v } )
@@ -217,7 +228,7 @@ export default function ReviewSummaryPanel( { productId } ) {
 						onUse={ save }
 						useLabel={ __(
 							'Save Summary',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						busy={ saving }
 						copyText={ asText( result ) }

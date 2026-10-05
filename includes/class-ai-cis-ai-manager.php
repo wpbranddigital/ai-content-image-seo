@@ -29,10 +29,6 @@ final class AI_CIS_AI_Manager {
 	public static function provider_classes() {
 		$classes = array(
 			'wp_ai_connector' => 'AI_CIS_Provider_WP_AI_Connector',
-			'openai'          => 'AI_CIS_Provider_OpenAI',
-			'gemini'          => 'AI_CIS_Provider_Gemini',
-			'anthropic'       => 'AI_CIS_Provider_Anthropic',
-			'openrouter'      => 'AI_CIS_Provider_OpenRouter',
 		);
 
 		/**
@@ -230,21 +226,21 @@ final class AI_CIS_AI_Manager {
 	public static function friendly_message( $code ) {
 		switch ( $code ) {
 			case 'ai_cis_no_provider':
-				return __( 'No AI provider configured. Connect an AI provider from Settings → AI Provider.', 'ai-content-image-seo' );
+				return __( 'No AI provider configured. Connect an AI provider from Settings → AI Provider.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_limit_reached':
-				return __( 'You have reached your monthly AI limit. Your usage will reset next month.', 'ai-content-image-seo' );
+				return __( 'You have reached your monthly AI limit. Your usage will reset next month.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_rate_limit':
-				return __( 'Your AI provider rate limit was reached. Please try again later.', 'ai-content-image-seo' );
+				return __( 'Your AI provider rate limit was reached. Please try again later.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_invalid_key':
-				return __( 'The AI provider rejected the API key. Please check your AI provider settings.', 'ai-content-image-seo' );
+				return __( 'The AI provider rejected the API key. Please check your AI provider settings.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_timeout':
-				return __( 'The AI provider took too long to respond. Please try again.', 'ai-content-image-seo' );
+				return __( 'The AI provider took too long to respond. Please try again.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_connection_error':
-				return __( 'Could not connect to the AI provider. Please check your internet connection and try again.', 'ai-content-image-seo' );
+				return __( 'Could not connect to the AI provider. Please check your internet connection and try again.', 'wbd-content-image-seo-assistant' );
 			case 'ai_cis_malformed_response':
-				return __( 'The AI provider returned an unexpected response. Please try again.', 'ai-content-image-seo' );
+				return __( 'The AI provider returned an unexpected response. Please try again.', 'wbd-content-image-seo-assistant' );
 			default:
-				return __( 'Unable to generate content. Please check your AI provider settings and try again.', 'ai-content-image-seo' );
+				return __( 'Unable to generate content. Please check your AI provider settings and try again.', 'wbd-content-image-seo-assistant' );
 		}
 	}
 

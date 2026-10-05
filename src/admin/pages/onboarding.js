@@ -91,24 +91,24 @@ export default function Onboarding() {
 
 	let connectorText = __(
 		'The WordPress AI Client is not available on this site. Go back and choose another provider.',
-		'ai-content-image-seo'
+		'wbd-content-image-seo-assistant'
 	);
 	if ( info?.available ) {
 		connectorText = __(
 			'WordPress AI is configured. No API key is needed here.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		);
 	} else if ( info?.api_exists ) {
 		connectorText = __(
 			'Configure a provider in Settings → Connectors, then come back. You can also go back and pick another provider.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		);
 	}
 	const steps = [
-		__( 'Choose AI Provider', 'ai-content-image-seo' ),
-		__( 'Configure API', 'ai-content-image-seo' ),
-		__( 'Choose Default Language', 'ai-content-image-seo' ),
-		__( 'Choose Alt Text Style', 'ai-content-image-seo' ),
+		__( 'Choose AI Provider', 'wbd-content-image-seo-assistant' ),
+		__( 'Configure API', 'wbd-content-image-seo-assistant' ),
+		__( 'Choose Default Language', 'wbd-content-image-seo-assistant' ),
+		__( 'Choose Alt Text Style', 'wbd-content-image-seo-assistant' ),
 	];
 
 	return (
@@ -116,20 +116,23 @@ export default function Onboarding() {
 			<div className="ai-cis-onboarding__card">
 				<h2>
 					{ __(
-						'Welcome to AI Content & Image SEO',
-						'ai-content-image-seo'
+						'Welcome to WBD Content & Image SEO',
+						'wbd-content-image-seo-assistant'
 					) }
 				</h2>
 				<p>
 					{ __(
 						'Every feature is free to use. Let’s connect an AI provider and set a few defaults.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 
 				<ol
 					className="ai-cis-steps"
-					aria-label={ __( 'Setup steps', 'ai-content-image-seo' ) }
+					aria-label={ __(
+						'Setup steps',
+						'wbd-content-image-seo-assistant'
+					) }
 				>
 					{ steps.map( ( label, i ) => (
 						<li
@@ -139,7 +142,10 @@ export default function Onboarding() {
 						>
 							{ sprintf(
 								/* translators: 1: step number, 2: step name. */
-								__( 'Step %1$d: %2$s', 'ai-content-image-seo' ),
+								__(
+									'Step %1$d: %2$s',
+									'wbd-content-image-seo-assistant'
+								),
 								i + 1,
 								label
 							) }
@@ -159,7 +165,10 @@ export default function Onboarding() {
 
 				{ step === 1 && status && (
 					<RadioControl
-						label={ __( 'Provider', 'ai-content-image-seo' ) }
+						label={ __(
+							'Provider',
+							'wbd-content-image-seo-assistant'
+						) }
 						hideLabelFromVision
 						selected={ provider }
 						onChange={ setProvider }
@@ -170,7 +179,10 @@ export default function Onboarding() {
 									p.label +
 									( p.available
 										? ' — ' +
-										  __( 'ready', 'ai-content-image-seo' )
+										  __(
+												'ready',
+												'wbd-content-image-seo-assistant'
+										  )
 										: '' ),
 							} )
 						) }
@@ -197,7 +209,7 @@ export default function Onboarding() {
 										/* translators: %s: provider name. */
 										__(
 											'%s API Key',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 										info.label
 									) }
@@ -206,7 +218,7 @@ export default function Onboarding() {
 										info.available
 											? __(
 													'A key is already saved — leave empty to keep it',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 											  )
 											: ''
 									}
@@ -218,14 +230,14 @@ export default function Onboarding() {
 									>
 										{ __(
 											'Get an API key',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</ExternalLink>
 								</p>
 								<p className="description">
 									{ __(
 										'Your key is stored encrypted on your own site and is only sent to this provider.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</p>
 							</>
@@ -242,7 +254,10 @@ export default function Onboarding() {
 
 				{ step === 4 && (
 					<RadioControl
-						label={ __( 'Alt Text Style', 'ai-content-image-seo' ) }
+						label={ __(
+							'Alt Text Style',
+							'wbd-content-image-seo-assistant'
+						) }
 						hideLabelFromVision
 						selected={ style }
 						onChange={ setStyle }
@@ -251,21 +266,21 @@ export default function Onboarding() {
 								value: 'balanced',
 								label: __(
 									'Balanced (recommended)',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 							},
 							{
 								value: 'accessibility',
 								label: __(
 									'Accessibility First',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 							},
 							{
 								value: 'seo',
 								label: __(
 									'SEO Focused',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 							},
 						] }
@@ -279,7 +294,7 @@ export default function Onboarding() {
 							onClick={ () => setStep( step - 1 ) }
 							disabled={ busy }
 						>
-							{ __( 'Back', 'ai-content-image-seo' ) }
+							{ __( 'Back', 'wbd-content-image-seo-assistant' ) }
 						</Button>
 					) }
 					{ step < 4 ? (
@@ -288,7 +303,10 @@ export default function Onboarding() {
 							onClick={ () => setStep( step + 1 ) }
 							disabled={ ! status }
 						>
-							{ __( 'Continue', 'ai-content-image-seo' ) }
+							{ __(
+								'Continue',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					) : (
 						<Button
@@ -297,7 +315,10 @@ export default function Onboarding() {
 							isBusy={ busy }
 							disabled={ busy }
 						>
-							{ __( 'Finish Setup', 'ai-content-image-seo' ) }
+							{ __(
+								'Finish Setup',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					) }
 					<Button
@@ -305,7 +326,10 @@ export default function Onboarding() {
 						onClick={ () => finish( true ) }
 						disabled={ busy }
 					>
-						{ __( 'Skip setup', 'ai-content-image-seo' ) }
+						{ __(
+							'Skip setup',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 				</div>
 			</div>

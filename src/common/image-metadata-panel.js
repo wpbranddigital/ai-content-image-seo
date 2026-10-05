@@ -109,7 +109,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 			speak(
 				__(
 					'AI metadata generated. Review it before applying.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			);
 		} catch ( e ) {
@@ -134,7 +134,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 			} );
 			setSaved( res );
 			setItem( { ...item, ...res.current, image_type: imageType } );
-			speak( __( 'Metadata saved.', 'ai-content-image-seo' ) );
+			speak( __( 'Metadata saved.', 'wbd-content-image-seo-assistant' ) );
 			if ( onApplied ) {
 				onApplied( res.current );
 			}
@@ -174,7 +174,10 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 						<p className="description">
 							{ sprintf(
 								/* translators: %s: parent post title. */
-								__( 'Attached to: %s', 'ai-content-image-seo' ),
+								__(
+									'Attached to: %s',
+									'wbd-content-image-seo-assistant'
+								),
 								item.parent.title
 							) }
 						</p>
@@ -186,7 +189,10 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 
 			<fieldset className="ai-cis-fieldset">
 				<legend>
-					{ __( 'Fields to generate', 'ai-content-image-seo' ) }
+					{ __(
+						'Fields to generate',
+						'wbd-content-image-seo-assistant'
+					) }
 				</legend>
 				{ FIELD_ORDER.map( ( field ) => (
 					<CheckboxControl
@@ -203,23 +209,32 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 
 			<div className="ai-cis-grid-2">
 				<RadioControl
-					label={ __( 'Image Type', 'ai-content-image-seo' ) }
+					label={ __(
+						'Image Type',
+						'wbd-content-image-seo-assistant'
+					) }
 					selected={ imageType }
 					onChange={ setImageType }
 					options={ [
 						{
-							label: __( 'Informative', 'ai-content-image-seo' ),
+							label: __(
+								'Informative',
+								'wbd-content-image-seo-assistant'
+							),
 							value: 'informative',
 						},
 						{
 							label: __(
 								'Decorative (alt text stays empty)',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							),
 							value: 'decorative',
 						},
 						{
-							label: __( 'Unsure', 'ai-content-image-seo' ),
+							label: __(
+								'Unsure',
+								'wbd-content-image-seo-assistant'
+							),
 							value: 'unsure',
 						},
 					] }
@@ -227,23 +242,32 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 				<SelectControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-					label={ __( 'Alt Text Style', 'ai-content-image-seo' ) }
+					label={ __(
+						'Alt Text Style',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ style }
 					onChange={ setStyle }
 					options={ [
 						{
-							label: __( 'Balanced', 'ai-content-image-seo' ),
+							label: __(
+								'Balanced',
+								'wbd-content-image-seo-assistant'
+							),
 							value: 'balanced',
 						},
 						{
 							label: __(
 								'Accessibility First',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							),
 							value: 'accessibility',
 						},
 						{
-							label: __( 'SEO Focused', 'ai-content-image-seo' ),
+							label: __(
+								'SEO Focused',
+								'wbd-content-image-seo-assistant'
+							),
 							value: 'seo',
 						},
 					] }
@@ -265,10 +289,13 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 					disabled={ busy || ! fields.length }
 				>
 					{ decorativeOnlyAlt
-						? __( 'Mark as Decorative', 'ai-content-image-seo' )
+						? __(
+								'Mark as Decorative',
+								'wbd-content-image-seo-assistant'
+						  )
 						: __(
 								'Generate Image Metadata',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 						  ) }
 				</Button>
 				{ result && ! decorativeOnlyAlt && (
@@ -277,7 +304,10 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 						onClick={ generate }
 						disabled={ busy }
 					>
-						{ __( 'Regenerate', 'ai-content-image-seo' ) }
+						{ __(
+							'Regenerate',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 				) }
 			</div>
@@ -288,7 +318,10 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 			{ result && ! busy && (
 				<div className="ai-cis-compare" aria-live="polite">
 					<h3>
-						{ __( 'Review AI result', 'ai-content-image-seo' ) }
+						{ __(
+							'Review AI result',
+							'wbd-content-image-seo-assistant'
+						) }
 					</h3>
 					{ FIELD_ORDER.filter( ( f ) => f in result ).map(
 						( field ) => {
@@ -309,7 +342,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 											/* translators: %s: field label. */
 											__(
 												'Apply %s',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											),
 											labels[ field ] || field
 										) }
@@ -328,7 +361,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 										<strong>
 											{ __(
 												'Current:',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											) }
 										</strong>{ ' ' }
 										{ hasCurrent ? (
@@ -337,7 +370,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 											<em>
 												{ __(
 													'(empty)',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												) }
 											</em>
 										) }
@@ -347,7 +380,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 										<p className="description">
 											{ __(
 												'Decorative image: the alt text will be saved as empty so screen readers skip it.',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											) }
 										</p>
 									) : (
@@ -359,7 +392,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 													/* translators: %s: field label. */
 													__(
 														'AI %s',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													),
 													labels[ field ] || field
 												) }
@@ -382,7 +415,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 											<p className="description ai-cis-warn-text">
 												{ __(
 													'This field already has a value and will be kept unless you enable "Overwrite existing metadata".',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												) }
 											</p>
 										) }
@@ -395,7 +428,7 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Overwrite existing metadata',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						checked={ overwrite }
 						onChange={ setOverwrite }
@@ -408,7 +441,10 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 							isBusy={ saving }
 							disabled={ saving || ! apply.length }
 						>
-							{ __( 'Apply Selected', 'ai-content-image-seo' ) }
+							{ __(
+								'Apply Selected',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					</div>
 				</div>
@@ -425,21 +461,24 @@ export default function ImageMetadataPanel( { attachmentId, onApplied } ) {
 						{ saved.updated.length
 							? sprintf(
 									/* translators: %s: list of fields. */
-									__( 'Saved: %s.', 'ai-content-image-seo' ),
+									__(
+										'Saved: %s.',
+										'wbd-content-image-seo-assistant'
+									),
 									saved.updated
 										.map( ( f ) => labels[ f ] || f )
 										.join( ', ' )
 							  )
 							: __(
 									'Nothing was changed.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 							  ) }{ ' ' }
 						{ saved.skipped.length > 0 &&
 							sprintf(
 								/* translators: %s: list of fields. */
 								__(
 									'Kept existing: %s.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								saved.skipped
 									.map( ( f ) => labels[ f ] || f )

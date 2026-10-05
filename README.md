@@ -1,8 +1,8 @@
-# AI Content & Image SEO Assistant
+# WBD Content & Image SEO Assistant
 
 AI-powered content generation, image metadata optimization, SEO assistance, and accessibility tools for WordPress and WooCommerce.
 
-- **Slug / text domain:** `ai-content-image-seo`
+- **Slug / text domain:** `wbd-content-image-seo-assistant`
 - **Requires:** WordPress 6.6+, PHP 7.4+
 - **Optional:** WooCommerce, Yoast SEO / Rank Math / All in One SEO, WordPress AI Connectors (WP 7.0+)
 - **License:** GPL-2.0-or-later
@@ -13,7 +13,7 @@ AI-powered content generation, image metadata optimization, SEO assistance, and 
 
 ## 1. Installation
 
-1. In WordPress: **Plugins → Add New → Upload Plugin**, choose `ai-content-image-seo.zip`, **Install**, **Activate**.
+1. In WordPress: **Plugins → Add New → Upload Plugin**, choose `wbd-content-image-seo-assistant.zip`, **Install**, **Activate**.
 2. The setup wizard opens: choose provider → API key → default language → alt-text style → **Finish Setup** (or **Skip setup**).
 3. Open **AI Content & SEO** in the admin menu.
 
@@ -55,8 +55,8 @@ define( 'AI_CIS_OPENROUTER_API_KEY', '...' );
 ## 4. File structure
 
 ```
-ai-content-image-seo/
-├── ai-content-image-seo.php
+wbd-content-image-seo-assistant/
+├── wbd-content-image-seo-assistant.php
 ├── uninstall.php
 ├── readme.txt
 ├── admin/class-ai-cis-admin.php
@@ -72,7 +72,7 @@ ai-content-image-seo/
 │   └── integrations/ (woocommerce, review-summary)
 ├── src/        React sources: admin/ (pages), editor/, media/, product/, common/
 ├── build/      Compiled JS/CSS + .asset.php dependency files
-├── languages/  ai-content-image-seo.pot
+├── languages/  wbd-content-image-seo-assistant.pot
 ├── docs/DEVELOPER.md   hooks, filters, REST API, storage
 └── tests/      integration suite, mock AI server, browser E2E (dev only)
 ```
@@ -97,7 +97,7 @@ npm run lint:css
 export AI_CIS_MOCK_LOG=/tmp/ai-cis-mock.jsonl
 python3 tests/mock-ai-server.py 9999 &
 cp tests/mu-plugin-mock-endpoints.php wp-content/mu-plugins/
-wp eval-file wp-content/plugins/ai-content-image-seo/tests/run-tests.php
+wp eval-file wp-content/plugins/wbd-content-image-seo-assistant/tests/run-tests.php
 ```
 
 Covers: usage (within limit, after limit, monthly reset, regeneration counting, duplicate request IDs, bulk limit, filters); security (logged-out, wrong role, other user's content, invalid input, key encryption, keys never in REST/JS); AI (provider unavailable, invalid key, timeout, rate limit, 500, malformed JSON, unexpected shape, failures not counted, all 4 HTTP adapters); content (generation, sanitization, prompt filters, custom prompts, all rewrite actions, never auto-overwrite, drafts); SEO (generate, confirm-to-save, analysis, Yoast/Rank Math/AIOSEO adapters, frontend fallback); images (vision, context, styles, preserve vs overwrite, apply selected only, decorative, stats, filters, bulk queue, pause on limit, resume, automation quota, no retries, media library hooks); WooCommerce (context, all fields, categories never auto-assigned, apply, review summary privacy, shortcode, WooCommerce inactive); onboarding; uninstall.
@@ -152,6 +152,9 @@ Results for this build: PHPCS 0 errors / 0 warnings; ESLint and Stylelint clean;
 - Never deleted: posts, pages, products, media, alt text/titles/captions/descriptions, generated content, SEO metadata, saved review summaries.
 
 ## 11. Changelog
+
+### 1.0.1
+- Minor bug fixes and compliance updates.
 
 ### 1.0.0
 - Initial release with all V1 features listed above.

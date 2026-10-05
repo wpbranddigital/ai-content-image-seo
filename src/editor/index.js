@@ -49,12 +49,12 @@ const TEXT_BLOCKS = [
 ];
 
 const BLOCK_ACTIONS = [
-	[ 'improve', __( 'Improve', 'ai-content-image-seo' ) ],
-	[ 'rewrite', __( 'Rewrite', 'ai-content-image-seo' ) ],
-	[ 'expand', __( 'Expand', 'ai-content-image-seo' ) ],
-	[ 'shorten', __( 'Shorten', 'ai-content-image-seo' ) ],
-	[ 'grammar', __( 'Fix Grammar', 'ai-content-image-seo' ) ],
-	[ 'seo', __( 'SEO Optimize', 'ai-content-image-seo' ) ],
+	[ 'improve', __( 'Improve', 'wbd-content-image-seo-assistant' ) ],
+	[ 'rewrite', __( 'Rewrite', 'wbd-content-image-seo-assistant' ) ],
+	[ 'expand', __( 'Expand', 'wbd-content-image-seo-assistant' ) ],
+	[ 'shorten', __( 'Shorten', 'wbd-content-image-seo-assistant' ) ],
+	[ 'grammar', __( 'Fix Grammar', 'wbd-content-image-seo-assistant' ) ],
+	[ 'seo', __( 'SEO Optimize', 'wbd-content-image-seo-assistant' ) ],
 ];
 
 /**
@@ -116,7 +116,9 @@ function SelectedBlockPanel() {
 				},
 			} );
 			setResult( { ...res, clientId: block.clientId } );
-			speak( __( 'AI result ready.', 'ai-content-image-seo' ) );
+			speak(
+				__( 'AI result ready.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -127,7 +129,10 @@ function SelectedBlockPanel() {
 		updateBlockAttributes( result.clientId, { content: result.result } );
 		setResult( null );
 		speak(
-			__( 'Block replaced with the AI result.', 'ai-content-image-seo' )
+			__(
+				'Block replaced with the AI result.',
+				'wbd-content-image-seo-assistant'
+			)
 		);
 	};
 
@@ -138,19 +143,21 @@ function SelectedBlockPanel() {
 			rootClientId
 		);
 		setResult( null );
-		speak( __( 'AI result inserted below.', 'ai-content-image-seo' ) );
+		speak(
+			__( 'AI result inserted below.', 'wbd-content-image-seo-assistant' )
+		);
 	};
 
 	return (
 		<PanelBody
-			title={ __( 'Selected Block', 'ai-content-image-seo' ) }
+			title={ __( 'Selected Block', 'wbd-content-image-seo-assistant' ) }
 			initialOpen
 		>
 			{ ! supported ? (
 				<p className="description">
 					{ __(
 						'Select a paragraph, heading, list item or quote with text to improve, rewrite, expand or shorten it.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 			) : (
@@ -173,21 +180,27 @@ function SelectedBlockPanel() {
 			{ result && ! busy && (
 				<div className="ai-cis-result">
 					<p className="ai-cis-label">
-						{ __( 'Original', 'ai-content-image-seo' ) }
+						{ __( 'Original', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<HtmlPreview html={ result.original } />
 					<p className="ai-cis-label">
-						{ __( 'AI Result', 'ai-content-image-seo' ) }
+						{ __( 'AI Result', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<HtmlPreview html={ result.result } />
 					<ResultActions
 						onUse={ replace }
-						useLabel={ __( 'Replace', 'ai-content-image-seo' ) }
+						useLabel={ __(
+							'Replace',
+							'wbd-content-image-seo-assistant'
+						) }
 						copyText={ htmlToText( result.result ) }
 						onRegenerate={ () => run( result.action ) }
 					>
 						<Button variant="secondary" onClick={ insertBelow }>
-							{ __( 'Insert below', 'ai-content-image-seo' ) }
+							{ __(
+								'Insert below',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					</ResultActions>
 				</div>
@@ -228,7 +241,9 @@ function GeneratePanel() {
 				},
 			} );
 			setResult( res );
-			speak( __( 'Content generated.', 'ai-content-image-seo' ) );
+			speak(
+				__( 'Content generated.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -247,18 +262,21 @@ function GeneratePanel() {
 		editPost( edits );
 		setResult( null );
 		speak(
-			__( 'Content inserted into the editor.', 'ai-content-image-seo' )
+			__(
+				'Content inserted into the editor.',
+				'wbd-content-image-seo-assistant'
+			)
 		);
 	};
 
 	return (
 		<PanelBody
-			title={ __( 'Generate', 'ai-content-image-seo' ) }
+			title={ __( 'Generate', 'wbd-content-image-seo-assistant' ) }
 			initialOpen={ false }
 		>
 			<TextareaControl
 				__nextHasNoMarginBottom
-				label={ __( 'Topic', 'ai-content-image-seo' ) }
+				label={ __( 'Topic', 'wbd-content-image-seo-assistant' ) }
 				value={ topic }
 				onChange={ setTopic }
 				rows={ 3 }
@@ -266,7 +284,7 @@ function GeneratePanel() {
 			<SelectControl
 				__nextHasNoMarginBottom
 				__next40pxDefaultSize
-				label={ __( 'Tone', 'ai-content-image-seo' ) }
+				label={ __( 'Tone', 'wbd-content-image-seo-assistant' ) }
 				value={ tone }
 				options={ d.options.tones }
 				onChange={ setTone }
@@ -274,7 +292,7 @@ function GeneratePanel() {
 			<SelectControl
 				__nextHasNoMarginBottom
 				__next40pxDefaultSize
-				label={ __( 'Length', 'ai-content-image-seo' ) }
+				label={ __( 'Length', 'wbd-content-image-seo-assistant' ) }
 				value={ length }
 				options={ d.options.lengths }
 				onChange={ setLength }
@@ -282,7 +300,7 @@ function GeneratePanel() {
 			<SelectControl
 				__nextHasNoMarginBottom
 				__next40pxDefaultSize
-				label={ __( 'Language', 'ai-content-image-seo' ) }
+				label={ __( 'Language', 'wbd-content-image-seo-assistant' ) }
 				value={ language }
 				options={ d.options.languages }
 				onChange={ setLanguage }
@@ -293,7 +311,7 @@ function GeneratePanel() {
 				disabled={ busy || ! topic.trim() }
 				isBusy={ busy }
 			>
-				{ __( 'Generate', 'ai-content-image-seo' ) }
+				{ __( 'Generate', 'wbd-content-image-seo-assistant' ) }
 			</Button>
 			{ busy && <Loading /> }
 			<ErrorNotice error={ error } onDismiss={ () => setError( null ) } />
@@ -307,7 +325,7 @@ function GeneratePanel() {
 						onUse={ insert }
 						useLabel={ __(
 							'Insert into editor',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						copyText={ htmlToText( result.content ) }
 						onRegenerate={ generate }
@@ -353,7 +371,7 @@ function TitleExcerptPanel() {
 
 	return (
 		<PanelBody
-			title={ __( 'Title & Excerpt', 'ai-content-image-seo' ) }
+			title={ __( 'Title & Excerpt', 'wbd-content-image-seo-assistant' ) }
 			initialOpen={ false }
 		>
 			<div className="ai-cis-button-grid">
@@ -363,7 +381,10 @@ function TitleExcerptPanel() {
 					disabled={ !! busy }
 					isBusy={ busy === 'title' }
 				>
-					{ __( 'Suggest Titles', 'ai-content-image-seo' ) }
+					{ __(
+						'Suggest Titles',
+						'wbd-content-image-seo-assistant'
+					) }
 				</Button>
 				<Button
 					variant="secondary"
@@ -371,7 +392,10 @@ function TitleExcerptPanel() {
 					disabled={ !! busy }
 					isBusy={ busy === 'excerpt' }
 				>
-					{ __( 'Generate Excerpt', 'ai-content-image-seo' ) }
+					{ __(
+						'Generate Excerpt',
+						'wbd-content-image-seo-assistant'
+					) }
 				</Button>
 			</div>
 			{ busy && <Loading /> }
@@ -388,12 +412,15 @@ function TitleExcerptPanel() {
 									speak(
 										__(
 											'Title updated.',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										)
 									);
 								} }
 							>
-								{ __( 'Use This', 'ai-content-image-seo' ) }
+								{ __(
+									'Use This',
+									'wbd-content-image-seo-assistant'
+								) }
 							</Button>
 						</li>
 					) ) }
@@ -403,7 +430,10 @@ function TitleExcerptPanel() {
 				<div className="ai-cis-result">
 					<TextareaControl
 						__nextHasNoMarginBottom
-						label={ __( 'AI Excerpt', 'ai-content-image-seo' ) }
+						label={ __(
+							'AI Excerpt',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ excerpt }
 						onChange={ setExcerpt }
 					/>
@@ -411,7 +441,10 @@ function TitleExcerptPanel() {
 						onUse={ () => {
 							editPost( { excerpt } );
 							speak(
-								__( 'Excerpt updated.', 'ai-content-image-seo' )
+								__(
+									'Excerpt updated.',
+									'wbd-content-image-seo-assistant'
+								)
 							);
 						} }
 						copyText={ excerpt }
@@ -470,11 +503,13 @@ function SeoPanel() {
 			setNotice(
 				sprintf(
 					/* translators: %s: SEO plugin name. */
-					__( 'Saved to %s.', 'ai-content-image-seo' ),
+					__( 'Saved to %s.', 'wbd-content-image-seo-assistant' ),
 					res.target
 				)
 			);
-			speak( __( 'SEO metadata saved.', 'ai-content-image-seo' ) );
+			speak(
+				__( 'SEO metadata saved.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -483,7 +518,7 @@ function SeoPanel() {
 
 	return (
 		<PanelBody
-			title={ __( 'SEO Optimize', 'ai-content-image-seo' ) }
+			title={ __( 'SEO Optimize', 'wbd-content-image-seo-assistant' ) }
 			initialOpen={ false }
 		>
 			<p className="description">
@@ -491,7 +526,7 @@ function SeoPanel() {
 					/* translators: %s: SEO plugin name. */
 					__(
 						'Saves to: %s. Nothing is saved until you confirm.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					),
 					data().seoPluginLabel
 				) }
@@ -502,7 +537,10 @@ function SeoPanel() {
 				disabled={ busy }
 				isBusy={ busy }
 			>
-				{ __( 'Generate SEO Title & Meta', 'ai-content-image-seo' ) }
+				{ __(
+					'Generate SEO Title & Meta',
+					'wbd-content-image-seo-assistant'
+				) }
 			</Button>
 			{ busy && <Loading /> }
 			<ErrorNotice error={ error } onDismiss={ () => setError( null ) } />
@@ -511,7 +549,10 @@ function SeoPanel() {
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'SEO Title', 'ai-content-image-seo' ) }
+						label={ __(
+							'SEO Title',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ seo.seo_title }
 						onChange={ ( v ) => setSeo( { ...seo, seo_title: v } ) }
 					/>
@@ -519,7 +560,7 @@ function SeoPanel() {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Meta Description',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						value={ seo.meta_description }
 						onChange={ ( v ) =>
@@ -529,7 +570,10 @@ function SeoPanel() {
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Focus Keyword', 'ai-content-image-seo' ) }
+						label={ __(
+							'Focus Keyword',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ seo.focus_keyword }
 						onChange={ ( v ) =>
 							setSeo( { ...seo, focus_keyword: v } )
@@ -544,7 +588,7 @@ function SeoPanel() {
 						onUse={ save }
 						useLabel={ __(
 							'Save SEO Metadata',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						busy={ saving }
 						copyText={ seo.seo_title + '\n' + seo.meta_description }
@@ -554,7 +598,7 @@ function SeoPanel() {
 						<p className="description">
 							{ __(
 								'Tip: reload the editor before your next save so your SEO plugin panel shows the new values.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 					) }
@@ -576,11 +620,17 @@ function AssistantSidebar() {
 				target="ai-cis-assistant"
 				icon="superhero-alt"
 			>
-				{ __( 'AI Content Assistant', 'ai-content-image-seo' ) }
+				{ __(
+					'AI Content Assistant',
+					'wbd-content-image-seo-assistant'
+				) }
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				name="ai-cis-assistant"
-				title={ __( 'AI Content Assistant', 'ai-content-image-seo' ) }
+				title={ __(
+					'AI Content Assistant',
+					'wbd-content-image-seo-assistant'
+				) }
 				icon="superhero-alt"
 			>
 				<div className="ai-cis-editor-sidebar">
@@ -595,4 +645,6 @@ function AssistantSidebar() {
 	);
 }
 
-registerPlugin( 'ai-content-image-seo', { render: AssistantSidebar } );
+registerPlugin( 'wbd-content-image-seo-assistant', {
+	render: AssistantSidebar,
+} );

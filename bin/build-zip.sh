@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Builds the WordPress.org-ready zip: ./ai-content-image-seo.zip
+# Builds the WordPress.org-ready zip: ./wbd-content-image-seo-assistant.zip
 set -euo pipefail
 cd "$(dirname "$0")/.."
 npm ci --no-audit --no-fund
 npm run build
-SLUG=ai-content-image-seo
+SLUG=wbd-content-image-seo-assistant
 TMP="$(mktemp -d)"
 mkdir -p "$TMP/$SLUG"
 tar --exclude-from=<(sed 's#^/##' .distignore) --exclude=dist --exclude='*.zip' -cf - . | tar -xf - -C "$TMP/$SLUG"

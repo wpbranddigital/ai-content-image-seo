@@ -45,13 +45,13 @@ final class AI_CIS_WooCommerce {
 	 */
 	public static function fields() {
 		return array(
-			'title'             => __( 'Product Title', 'ai-content-image-seo' ),
-			'description'       => __( 'Description', 'ai-content-image-seo' ),
-			'short_description' => __( 'Short Description', 'ai-content-image-seo' ),
-			'tags'              => __( 'Tags', 'ai-content-image-seo' ),
-			'categories'        => __( 'Categories', 'ai-content-image-seo' ),
-			'seo'               => __( 'SEO Metadata', 'ai-content-image-seo' ),
-			'improve'           => __( 'Improve Existing Description', 'ai-content-image-seo' ),
+			'title'             => __( 'Product Title', 'wbd-content-image-seo-assistant' ),
+			'description'       => __( 'Description', 'wbd-content-image-seo-assistant' ),
+			'short_description' => __( 'Short Description', 'wbd-content-image-seo-assistant' ),
+			'tags'              => __( 'Tags', 'wbd-content-image-seo-assistant' ),
+			'categories'        => __( 'Categories', 'wbd-content-image-seo-assistant' ),
+			'seo'               => __( 'SEO Metadata', 'wbd-content-image-seo-assistant' ),
+			'improve'           => __( 'Improve Existing Description', 'wbd-content-image-seo-assistant' ),
 		);
 	}
 
@@ -66,7 +66,7 @@ final class AI_CIS_WooCommerce {
 		}
 		add_meta_box(
 			'ai-cis-product-assistant',
-			__( 'AI Product Assistant', 'ai-content-image-seo' ),
+			__( 'AI Product Assistant', 'wbd-content-image-seo-assistant' ),
 			array( __CLASS__, 'render_meta_box' ),
 			'product',
 			'side',
@@ -82,8 +82,8 @@ final class AI_CIS_WooCommerce {
 	 */
 	public static function render_meta_box( $post ) {
 		echo '<div id="ai-cis-product-assistant-root" data-product-id="' . esc_attr( (string) $post->ID ) . '">';
-		echo '<p class="description">' . esc_html__( 'Loading AI Product Assistant…', 'ai-content-image-seo' ) . '</p>';
-		echo '<noscript>' . esc_html__( 'The AI Product Assistant requires JavaScript.', 'ai-content-image-seo' ) . '</noscript>';
+		echo '<p class="description">' . esc_html__( 'Loading AI Product Assistant…', 'wbd-content-image-seo-assistant' ) . '</p>';
+		echo '<noscript>' . esc_html__( 'The AI Product Assistant requires JavaScript.', 'wbd-content-image-seo-assistant' ) . '</noscript>';
 		echo '</div>';
 	}
 
@@ -208,14 +208,14 @@ final class AI_CIS_WooCommerce {
 	 */
 	public static function generate( $product_id, $field, $args = array() ) {
 		if ( ! self::is_active() ) {
-			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		$product = wc_get_product( $product_id );
 		if ( ! $product ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'ai-content-image-seo' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'wbd-content-image-seo-assistant' ), array( 'status' => 404 ) );
 		}
 		if ( ! array_key_exists( $field, self::fields() ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown product field.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown product field.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$args = wp_parse_args(
@@ -245,11 +245,11 @@ final class AI_CIS_WooCommerce {
 		}
 
 		if ( '' === trim( (string) $context['Product name'] ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Add a product name first so the AI knows what the product is.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Add a product name first so the AI knows what the product is.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		if ( 'improve' === $field && '' === $context['Existing description'] ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This product has no description to improve yet. Generate one instead.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This product has no description to improve yet. Generate one instead.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		if ( 'categories' === $field ) {
@@ -341,11 +341,11 @@ final class AI_CIS_WooCommerce {
 	 */
 	public static function apply( $product_id, $field, $value, $args = array() ) {
 		if ( ! self::is_active() ) {
-			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		$product = wc_get_product( $product_id );
 		if ( ! $product ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'ai-content-image-seo' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'wbd-content-image-seo-assistant' ), array( 'status' => 404 ) );
 		}
 
 		$append = ! isset( $args['mode'] ) || 'replace' !== $args['mode'];
@@ -390,7 +390,7 @@ final class AI_CIS_WooCommerce {
 				AI_CIS_SEO_Integration::save( $product_id, is_array( $value ) ? $value : array() );
 				break;
 			default:
-				return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown product field.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+				return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown product field.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		if ( function_exists( 'wc_delete_product_transients' ) ) {
@@ -414,7 +414,7 @@ final class AI_CIS_WooCommerce {
 	 */
 	public static function ensure_categories( $names ) {
 		if ( ! current_user_can( 'manage_product_terms' ) && ! current_user_can( 'edit_products' ) ) {
-			return new WP_Error( 'ai_cis_forbidden', __( 'You are not allowed to assign categories.', 'ai-content-image-seo' ), array( 'status' => 403 ) );
+			return new WP_Error( 'ai_cis_forbidden', __( 'You are not allowed to assign categories.', 'wbd-content-image-seo-assistant' ), array( 'status' => 403 ) );
 		}
 
 		$ids = array();

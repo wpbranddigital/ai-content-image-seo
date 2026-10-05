@@ -1,11 +1,11 @@
-# Developer Guide — AI Content & Image SEO Assistant
+# Developer Guide — WBD Content & Image SEO Assistant
 
-Prefixes: classes `AI_CIS_`, functions/options/hooks `ai_cis_`, REST namespace `ai-cis/v1`, text domain `ai-content-image-seo`.
+Prefixes: classes `AI_CIS_`, functions/options/hooks `ai_cis_`, REST namespace `ai-cis/v1`, text domain `wbd-content-image-seo-assistant`.
 
 ## Architecture
 
 ```
-ai-content-image-seo.php          Bootstrap: constants, autoloader, activation hooks
+wbd-content-image-seo-assistant.php          Bootstrap: constants, autoloader, activation hooks
 includes/
   class-ai-cis-autoloader.php     AI_CIS_Foo_Bar → class-ai-cis-foo-bar.php
   class-ai-cis-plugin.php         Wires modules; frontend loads only tiny hooks

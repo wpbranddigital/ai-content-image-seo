@@ -32,7 +32,7 @@ class AI_CIS_Provider_WP_AI_Connector implements AI_CIS_Provider_Interface {
 	 * @return string
 	 */
 	public function get_label() {
-		return __( 'WordPress AI Connector', 'ai-content-image-seo' );
+		return __( 'WordPress AI Connector', 'wbd-content-image-seo-assistant' );
 	}
 
 	/**
@@ -79,7 +79,7 @@ class AI_CIS_Provider_WP_AI_Connector implements AI_CIS_Provider_Interface {
 		/** This filter is documented in includes/providers/abstract-ai-cis-provider-base.php */
 		return apply_filters(
 			'ai_cis_provider_models',
-			array( 'auto' => __( 'Auto (connector default)', 'ai-content-image-seo' ) ),
+			array( 'auto' => __( 'Auto (connector default)', 'wbd-content-image-seo-assistant' ) ),
 			$this->get_id()
 		);
 	}

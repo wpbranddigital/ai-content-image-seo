@@ -87,7 +87,9 @@ function ProviderTab( {
 				data: { provider },
 			} );
 			onModelsRefreshed( provider, res.models );
-			speak( __( 'Model list updated.', 'ai-content-image-seo' ) );
+			speak(
+				__( 'Model list updated.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -97,9 +99,11 @@ function ProviderTab( {
 	const keyInfo = publicKeys[ provider ];
 
 	return (
-		<Section title={ __( 'AI Provider', 'ai-content-image-seo' ) }>
+		<Section
+			title={ __( 'AI Provider', 'wbd-content-image-seo-assistant' ) }
+		>
 			<RadioControl
-				label={ __( 'Provider', 'ai-content-image-seo' ) }
+				label={ __( 'Provider', 'wbd-content-image-seo-assistant' ) }
 				selected={ provider }
 				onChange={ ( v ) => {
 					set( 'provider', v );
@@ -113,8 +117,11 @@ function ProviderTab( {
 						p.label +
 						' — ' +
 						( p.available
-							? __( 'ready', 'ai-content-image-seo' )
-							: __( 'not configured', 'ai-content-image-seo' ) ),
+							? __( 'ready', 'wbd-content-image-seo-assistant' )
+							: __(
+									'not configured',
+									'wbd-content-image-seo-assistant'
+							  ) ),
 				} ) ) }
 			/>
 
@@ -129,16 +136,16 @@ function ProviderTab( {
 							{ info.available
 								? __(
 										'WordPress AI is available. Requests use the provider configured in Settings → Connectors.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'WordPress AI Client is available, but no text-generation connector is configured yet.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  ) }{ ' ' }
 							<a href={ data().connectorsUrl }>
 								{ __(
 									'Open Connectors',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</a>
 						</p>
@@ -146,7 +153,7 @@ function ProviderTab( {
 						<p>
 							{ __(
 								'The WordPress AI Client is not available on this site (it ships with WordPress 7.0+). Choose another provider and add an API key instead.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 					) }
@@ -161,7 +168,7 @@ function ProviderTab( {
 								/* translators: %s: constant name. */
 								__(
 									'The API key is defined in wp-config.php (%s).',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								'AI_CIS_' + provider.toUpperCase() + '_API_KEY'
 							) }
@@ -175,7 +182,7 @@ function ProviderTab( {
 								autoComplete="new-password"
 								label={ __(
 									'API Key',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								value={
 									keys[ provider ] &&
@@ -189,13 +196,13 @@ function ProviderTab( {
 												/* translators: %s: last characters of the key. */
 												__(
 													'Saved key %s — leave empty to keep it',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 												),
 												keyInfo.hint
 										  )
 										: __(
 												'Paste your API key',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 										  )
 								}
 								onChange={ ( v ) =>
@@ -203,14 +210,14 @@ function ProviderTab( {
 								}
 								help={ __(
 									'Stored encrypted in your database and never shown in the browser again. You can also define it in wp-config.php.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							/>
 							<p>
 								<ExternalLink href={ KEY_LINKS[ provider ] }>
 									{ __(
 										'Get an API key',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</ExternalLink>
 								{ keyInfo?.configured && (
@@ -229,11 +236,11 @@ function ProviderTab( {
 											{ keys[ provider ] === '__delete__'
 												? __(
 														'Key will be removed on save',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 												  )
 												: __(
 														'Remove saved key',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 												  ) }
 										</Button>
 									</>
@@ -249,7 +256,10 @@ function ProviderTab( {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Model', 'ai-content-image-seo' ) }
+						label={ __(
+							'Model',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ customModel ? '__custom' : currentModel }
 						options={ [
 							...Object.entries( models ).map(
@@ -259,7 +269,7 @@ function ProviderTab( {
 								value: '__custom',
 								label: __(
 									'Custom model ID…',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 							},
 						] }
@@ -278,7 +288,7 @@ function ProviderTab( {
 							__next40pxDefaultSize
 							label={ __(
 								'Custom model ID',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							value={
 								currentModel === 'auto' ? '' : currentModel
@@ -295,7 +305,7 @@ function ProviderTab( {
 						>
 							{ __(
 								'Load models from provider',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</Button>
 					) }
@@ -304,10 +314,13 @@ function ProviderTab( {
 					<RangeControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Temperature', 'ai-content-image-seo' ) }
+						label={ __(
+							'Temperature',
+							'wbd-content-image-seo-assistant'
+						) }
 						help={ __(
 							'Lower is more focused, higher is more creative.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						value={ Number( form.temperature ) }
 						min={ 0 }
@@ -322,7 +335,10 @@ function ProviderTab( {
 					type="number"
 					min={ 64 }
 					max={ 32000 }
-					label={ __( 'Max Tokens', 'ai-content-image-seo' ) }
+					label={ __(
+						'Max Tokens',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ form.max_tokens }
 					onChange={ ( v ) =>
 						set( 'max_tokens', parseInt( v, 10 ) || 0 )
@@ -336,7 +352,7 @@ function ProviderTab( {
 					max={ 300 }
 					label={ __(
 						'Request timeout (seconds)',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					value={ form.request_timeout }
 					onChange={ ( v ) =>
@@ -352,12 +368,15 @@ function ProviderTab( {
 					isBusy={ testing }
 					disabled={ testing }
 				>
-					{ __( 'Test Connection', 'ai-content-image-seo' ) }
+					{ __(
+						'Test Connection',
+						'wbd-content-image-seo-assistant'
+					) }
 				</Button>
 				<span className="description">
 					{ __(
 						'Tests the saved settings. Save changes first. Tests are not counted as usage.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</span>
 			</div>
@@ -441,7 +460,7 @@ export default function SettingsPage() {
 			apply( res );
 			setKeys( {} );
 			setSaved( true );
-			speak( __( 'Settings saved.', 'ai-content-image-seo' ) );
+			speak( __( 'Settings saved.', 'wbd-content-image-seo-assistant' ) );
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -468,30 +487,39 @@ export default function SettingsPage() {
 	const tabs = [
 		{
 			name: 'provider',
-			title: __( 'AI Provider', 'ai-content-image-seo' ),
+			title: __( 'AI Provider', 'wbd-content-image-seo-assistant' ),
 		},
 		{
 			name: 'content',
-			title: __( 'Content & Language', 'ai-content-image-seo' ),
+			title: __(
+				'Content & Language',
+				'wbd-content-image-seo-assistant'
+			),
 		},
 		{
 			name: 'images',
-			title: __( 'Images & Automation', 'ai-content-image-seo' ),
+			title: __(
+				'Images & Automation',
+				'wbd-content-image-seo-assistant'
+			),
 		},
 		{
 			name: 'seo',
 			title: data().isWooActive
-				? __( 'SEO & WooCommerce', 'ai-content-image-seo' )
-				: __( 'SEO', 'ai-content-image-seo' ),
+				? __( 'SEO & WooCommerce', 'wbd-content-image-seo-assistant' )
+				: __( 'SEO', 'wbd-content-image-seo-assistant' ),
 		},
 		{
 			name: 'prompts',
-			title: __( 'Custom Prompts', 'ai-content-image-seo' ),
+			title: __( 'Custom Prompts', 'wbd-content-image-seo-assistant' ),
 		},
-		{ name: 'limits', title: __( 'Usage Limits', 'ai-content-image-seo' ) },
+		{
+			name: 'limits',
+			title: __( 'Usage Limits', 'wbd-content-image-seo-assistant' ),
+		},
 		{
 			name: 'privacy',
-			title: __( 'Privacy & Data', 'ai-content-image-seo' ),
+			title: __( 'Privacy & Data', 'wbd-content-image-seo-assistant' ),
 		},
 	];
 	const initial = tabs.some( ( t ) => t.name === params.get( 'tab' ) )
@@ -499,33 +527,51 @@ export default function SettingsPage() {
 		: 'provider';
 
 	const promptGroups = [
-		[ 'content', __( 'Content generation', 'ai-content-image-seo' ) ],
-		[ 'rewrite', __( 'Content rewriting', 'ai-content-image-seo' ) ],
-		[ 'image', __( 'Image metadata', 'ai-content-image-seo' ) ],
-		[ 'product', __( 'WooCommerce products', 'ai-content-image-seo' ) ],
-		[ 'seo', __( 'SEO metadata', 'ai-content-image-seo' ) ],
-		[ 'review', __( 'Review summaries', 'ai-content-image-seo' ) ],
+		[
+			'content',
+			__( 'Content generation', 'wbd-content-image-seo-assistant' ),
+		],
+		[
+			'rewrite',
+			__( 'Content rewriting', 'wbd-content-image-seo-assistant' ),
+		],
+		[ 'image', __( 'Image metadata', 'wbd-content-image-seo-assistant' ) ],
+		[
+			'product',
+			__( 'WooCommerce products', 'wbd-content-image-seo-assistant' ),
+		],
+		[ 'seo', __( 'SEO metadata', 'wbd-content-image-seo-assistant' ) ],
+		[
+			'review',
+			__( 'Review summaries', 'wbd-content-image-seo-assistant' ),
+		],
 	];
 
 	const limitLabels = {
 		content: __(
 			'AI content generations per month',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
 		image: __(
 			'Image metadata generations per month',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
 		product: __(
 			'WooCommerce product generations per month',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
 		auto_image: __(
 			'Automatic image optimizations per month',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
-		review: __( 'Review summaries per month', 'ai-content-image-seo' ),
-		bulk_batch: __( 'Bulk items per batch', 'ai-content-image-seo' ),
+		review: __(
+			'Review summaries per month',
+			'wbd-content-image-seo-assistant'
+		),
+		bulk_batch: __(
+			'Bulk items per batch',
+			'wbd-content-image-seo-assistant'
+		),
 	};
 
 	const renderTab = ( tab ) => {
@@ -547,7 +593,7 @@ export default function SettingsPage() {
 					<Section
 						title={ __(
 							'Content & Language',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					>
 						<LanguageControl
@@ -570,7 +616,7 @@ export default function SettingsPage() {
 							__next40pxDefaultSize
 							label={ __(
 								'Default tone',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							value={ form.default_tone }
 							options={ data().options.tones }
@@ -582,12 +628,15 @@ export default function SettingsPage() {
 				return (
 					<>
 						<Section
-							title={ __( 'Image AI', 'ai-content-image-seo' ) }
+							title={ __(
+								'Image AI',
+								'wbd-content-image-seo-assistant'
+							) }
 						>
 							<RadioControl
 								label={ __(
 									'Alt Text Style',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								selected={ form.alt_text_style }
 								onChange={ ( v ) => set( 'alt_text_style', v ) }
@@ -596,21 +645,21 @@ export default function SettingsPage() {
 										value: 'balanced',
 										label: __(
 											'Balanced (default)',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 									},
 									{
 										value: 'accessibility',
 										label: __(
 											'Accessibility First — concise, factual, no keyword stuffing',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 									},
 									{
 										value: 'seo',
 										label: __(
 											'SEO Focused',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 									},
 								] }
@@ -618,7 +667,7 @@ export default function SettingsPage() {
 							<FieldChecks
 								legend={ __(
 									'Default fields for single and bulk generation',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								value={ form.image_default_fields }
 								onChange={ ( v ) =>
@@ -629,11 +678,11 @@ export default function SettingsPage() {
 								__nextHasNoMarginBottom
 								label={ __(
 									'Send the image to the AI provider for visual analysis',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								help={ __(
 									'Recommended for accurate alt text. When off, only the filename and surrounding context are used.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								checked={ !! form.image_send_file }
 								onChange={ ( v ) =>
@@ -642,17 +691,20 @@ export default function SettingsPage() {
 							/>
 						</Section>
 						<Section
-							title={ __( 'Automation', 'ai-content-image-seo' ) }
+							title={ __(
+								'Automation',
+								'wbd-content-image-seo-assistant'
+							) }
 						>
 							<ToggleControl
 								__nextHasNoMarginBottom
 								label={ __(
 									'Automatically optimize new images',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								help={ __(
 									'New uploads are processed in the background. Only empty fields are filled, the automation limit is respected and failed images are not retried.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								checked={ !! form.auto_optimize }
 								onChange={ ( v ) => set( 'auto_optimize', v ) }
@@ -661,7 +713,7 @@ export default function SettingsPage() {
 								<FieldChecks
 									legend={ __(
 										'Fields',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 									value={ form.auto_fields }
 									onChange={ ( v ) =>
@@ -681,20 +733,20 @@ export default function SettingsPage() {
 										/* translators: %s: plugin name. */
 										__(
 											'Detected SEO plugin: %s. SEO metadata is saved there.',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 										data().seoPluginLabel
 								  )
 								: __(
 										'No SEO plugin detected. Supported: Yoast SEO, Rank Math, All in One SEO.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  ) }
 						</p>
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __(
 								'Output SEO title and meta description when no SEO plugin is active',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							checked={ !! form.seo_output_meta }
 							onChange={ ( v ) => set( 'seo_output_meta', v ) }
@@ -704,11 +756,11 @@ export default function SettingsPage() {
 								__nextHasNoMarginBottom
 								label={ __(
 									'Show saved AI review summaries above product reviews',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								help={ __(
 									'You can also place a summary anywhere with the [ai_cis_review_summary] shortcode.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								checked={ !! form.review_summary_display }
 								onChange={ ( v ) =>
@@ -721,12 +773,15 @@ export default function SettingsPage() {
 			case 'prompts':
 				return (
 					<Section
-						title={ __( 'Custom Prompts', 'ai-content-image-seo' ) }
+						title={ __(
+							'Custom Prompts',
+							'wbd-content-image-seo-assistant'
+						) }
 					>
 						<p className="description">
 							{ __(
 								'Extra instructions appended to every prompt in a group, for example your brand voice or words to avoid. Developers can replace prompts entirely with the ai_cis_*_prompt filters.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 						{ promptGroups.map( ( [ key, label ] ) => (
@@ -746,7 +801,10 @@ export default function SettingsPage() {
 			case 'limits':
 				return (
 					<Section
-						title={ __( 'Usage Limits', 'ai-content-image-seo' ) }
+						title={ __(
+							'Usage Limits',
+							'wbd-content-image-seo-assistant'
+						) }
 					>
 						<Notice
 							status="info"
@@ -756,7 +814,7 @@ export default function SettingsPage() {
 							<p>
 								{ __(
 									'All features are free and unlimited by default. Set a number to cap monthly usage on this site (for example to control AI provider costs). 0 = unlimited.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</p>
 						</Notice>
@@ -784,7 +842,7 @@ export default function SettingsPage() {
 										Number( form.limits[ key ] ) === 0
 											? __(
 													'Unlimited',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 											  )
 											: ''
 									}
@@ -796,35 +854,38 @@ export default function SettingsPage() {
 			case 'privacy':
 				return (
 					<Section
-						title={ __( 'Privacy & Data', 'ai-content-image-seo' ) }
+						title={ __(
+							'Privacy & Data',
+							'wbd-content-image-seo-assistant'
+						) }
 					>
 						<p>
 							{ __(
 								'AI requests send the content you select (post text, image files and context, product details, or review text and star ratings) to the AI provider configured above. Nothing is sent without a user action or enabled automation.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 						<p>
 							{ __(
 								'Never sent: passwords, payment information, customer accounts, reviewer names, emails or IP addresses. The plugin has no tracking and sends nothing to its author.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 						<p>
 							{ __(
 								'Review your AI provider’s data policy before use. Suggested text has been added to Settings → Privacy → Policy Guide.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __(
 								'Delete plugin settings on uninstall',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							help={ __(
 								'Removes settings, API keys and usage data when the plugin is deleted. Your posts, products, media and generated content are never deleted.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							checked={ !! form.delete_on_uninstall }
 							onChange={ ( v ) =>
@@ -836,7 +897,7 @@ export default function SettingsPage() {
 								<a href={ data().pages.dashboard + '&setup=1' }>
 									{ __(
 										'Run the setup wizard again',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</a>
 							</p>
@@ -863,11 +924,14 @@ export default function SettingsPage() {
 					isBusy={ saving }
 					disabled={ saving }
 				>
-					{ __( 'Save Settings', 'ai-content-image-seo' ) }
+					{ __( 'Save Settings', 'wbd-content-image-seo-assistant' ) }
 				</Button>
 				{ saved && (
 					<span className="ai-cis-saved" role="status">
-						{ __( 'Settings saved.', 'ai-content-image-seo' ) }
+						{ __(
+							'Settings saved.',
+							'wbd-content-image-seo-assistant'
+						) }
 					</span>
 				) }
 			</div>

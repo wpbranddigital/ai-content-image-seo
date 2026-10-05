@@ -24,7 +24,7 @@ final class AI_CIS_Queue {
 	const AUTO_LOCK    = 'ai_cis_auto_lock';
 	const BULK_HOOK    = 'ai_cis_process_bulk';
 	const AUTO_HOOK    = 'ai_cis_process_auto';
-	const GROUP        = 'ai-content-image-seo';
+	const GROUP        = 'wbd-content-image-seo-assistant';
 
 	/**
 	 * Registers hooks. Cheap: only adds callbacks.
@@ -164,19 +164,19 @@ final class AI_CIS_Queue {
 	public static function start( $ids, $fields, $overwrite ) {
 		$current = self::get_job();
 		if ( $current && in_array( $current['status'], array( 'running', 'paused' ), true ) && ! empty( $current['ids'] ) ) {
-			return new WP_Error( 'ai_cis_job_exists', __( 'A bulk optimization is already in progress. Resume or cancel it first.', 'ai-content-image-seo' ), array( 'status' => 409 ) );
+			return new WP_Error( 'ai_cis_job_exists', __( 'A bulk optimization is already in progress. Resume or cancel it first.', 'wbd-content-image-seo-assistant' ), array( 'status' => 409 ) );
 		}
 
 		$fields = AI_CIS_Image_Optimizer::sanitize_fields( $fields );
 		if ( empty( $fields ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Select at least one field.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Select at least one field.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $ids ) ) ) );
 		$ids = array_values( array_filter( $ids, array( 'AI_CIS_Image_Optimizer', 'is_image' ) ) );
 
 		if ( empty( $ids ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'No images selected.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'No images selected.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$truncated = 0;

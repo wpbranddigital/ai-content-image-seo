@@ -46,12 +46,15 @@ import ItemPicker from '../../common/item-picker';
 export function LanguageControl( { value, onChange, allowSource = false } ) {
 	const options = [
 		...data().options.languages,
-		{ value: 'Custom', label: __( 'Custom…', 'ai-content-image-seo' ) },
+		{
+			value: 'Custom',
+			label: __( 'Custom…', 'wbd-content-image-seo-assistant' ),
+		},
 	];
 	if ( allowSource ) {
 		options.unshift( {
 			value: '',
-			label: __( 'Same as original', 'ai-content-image-seo' ),
+			label: __( 'Same as original', 'wbd-content-image-seo-assistant' ),
 		} );
 	}
 	const isCustom =
@@ -63,7 +66,7 @@ export function LanguageControl( { value, onChange, allowSource = false } ) {
 			<SelectControl
 				__nextHasNoMarginBottom
 				__next40pxDefaultSize
-				label={ __( 'Language', 'ai-content-image-seo' ) }
+				label={ __( 'Language', 'wbd-content-image-seo-assistant' ) }
 				value={ isCustom ? 'Custom' : value }
 				options={ options }
 				onChange={ ( v ) => onChange( v === 'Custom' ? 'Custom:' : v ) }
@@ -72,11 +75,14 @@ export function LanguageControl( { value, onChange, allowSource = false } ) {
 				<TextControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					label={ __( 'Custom language', 'ai-content-image-seo' ) }
+					label={ __(
+						'Custom language',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ customText }
 					placeholder={ __(
 						'e.g. Portuguese (Brazil)',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					onChange={ ( v ) => onChange( 'Custom:' + v ) }
 				/>
@@ -117,7 +123,10 @@ function GenerateTab() {
 	const generate = async () => {
 		if ( ! form.topic.trim() ) {
 			setError( {
-				message: __( 'Please enter a topic.', 'ai-content-image-seo' ),
+				message: __(
+					'Please enter a topic.',
+					'wbd-content-image-seo-assistant'
+				),
 			} );
 			return;
 		}
@@ -136,7 +145,7 @@ function GenerateTab() {
 			speak(
 				__(
 					'Content generated. Review the result below.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			);
 		} catch ( e ) {
@@ -158,7 +167,9 @@ function GenerateTab() {
 				},
 			} );
 			setResult( { ...result, content: res.result } );
-			speak( __( 'Content updated.', 'ai-content-image-seo' ) );
+			speak(
+				__( 'Content updated.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -191,14 +202,17 @@ function GenerateTab() {
 	return (
 		<div className="ai-cis-two-col">
 			<Section
-				title={ __( 'Generate Post Content', 'ai-content-image-seo' ) }
+				title={ __(
+					'Generate Post Content',
+					'wbd-content-image-seo-assistant'
+				) }
 			>
 				<TextareaControl
 					__nextHasNoMarginBottom
-					label={ __( 'Topic', 'ai-content-image-seo' ) }
+					label={ __( 'Topic', 'wbd-content-image-seo-assistant' ) }
 					help={ __(
 						'Describe what the content should be about.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					value={ form.topic }
 					onChange={ set( 'topic' ) }
@@ -208,16 +222,25 @@ function GenerateTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Create as', 'ai-content-image-seo' ) }
+						label={ __(
+							'Create as',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ form.post_type }
 						options={ [
 							{
 								value: 'post',
-								label: __( 'Post', 'ai-content-image-seo' ),
+								label: __(
+									'Post',
+									'wbd-content-image-seo-assistant'
+								),
 							},
 							{
 								value: 'page',
-								label: __( 'Page', 'ai-content-image-seo' ),
+								label: __(
+									'Page',
+									'wbd-content-image-seo-assistant'
+								),
 							},
 						] }
 						onChange={ set( 'post_type' ) }
@@ -225,7 +248,10 @@ function GenerateTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Content Type', 'ai-content-image-seo' ) }
+						label={ __(
+							'Content Type',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ form.content_type }
 						options={ d.options.contentTypes }
 						onChange={ set( 'content_type' ) }
@@ -233,7 +259,10 @@ function GenerateTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Tone', 'ai-content-image-seo' ) }
+						label={ __(
+							'Tone',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ form.tone }
 						options={ d.options.tones }
 						onChange={ set( 'tone' ) }
@@ -241,7 +270,10 @@ function GenerateTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Length', 'ai-content-image-seo' ) }
+						label={ __(
+							'Length',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ form.length }
 						options={ d.options.lengths }
 						onChange={ set( 'length' ) }
@@ -254,17 +286,23 @@ function GenerateTab() {
 				<TextControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					label={ __( 'Keywords', 'ai-content-image-seo' ) }
+					label={ __(
+						'Keywords',
+						'wbd-content-image-seo-assistant'
+					) }
 					help={ __(
 						'Optional, comma separated.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					value={ form.keywords }
 					onChange={ set( 'keywords' ) }
 				/>
 				<TextareaControl
 					__nextHasNoMarginBottom
-					label={ __( 'Extra instructions', 'ai-content-image-seo' ) }
+					label={ __(
+						'Extra instructions',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ form.instructions }
 					onChange={ set( 'instructions' ) }
 					rows={ 2 }
@@ -277,14 +315,22 @@ function GenerateTab() {
 						disabled={ busy }
 					>
 						{ busy
-							? __( 'Generating…', 'ai-content-image-seo' )
-							: __( 'Generate', 'ai-content-image-seo' ) }
+							? __(
+									'Generating…',
+									'wbd-content-image-seo-assistant'
+							  )
+							: __(
+									'Generate',
+									'wbd-content-image-seo-assistant'
+							  ) }
 					</Button>
 				</div>
 				<PrivacyHint />
 			</Section>
 
-			<Section title={ __( 'AI Result', 'ai-content-image-seo' ) }>
+			<Section
+				title={ __( 'AI Result', 'wbd-content-image-seo-assistant' ) }
+			>
 				{ busy && <Loading /> }
 				<ErrorNotice
 					error={ error }
@@ -294,11 +340,11 @@ function GenerateTab() {
 					<EmptyState
 						title={ __(
 							'Nothing generated yet.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						text={ __(
 							'Enter a topic and click Generate. You can review and edit everything before creating a draft.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					/>
 				) }
@@ -307,20 +353,26 @@ function GenerateTab() {
 						<TextControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							label={ __( 'Title', 'ai-content-image-seo' ) }
+							label={ __(
+								'Title',
+								'wbd-content-image-seo-assistant'
+							) }
 							value={ result.title }
 							onChange={ ( v ) =>
 								setResult( { ...result, title: v } )
 							}
 						/>
 						<p className="ai-cis-label">
-							{ __( 'Content', 'ai-content-image-seo' ) }
+							{ __(
+								'Content',
+								'wbd-content-image-seo-assistant'
+							) }
 						</p>
 						{ refining ? (
 							<Loading
 								label={ __(
 									'Updating content…',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							/>
 						) : (
@@ -330,19 +382,31 @@ function GenerateTab() {
 							{ [
 								[
 									'improve',
-									__( 'Improve', 'ai-content-image-seo' ),
+									__(
+										'Improve',
+										'wbd-content-image-seo-assistant'
+									),
 								],
 								[
 									'shorten',
-									__( 'Shorten', 'ai-content-image-seo' ),
+									__(
+										'Shorten',
+										'wbd-content-image-seo-assistant'
+									),
 								],
 								[
 									'expand',
-									__( 'Expand', 'ai-content-image-seo' ),
+									__(
+										'Expand',
+										'wbd-content-image-seo-assistant'
+									),
 								],
 								[
 									'rewrite',
-									__( 'Rewrite', 'ai-content-image-seo' ),
+									__(
+										'Rewrite',
+										'wbd-content-image-seo-assistant'
+									),
 								],
 							].map( ( [ action, label ] ) => (
 								<Button
@@ -359,7 +423,10 @@ function GenerateTab() {
 						</div>
 						<TextareaControl
 							__nextHasNoMarginBottom
-							label={ __( 'Excerpt', 'ai-content-image-seo' ) }
+							label={ __(
+								'Excerpt',
+								'wbd-content-image-seo-assistant'
+							) }
 							value={ result.excerpt }
 							onChange={ ( v ) =>
 								setResult( { ...result, excerpt: v } )
@@ -368,7 +435,10 @@ function GenerateTab() {
 						<TextControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							label={ __( 'SEO Title', 'ai-content-image-seo' ) }
+							label={ __(
+								'SEO Title',
+								'wbd-content-image-seo-assistant'
+							) }
 							value={ result.seo_title }
 							onChange={ ( v ) =>
 								setResult( { ...result, seo_title: v } )
@@ -378,7 +448,7 @@ function GenerateTab() {
 							__nextHasNoMarginBottom
 							label={ __(
 								'Meta Description',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 							value={ result.meta_description }
 							onChange={ ( v ) =>
@@ -394,7 +464,7 @@ function GenerateTab() {
 								<strong>
 									{ __(
 										'Keywords:',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</strong>{ ' ' }
 								{ result.keywords.join( ', ' ) }
@@ -406,11 +476,17 @@ function GenerateTab() {
 								/* translators: %s: post or page. */
 								__(
 									'Insert into editor (new %s draft)',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								form.post_type === 'page'
-									? __( 'page', 'ai-content-image-seo' )
-									: __( 'post', 'ai-content-image-seo' )
+									? __(
+											'page',
+											'wbd-content-image-seo-assistant'
+									  )
+									: __(
+											'post',
+											'wbd-content-image-seo-assistant'
+									  )
 							) }
 							busy={ creating || !! refining }
 							copyText={ htmlToText( result.content ) }
@@ -420,14 +496,14 @@ function GenerateTab() {
 								text={ result.content }
 								label={ __(
 									'Copy HTML',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							/>
 						</ResultActions>
 						<p className="description">
 							{ __(
 								'Regenerate, Improve, Shorten, Expand and Rewrite each count as one AI generation.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 					</div>
@@ -470,7 +546,7 @@ function RewriteTab() {
 			setError( {
 				message: __(
 					'There is no content to rewrite.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				),
 			} );
 			return;
@@ -492,7 +568,7 @@ function RewriteTab() {
 			speak(
 				__(
 					'Rewrite ready. Compare the original and the AI result.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			);
 		} catch ( e ) {
@@ -513,11 +589,11 @@ function RewriteTab() {
 				mode === 'replace'
 					? __(
 							'The text box now contains the AI result.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  )
 					: __(
 							'The AI result was added below your text.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  )
 			);
 			return;
@@ -528,7 +604,7 @@ function RewriteTab() {
 			! window.confirm(
 				__(
 					'Replace the content of this post with the AI result? A revision is kept so you can restore it.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			)
 		) {
@@ -548,7 +624,9 @@ function RewriteTab() {
 			setItem( fresh );
 			setContent( fresh.content );
 			setResult( null );
-			setNotice( __( 'Saved to the post.', 'ai-content-image-seo' ) );
+			setNotice(
+				__( 'Saved to the post.', 'wbd-content-image-seo-assistant' )
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -560,7 +638,7 @@ function RewriteTab() {
 			<Section
 				title={ __(
 					'Improve Existing Content',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				) }
 			>
 				<div
@@ -568,7 +646,7 @@ function RewriteTab() {
 					role="group"
 					aria-label={ __(
 						'Content source',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				>
 					<Button
@@ -576,7 +654,10 @@ function RewriteTab() {
 						onClick={ () => setSource( 'paste' ) }
 						aria-pressed={ source === 'paste' }
 					>
-						{ __( 'Paste text', 'ai-content-image-seo' ) }
+						{ __(
+							'Paste text',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 					<Button
 						variant={ source === 'post' ? 'primary' : 'secondary' }
@@ -585,7 +666,7 @@ function RewriteTab() {
 					>
 						{ __(
 							'Existing post or page',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					</Button>
 				</div>
@@ -602,12 +683,15 @@ function RewriteTab() {
 								<strong>
 									{ __(
 										'Selected:',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</strong>{ ' ' }
 								{ item.title }{ ' ' }
 								<a href={ item.edit_link }>
-									{ __( 'Edit', 'ai-content-image-seo' ) }
+									{ __(
+										'Edit',
+										'wbd-content-image-seo-assistant'
+									) }
 								</a>
 							</p>
 						) }
@@ -617,7 +701,10 @@ function RewriteTab() {
 				{ ( source === 'paste' || item ) && (
 					<TextareaControl
 						__nextHasNoMarginBottom
-						label={ __( 'Content', 'ai-content-image-seo' ) }
+						label={ __(
+							'Content',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ content }
 						onChange={ setContent }
 						rows={ 8 }
@@ -628,7 +715,10 @@ function RewriteTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Action', 'ai-content-image-seo' ) }
+						label={ __(
+							'Action',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ action }
 						options={ d.options.rewriteActions }
 						onChange={ setAction }
@@ -647,14 +737,20 @@ function RewriteTab() {
 						disabled={ busy || ! content.trim() }
 					>
 						{ busy
-							? __( 'Generating…', 'ai-content-image-seo' )
-							: __( 'Rewrite', 'ai-content-image-seo' ) }
+							? __(
+									'Generating…',
+									'wbd-content-image-seo-assistant'
+							  )
+							: __(
+									'Rewrite',
+									'wbd-content-image-seo-assistant'
+							  ) }
 					</Button>
 				</div>
 				<p className="description">
 					{ __(
 						'Your original content is never overwritten automatically.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 			</Section>
@@ -672,11 +768,16 @@ function RewriteTab() {
 			) }
 
 			{ result && ! busy && (
-				<Section title={ __( 'Compare', 'ai-content-image-seo' ) }>
+				<Section
+					title={ __( 'Compare', 'wbd-content-image-seo-assistant' ) }
+				>
 					<div className="ai-cis-compare-cols">
 						<div>
 							<h3>
-								{ __( 'Original', 'ai-content-image-seo' ) }
+								{ __(
+									'Original',
+									'wbd-content-image-seo-assistant'
+								) }
 							</h3>
 							{ result.is_html ? (
 								<HtmlPreview html={ result.original } />
@@ -688,7 +789,10 @@ function RewriteTab() {
 						</div>
 						<div>
 							<h3>
-								{ __( 'AI Result', 'ai-content-image-seo' ) }
+								{ __(
+									'AI Result',
+									'wbd-content-image-seo-assistant'
+								) }
 							</h3>
 							{ result.is_html ? (
 								<HtmlPreview html={ result.result } />
@@ -701,7 +805,10 @@ function RewriteTab() {
 					</div>
 					<ResultActions
 						onUse={ () => save( 'replace' ) }
-						useLabel={ __( 'Replace', 'ai-content-image-seo' ) }
+						useLabel={ __(
+							'Replace',
+							'wbd-content-image-seo-assistant'
+						) }
 						busy={ saving }
 						copyText={
 							result.is_html
@@ -715,7 +822,10 @@ function RewriteTab() {
 							onClick={ () => save( 'insert' ) }
 							disabled={ saving }
 						>
-							{ __( 'Insert (append)', 'ai-content-image-seo' ) }
+							{ __(
+								'Insert (append)',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					</ResultActions>
 				</Section>
@@ -736,11 +846,17 @@ export default function ContentAI() {
 				tabs={ [
 					{
 						name: 'generate',
-						title: __( 'Generate Content', 'ai-content-image-seo' ),
+						title: __(
+							'Generate Content',
+							'wbd-content-image-seo-assistant'
+						),
 					},
 					{
 						name: 'rewrite',
-						title: __( 'Content Rewriter', 'ai-content-image-seo' ),
+						title: __(
+							'Content Rewriter',
+							'wbd-content-image-seo-assistant'
+						),
 					},
 				] }
 			>

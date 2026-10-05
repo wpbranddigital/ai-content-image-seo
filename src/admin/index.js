@@ -25,13 +25,13 @@ const VIEWS = {
 };
 
 const TITLES = {
-	dashboard: __( 'Dashboard', 'ai-content-image-seo' ),
-	content: __( 'Content AI', 'ai-content-image-seo' ),
-	image: __( 'Image AI', 'ai-content-image-seo' ),
-	seo: __( 'SEO Assistant', 'ai-content-image-seo' ),
-	woocommerce: __( 'WooCommerce AI', 'ai-content-image-seo' ),
-	usage: __( 'Usage', 'ai-content-image-seo' ),
-	settings: __( 'Settings', 'ai-content-image-seo' ),
+	dashboard: __( 'Dashboard', 'wbd-content-image-seo-assistant' ),
+	content: __( 'Content AI', 'wbd-content-image-seo-assistant' ),
+	image: __( 'Image AI', 'wbd-content-image-seo-assistant' ),
+	seo: __( 'SEO Assistant', 'wbd-content-image-seo-assistant' ),
+	woocommerce: __( 'WooCommerce AI', 'wbd-content-image-seo-assistant' ),
+	usage: __( 'Usage', 'wbd-content-image-seo-assistant' ),
+	settings: __( 'Settings', 'wbd-content-image-seo-assistant' ),
 };
 
 function Header( { view } ) {
@@ -43,7 +43,10 @@ function Header( { view } ) {
 					aria-hidden="true"
 				/>
 				<span>
-					{ __( 'AI Content & Image SEO', 'ai-content-image-seo' ) }
+					{ __(
+						'WBD Content & Image SEO',
+						'wbd-content-image-seo-assistant'
+					) }
 				</span>
 			</div>
 			<h2 className="ai-cis-header__title">{ TITLES[ view ] }</h2>
@@ -63,8 +66,14 @@ function Header( { view } ) {
 					aria-hidden="true"
 				/>
 				{ data().providerReady
-					? __( 'AI provider connected', 'ai-content-image-seo' )
-					: __( 'No AI provider', 'ai-content-image-seo' ) }
+					? __(
+							'AI provider connected',
+							'wbd-content-image-seo-assistant'
+					  )
+					: __(
+							'No AI provider',
+							'wbd-content-image-seo-assistant'
+					  ) }
 			</span>
 		</header>
 	);

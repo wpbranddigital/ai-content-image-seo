@@ -38,14 +38,23 @@ export default function ItemPicker( {
 	}, [ query, type, page ] );
 
 	const typeOptions = [
-		{ value: 'any', label: __( 'All content', 'ai-content-image-seo' ) },
-		{ value: 'post', label: __( 'Posts', 'ai-content-image-seo' ) },
-		{ value: 'page', label: __( 'Pages', 'ai-content-image-seo' ) },
+		{
+			value: 'any',
+			label: __( 'All content', 'wbd-content-image-seo-assistant' ),
+		},
+		{
+			value: 'post',
+			label: __( 'Posts', 'wbd-content-image-seo-assistant' ),
+		},
+		{
+			value: 'page',
+			label: __( 'Pages', 'wbd-content-image-seo-assistant' ),
+		},
 	];
 	if ( data().isWooActive ) {
 		typeOptions.push( {
 			value: 'product',
-			label: __( 'Products', 'ai-content-image-seo' ),
+			label: __( 'Products', 'wbd-content-image-seo-assistant' ),
 		} );
 	}
 
@@ -54,7 +63,10 @@ export default function ItemPicker( {
 			<div className="ai-cis-picker__filters">
 				<SearchControl
 					__nextHasNoMarginBottom
-					label={ __( 'Search content', 'ai-content-image-seo' ) }
+					label={ __(
+						'Search content',
+						'wbd-content-image-seo-assistant'
+					) }
 					value={ search }
 					onChange={ ( v ) => {
 						setSearch( v );
@@ -64,7 +76,7 @@ export default function ItemPicker( {
 				<SelectControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					label={ __( 'Type', 'ai-content-image-seo' ) }
+					label={ __( 'Type', 'wbd-content-image-seo-assistant' ) }
 					hideLabelFromVision
 					value={ type }
 					options={ typeOptions }
@@ -78,10 +90,13 @@ export default function ItemPicker( {
 			{ ! result && ! error && <Spinner /> }
 			{ result && result.items.length === 0 && (
 				<EmptyState
-					title={ __( 'No content found.', 'ai-content-image-seo' ) }
+					title={ __(
+						'No content found.',
+						'wbd-content-image-seo-assistant'
+					) }
 					text={ __(
 						'Try a different search, or create a post first.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				/>
 			) }
@@ -109,12 +124,12 @@ export default function ItemPicker( {
 											? ' · ' +
 											  __(
 													'has meta description',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 											  )
 											: ' · ' +
 											  __(
 													'no meta description',
-													'ai-content-image-seo'
+													'wbd-content-image-seo-assistant'
 											  ) ) }
 								</span>
 							</Button>
@@ -129,12 +144,15 @@ export default function ItemPicker( {
 						disabled={ page <= 1 }
 						onClick={ () => setPage( page - 1 ) }
 					>
-						{ __( 'Previous', 'ai-content-image-seo' ) }
+						{ __( 'Previous', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 					<span>
 						{ sprintf(
 							/* translators: 1: current page, 2: total pages. */
-							__( 'Page %1$d of %2$d', 'ai-content-image-seo' ),
+							__(
+								'Page %1$d of %2$d',
+								'wbd-content-image-seo-assistant'
+							),
 							page,
 							result.total_pages
 						) }
@@ -144,7 +162,7 @@ export default function ItemPicker( {
 						disabled={ page >= result.total_pages }
 						onClick={ () => setPage( page + 1 ) }
 					>
-						{ __( 'Next', 'ai-content-image-seo' ) }
+						{ __( 'Next', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 				</div>
 			) }

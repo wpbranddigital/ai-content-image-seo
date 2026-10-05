@@ -54,9 +54,10 @@ export function Loading( { label } ) {
 			<Spinner />
 			<span>
 				<strong>
-					{ label || __( 'Generating…', 'ai-content-image-seo' ) }
+					{ label ||
+						__( 'Generating…', 'wbd-content-image-seo-assistant' ) }
 				</strong>{ ' ' }
-				{ __( 'Please wait.', 'ai-content-image-seo' ) }
+				{ __( 'Please wait.', 'wbd-content-image-seo-assistant' ) }
 			</span>
 		</div>
 	);
@@ -89,7 +90,7 @@ export function ErrorNotice( { error, onDismiss } ) {
 					<a href={ data().pages.settings }>
 						{ __(
 							'Open AI Provider settings',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					</a>
 				</p>
@@ -104,11 +105,11 @@ export function ErrorNotice( { error, onDismiss } ) {
 						{ open
 							? __(
 									'Hide technical details',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 							  )
 							: __(
 									'Show technical details',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 							  ) }
 					</Button>
 					{ open && (
@@ -139,23 +140,26 @@ export function ProviderNotice() {
 				<strong>
 					{ __(
 						'No AI provider configured.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</strong>{ ' ' }
 				{ data().isManager
 					? __(
 							'Connect an AI provider from Settings → AI Provider.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  )
 					: __(
 							'Ask a site administrator to connect an AI provider.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 					  ) }
 			</p>
 			{ data().isManager && (
 				<p>
 					<Button variant="secondary" href={ data().pages.settings }>
-						{ __( 'Connect AI Provider', 'ai-content-image-seo' ) }
+						{ __(
+							'Connect AI Provider',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 				</p>
 			) }
@@ -178,10 +182,13 @@ export function CopyButton( { text, label } ) {
 		setCopied( ok );
 		speak(
 			ok
-				? __( 'Copied to clipboard.', 'ai-content-image-seo' )
+				? __(
+						'Copied to clipboard.',
+						'wbd-content-image-seo-assistant'
+				  )
 				: __(
 						'Copy failed. Select the text and copy it manually.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 				  )
 		);
 		if ( ok ) {
@@ -191,8 +198,8 @@ export function CopyButton( { text, label } ) {
 	return (
 		<Button variant="secondary" onClick={ onClick } disabled={ ! text }>
 			{ copied
-				? __( 'Copied!', 'ai-content-image-seo' )
-				: label || __( 'Copy', 'ai-content-image-seo' ) }
+				? __( 'Copied!', 'wbd-content-image-seo-assistant' )
+				: label || __( 'Copy', 'wbd-content-image-seo-assistant' ) }
 		</Button>
 	);
 }
@@ -227,12 +234,12 @@ export function UsageMeter( { type } ) {
 	const valueText = type.unlimited
 		? sprintf(
 				/* translators: %d: number used. */
-				__( 'Used: %d (unlimited)', 'ai-content-image-seo' ),
+				__( 'Used: %d (unlimited)', 'wbd-content-image-seo-assistant' ),
 				type.used
 		  )
 		: sprintf(
 				/* translators: 1: number used, 2: limit. */
-				__( 'Used: %1$d / %2$d', 'ai-content-image-seo' ),
+				__( 'Used: %1$d / %2$d', 'wbd-content-image-seo-assistant' ),
 				type.used,
 				type.limit
 		  );
@@ -304,7 +311,10 @@ export function HtmlPreview( { html } ) {
 		<div
 			className="ai-cis-html-preview"
 			tabIndex={ 0 }
-			aria-label={ __( 'AI result preview', 'ai-content-image-seo' ) }
+			aria-label={ __(
+				'AI result preview',
+				'wbd-content-image-seo-assistant'
+			) }
 		>
 			<RawHTML>{ html }</RawHTML>
 		</div>
@@ -326,25 +336,32 @@ export function GooglePreview( { title, description, url } ) {
 	return (
 		<div
 			className="ai-cis-serp"
-			aria-label={ __( 'Google Preview', 'ai-content-image-seo' ) }
+			aria-label={ __(
+				'Google Preview',
+				'wbd-content-image-seo-assistant'
+			) }
 		>
 			<p className="ai-cis-serp__label">
-				{ __( 'Google Preview', 'ai-content-image-seo' ) }
+				{ __( 'Google Preview', 'wbd-content-image-seo-assistant' ) }
 			</p>
 			{ url && <div className="ai-cis-serp__url">{ url }</div> }
 			<div className="ai-cis-serp__title">
-				{ title || __( '(no SEO title)', 'ai-content-image-seo' ) }
+				{ title ||
+					__( '(no SEO title)', 'wbd-content-image-seo-assistant' ) }
 			</div>
 			<div className="ai-cis-serp__desc">
 				{ description ||
-					__( '(no meta description)', 'ai-content-image-seo' ) }
+					__(
+						'(no meta description)',
+						'wbd-content-image-seo-assistant'
+					) }
 			</div>
 			<p className="ai-cis-serp__meta">
 				{ sprintf(
 					/* translators: 1: title length, 2: description length. */
 					__(
 						'Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					),
 					titleLen,
 					descLen
@@ -378,7 +395,8 @@ export function ResultActions( {
 		<div className="ai-cis-actions">
 			{ onUse && (
 				<Button variant="primary" onClick={ onUse } disabled={ busy }>
-					{ useLabel || __( 'Use This', 'ai-content-image-seo' ) }
+					{ useLabel ||
+						__( 'Use This', 'wbd-content-image-seo-assistant' ) }
 				</Button>
 			) }
 			{ typeof text === 'string' && <CopyButton text={ text } /> }
@@ -388,7 +406,7 @@ export function ResultActions( {
 					onClick={ onRegenerate }
 					disabled={ busy }
 				>
-					{ __( 'Regenerate', 'ai-content-image-seo' ) }
+					{ __( 'Regenerate', 'wbd-content-image-seo-assistant' ) }
 				</Button>
 			) }
 			{ children }
@@ -406,7 +424,7 @@ export function PrivacyHint() {
 		<p className="description ai-cis-privacy-hint">
 			{ __(
 				'The selected content is sent to your configured AI provider only when you click a generate button.',
-				'ai-content-image-seo'
+				'wbd-content-image-seo-assistant'
 			) }
 		</p>
 	);

@@ -15,11 +15,14 @@ function ProductBox( { productId } ) {
 			tabs={ [
 				{
 					name: 'assistant',
-					title: __( 'Assistant', 'ai-content-image-seo' ),
+					title: __( 'Assistant', 'wbd-content-image-seo-assistant' ),
 				},
 				{
 					name: 'reviews',
-					title: __( 'Review Summary', 'ai-content-image-seo' ),
+					title: __(
+						'Review Summary',
+						'wbd-content-image-seo-assistant'
+					),
 				},
 			] }
 		>

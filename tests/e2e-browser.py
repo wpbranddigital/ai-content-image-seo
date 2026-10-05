@@ -32,8 +32,8 @@ with sync_playwright() as p:
     page.wait_for_url(re.compile('wp-admin'))
 
     # Onboarding.
-    page.goto(BASE + '/wp-admin/admin.php?page=ai-content-image-seo')
-    page.get_by_text('Welcome to AI Content & Image SEO').first.wait_for()
+    page.goto(BASE + '/wp-admin/admin.php?page=wbd-content-image-seo-assistant')
+    page.get_by_text('Welcome to WBD Content & Image SEO').first.wait_for()
     page.screenshot(path=SHOTS + '01-onboarding.png', full_page=True)
     page.get_by_label(re.compile('^OpenAI')).check()
     page.get_by_role('button', name='Continue').click()
@@ -212,7 +212,7 @@ with sync_playwright() as p:
 
     # Mobile layout.
     page.set_viewport_size({'width': 400, 'height': 900})
-    page.goto(BASE + '/wp-admin/admin.php?page=ai-content-image-seo')
+    page.goto(BASE + '/wp-admin/admin.php?page=wbd-content-image-seo-assistant')
     page.get_by_text('AI Usage This Month').first.wait_for()
     page.screenshot(path=SHOTS + '15-mobile.png', full_page=True)
 

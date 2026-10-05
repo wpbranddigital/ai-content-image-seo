@@ -55,12 +55,12 @@ function LanguageControl({
 }) {
   const options = [...(0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().options.languages, {
     value: 'Custom',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom…', 'ai-content-image-seo')
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom…', 'wbd-content-image-seo-assistant')
   }];
   if (allowSource) {
     options.unshift({
       value: '',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Same as original', 'ai-content-image-seo')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Same as original', 'wbd-content-image-seo-assistant')
     });
   }
   const isCustom = (value || '').startsWith('Custom:') || !options.some(o => o.value === value);
@@ -70,16 +70,16 @@ function LanguageControl({
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
       __nextHasNoMarginBottom: true,
       __next40pxDefaultSize: true,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Language', 'ai-content-image-seo'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Language', 'wbd-content-image-seo-assistant'),
       value: isCustom ? 'Custom' : value,
       options: options,
       onChange: v => onChange(v === 'Custom' ? 'Custom:' : v)
     }), isCustom && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
       __nextHasNoMarginBottom: true,
       __next40pxDefaultSize: true,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom language', 'ai-content-image-seo'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom language', 'wbd-content-image-seo-assistant'),
       value: customText,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('e.g. Portuguese (Brazil)', 'ai-content-image-seo'),
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('e.g. Portuguese (Brazil)', 'wbd-content-image-seo-assistant'),
       onChange: v => onChange('Custom:' + v)
     })]
   });
@@ -116,7 +116,7 @@ function GenerateTab() {
   const generate = async () => {
     if (!form.topic.trim()) {
       setError({
-        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please enter a topic.', 'ai-content-image-seo')
+        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please enter a topic.', 'wbd-content-image-seo-assistant')
       });
       return;
     }
@@ -132,7 +132,7 @@ function GenerateTab() {
         }
       });
       setResult(res);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content generated. Review the result below.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content generated. Review the result below.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -154,7 +154,7 @@ function GenerateTab() {
         ...result,
         content: res.result
       });
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content updated.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content updated.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -185,11 +185,11 @@ function GenerateTab() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "ai-cis-two-col",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Post Content', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Post Content', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Topic', 'ai-content-image-seo'),
-        help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Describe what the content should be about.', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Topic', 'wbd-content-image-seo-assistant'),
+        help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Describe what the content should be about.', 'wbd-content-image-seo-assistant'),
         value: form.topic,
         onChange: set('topic'),
         rows: 3
@@ -198,34 +198,34 @@ function GenerateTab() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create as', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create as', 'wbd-content-image-seo-assistant'),
           value: form.post_type,
           options: [{
             value: 'post',
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Post', 'ai-content-image-seo')
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Post', 'wbd-content-image-seo-assistant')
           }, {
             value: 'page',
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page', 'ai-content-image-seo')
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page', 'wbd-content-image-seo-assistant')
           }],
           onChange: set('post_type')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Type', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Type', 'wbd-content-image-seo-assistant'),
           value: form.content_type,
           options: d.options.contentTypes,
           onChange: set('content_type')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tone', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tone', 'wbd-content-image-seo-assistant'),
           value: form.tone,
           options: d.options.tones,
           onChange: set('tone')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Length', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Length', 'wbd-content-image-seo-assistant'),
           value: form.length,
           options: d.options.lengths,
           onChange: set('length')
@@ -236,13 +236,13 @@ function GenerateTab() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keywords', 'ai-content-image-seo'),
-        help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optional, comma separated.', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keywords', 'wbd-content-image-seo-assistant'),
+        help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optional, comma separated.', 'wbd-content-image-seo-assistant'),
         value: form.keywords,
         onChange: set('keywords')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Extra instructions', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Extra instructions', 'wbd-content-image-seo-assistant'),
         value: form.instructions,
         onChange: set('instructions'),
         rows: 2
@@ -253,23 +253,23 @@ function GenerateTab() {
           onClick: generate,
           isBusy: busy,
           disabled: busy,
-          children: busy ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate', 'ai-content-image-seo')
+          children: busy ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate', 'wbd-content-image-seo-assistant')
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.PrivacyHint, {})]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'wbd-content-image-seo-assistant'),
       children: [busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
         error: error,
         onDismiss: () => setError(null)
       }), !busy && !result && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Nothing generated yet.', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enter a topic and click Generate. You can review and edit everything before creating a draft.', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Nothing generated yet.', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enter a topic and click Generate. You can review and edit everything before creating a draft.', 'wbd-content-image-seo-assistant')
       }), !busy && result && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "ai-cis-result",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title', 'wbd-content-image-seo-assistant'),
           value: result.title,
           onChange: v => setResult({
             ...result,
@@ -277,14 +277,14 @@ function GenerateTab() {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           className: "ai-cis-label",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content', 'wbd-content-image-seo-assistant')
         }), refining ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Updating content…', 'ai-content-image-seo')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Updating content…', 'wbd-content-image-seo-assistant')
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
           html: result.content
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "ai-cis-actions ai-cis-actions--compact",
-          children: [['improve', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve', 'ai-content-image-seo')], ['shorten', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Shorten', 'ai-content-image-seo')], ['expand', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Expand', 'ai-content-image-seo')], ['rewrite', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite', 'ai-content-image-seo')]].map(([action, label]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
+          children: [['improve', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve', 'wbd-content-image-seo-assistant')], ['shorten', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Shorten', 'wbd-content-image-seo-assistant')], ['expand', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Expand', 'wbd-content-image-seo-assistant')], ['rewrite', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite', 'wbd-content-image-seo-assistant')]].map(([action, label]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
             variant: "secondary",
             size: "compact",
             onClick: () => refine(action),
@@ -294,7 +294,7 @@ function GenerateTab() {
           }, action))
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
           __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Excerpt', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Excerpt', 'wbd-content-image-seo-assistant'),
           value: result.excerpt,
           onChange: v => setResult({
             ...result,
@@ -303,7 +303,7 @@ function GenerateTab() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'wbd-content-image-seo-assistant'),
           value: result.seo_title,
           onChange: v => setResult({
             ...result,
@@ -311,7 +311,7 @@ function GenerateTab() {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
           __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'wbd-content-image-seo-assistant'),
           value: result.meta_description,
           onChange: v => setResult({
             ...result,
@@ -322,22 +322,22 @@ function GenerateTab() {
           description: result.meta_description
         }), result.keywords?.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keywords:', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keywords:', 'wbd-content-image-seo-assistant')
           }), ' ', result.keywords.join(', ')]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
           onUse: createDraft,
           useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: post or page. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert into editor (new %s draft)', 'ai-content-image-seo'), form.post_type === 'page' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('page', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('post', 'ai-content-image-seo')),
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert into editor (new %s draft)', 'wbd-content-image-seo-assistant'), form.post_type === 'page' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('page', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('post', 'wbd-content-image-seo-assistant')),
           busy: creating || !!refining,
           copyText: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.htmlToText)(result.content),
           onRegenerate: generate,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.CopyButton, {
             text: result.content,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy HTML', 'ai-content-image-seo')
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy HTML', 'wbd-content-image-seo-assistant')
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           className: "description",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate, Improve, Shorten, Expand and Rewrite each count as one AI generation.', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate, Improve, Shorten, Expand and Rewrite each count as one AI generation.', 'wbd-content-image-seo-assistant')
         })]
       })]
     })]
@@ -372,7 +372,7 @@ function RewriteTab() {
   const run = async () => {
     if (!content.trim()) {
       setError({
-        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('There is no content to rewrite.', 'ai-content-image-seo')
+        message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('There is no content to rewrite.', 'wbd-content-image-seo-assistant')
       });
       return;
     }
@@ -390,7 +390,7 @@ function RewriteTab() {
         }
       });
       setResult(res);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite ready. Compare the original and the AI result.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite ready. Compare the original and the AI result.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -400,12 +400,12 @@ function RewriteTab() {
     if (source === 'paste') {
       setContent(mode === 'replace' ? result.result : content + '\n\n' + result.result);
       setResult(null);
-      setNotice(mode === 'replace' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The text box now contains the AI result.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The AI result was added below your text.', 'ai-content-image-seo'));
+      setNotice(mode === 'replace' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The text box now contains the AI result.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The AI result was added below your text.', 'wbd-content-image-seo-assistant'));
       return;
     }
     if (mode === 'replace' &&
     // eslint-disable-next-line no-alert
-    !window.confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Replace the content of this post with the AI result? A revision is kept so you can restore it.', 'ai-content-image-seo'))) {
+    !window.confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Replace the content of this post with the AI result? A revision is kept so you can restore it.', 'wbd-content-image-seo-assistant'))) {
       return;
     }
     setSaving(true);
@@ -422,7 +422,7 @@ function RewriteTab() {
       setItem(fresh);
       setContent(fresh.content);
       setResult(null);
-      setNotice((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved to the post.', 'ai-content-image-seo'));
+      setNotice((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved to the post.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -431,21 +431,21 @@ function RewriteTab() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "ai-cis-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve Existing Content', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve Existing Content', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "ai-cis-segmented",
         role: "group",
-        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content source', 'ai-content-image-seo'),
+        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content source', 'wbd-content-image-seo-assistant'),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: source === 'paste' ? 'primary' : 'secondary',
           onClick: () => setSource('paste'),
           "aria-pressed": source === 'paste',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paste text', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paste text', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: source === 'post' ? 'primary' : 'secondary',
           onClick: () => setSource('post'),
           "aria-pressed": source === 'post',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Existing post or page', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Existing post or page', 'wbd-content-image-seo-assistant')
         })]
       }), source === 'post' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_item_picker__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -453,15 +453,15 @@ function RewriteTab() {
           selectedId: item?.id
         }), loadingItem && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), item && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Selected:', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Selected:', 'wbd-content-image-seo-assistant')
           }), ' ', item.title, ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
             href: item.edit_link,
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit', 'wbd-content-image-seo-assistant')
           })]
         })]
       }), (source === 'paste' || item) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content', 'wbd-content-image-seo-assistant'),
         value: content,
         onChange: setContent,
         rows: 8
@@ -470,7 +470,7 @@ function RewriteTab() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Action', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Action', 'wbd-content-image-seo-assistant'),
           value: action,
           options: d.options.rewriteActions,
           onChange: setAction
@@ -486,11 +486,11 @@ function RewriteTab() {
           onClick: run,
           isBusy: busy,
           disabled: busy || !content.trim(),
-          children: busy ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite', 'ai-content-image-seo')
+          children: busy ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite', 'wbd-content-image-seo-assistant')
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
         className: "description",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your original content is never overwritten automatically.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your original content is never overwritten automatically.', 'wbd-content-image-seo-assistant')
       })]
     }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error,
@@ -503,12 +503,12 @@ function RewriteTab() {
         children: notice
       })
     }), result && !busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Compare', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Compare', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "ai-cis-compare-cols",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Original', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Original', 'wbd-content-image-seo-assistant')
           }), result.is_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
             html: result.original
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -517,7 +517,7 @@ function RewriteTab() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h3", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'wbd-content-image-seo-assistant')
           }), result.is_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
             html: result.result
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -527,7 +527,7 @@ function RewriteTab() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
         onUse: () => save('replace'),
-        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Replace', 'ai-content-image-seo'),
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Replace', 'wbd-content-image-seo-assistant'),
         busy: saving,
         copyText: result.is_html ? (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.htmlToText)(result.result) : result.result,
         onRegenerate: run,
@@ -535,7 +535,7 @@ function RewriteTab() {
           variant: "secondary",
           onClick: () => save('insert'),
           disabled: saving,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert (append)', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert (append)', 'wbd-content-image-seo-assistant')
         })
       })]
     })]
@@ -551,10 +551,10 @@ function ContentAI() {
       initialTabName: initial,
       tabs: [{
         name: 'generate',
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Content', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Content', 'wbd-content-image-seo-assistant')
       }, {
         name: 'rewrite',
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Rewriter', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Rewriter', 'wbd-content-image-seo-assistant')
       }],
       children: tab => tab.name === 'rewrite' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(RewriteTab, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(GenerateTab, {})
     })]
@@ -613,7 +613,7 @@ function QuickAction({
         variant: "secondary",
         disabled: true,
         "aria-describedby": 'reason-' + icon,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         className: "description",
         id: 'reason-' + icon,
@@ -622,7 +622,7 @@ function QuickAction({
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
       variant: "secondary",
       href: href,
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open', 'wbd-content-image-seo-assistant')
     })]
   });
 }
@@ -648,61 +648,61 @@ function Dashboard() {
       className: "ai-cis-notice",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached.', 'ai-content-image-seo')
-        }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New images will remain unprocessed until the limit resets.', 'ai-content-image-seo')]
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached.', 'wbd-content-image-seo-assistant')
+        }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New images will remain unprocessed until the limit resets.', 'wbd-content-image-seo-assistant')]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "ai-cis-grid-main",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_4__.Section, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Usage This Month', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Usage This Month', 'wbd-content-image-seo-assistant'),
         actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "link",
           href: pages.usage,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('View details', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('View details', 'wbd-content-image-seo-assistant')
         }),
         children: [!usage && !error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), usage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             className: "ai-cis-big-number",
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: total AI requests this month. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%d AI requests this month', 'ai-content-image-seo'), total)
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%d AI requests this month', 'wbd-content-image-seo-assistant'), total)
           }), Object.entries(usage.types).map(([key, type]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.UsageMeter, {
             type: type
           }, key)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             className: "description",
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: reset date. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Counters reset on %s. All features are free; limits are optional and set by the site owner.', 'ai-content-image-seo'), usage.reset_date)
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Counters reset on %s. All features are free; limits are optional and set by the site owner.', 'wbd-content-image-seo-assistant'), usage.reset_date)
           })]
         })]
       }), (0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().canUpload && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_4__.Section, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Media Library', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Media Library', 'wbd-content-image-seo-assistant'),
         actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "link",
           href: pages.image + '&tab=bulk',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'wbd-content-image-seo-assistant')
         }),
         children: [!stats && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), stats && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("dl", {
           className: "ai-cis-stats",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dt", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total Images', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total Images', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dd", {
               children: stats.total
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dt", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Alt Text', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Alt Text', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dd", {
               children: stats.missing_alt
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dt", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Title', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Title', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dd", {
               children: stats.missing_title
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dt", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Description', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Description', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("dd", {
               children: stats.missing_description
             })]
@@ -710,47 +710,47 @@ function Dashboard() {
         }), usage && usage.auto_queue > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
           className: "description",
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number of images. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%d new images waiting for automatic optimization.', 'ai-content-image-seo'), usage.auto_queue)
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%d new images waiting for automatic optimization.', 'wbd-content-image-seo-assistant'), usage.auto_queue)
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
       className: "ai-cis-section-title",
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Quick Actions', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Quick Actions', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "ai-cis-quick-grid",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-edit-page",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Content', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Write a complete post or page with title, excerpt and SEO metadata.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Content', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Write a complete post or page with title, excerpt and SEO metadata.', 'wbd-content-image-seo-assistant'),
         href: pages.content
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-format-gallery",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Images', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fill in missing image metadata across your media library in the background.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Images', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fill in missing image metadata across your media library in the background.', 'wbd-content-image-seo-assistant'),
         href: pages.image ? pages.image + '&tab=bulk' : '',
-        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().canUpload ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You need permission to upload files.', 'ai-content-image-seo') : ''
+        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().canUpload ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You need permission to upload files.', 'wbd-content-image-seo-assistant') : ''
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-cart",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Products', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate product titles, descriptions, tags, categories and review summaries.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Products', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate product titles, descriptions, tags, categories and review summaries.', 'wbd-content-image-seo-assistant'),
         href: pages.woocommerce,
-        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().isWooActive ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Requires WooCommerce to be installed and active.', 'ai-content-image-seo') : ''
+        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().isWooActive ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Requires WooCommerce to be installed and active.', 'wbd-content-image-seo-assistant') : ''
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-update",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite Content', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve, shorten, expand or fix grammar in existing content with a side-by-side preview.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rewrite Content', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve, shorten, expand or fix grammar in existing content with a side-by-side preview.', 'wbd-content-image-seo-assistant'),
         href: pages.content + '&tab=rewrite'
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-universal-access-alt",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Alt Text', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create accessible, context-aware alt text for a single image.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Alt Text', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create accessible, context-aware alt text for a single image.', 'wbd-content-image-seo-assistant'),
         href: pages.image ? pages.image + '&tab=single' : '',
-        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().canUpload ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You need permission to upload files.', 'ai-content-image-seo') : ''
+        disabledReason: !(0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().canUpload ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You need permission to upload files.', 'wbd-content-image-seo-assistant') : ''
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(QuickAction, {
         icon: "dashicons-search",
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Assistant', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Assistant', 'wbd-content-image-seo-assistant'),
         text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: SEO plugin name. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO titles and meta descriptions. Saves to: %s.', 'ai-content-image-seo'), (0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().seoPluginLabel),
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO titles and meta descriptions. Saves to: %s.', 'wbd-content-image-seo-assistant'), (0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().seoPluginLabel),
         href: pages.seo
       })]
     })]
@@ -807,12 +807,12 @@ function openMediaFrame(onPick) {
     return;
   }
   const frame = window.wp.media({
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select an image', 'ai-content-image-seo'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select an image', 'wbd-content-image-seo-assistant'),
     library: {
       type: 'image'
     },
     button: {
-      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use this image', 'ai-content-image-seo')
+      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use this image', 'wbd-content-image-seo-assistant')
     },
     multiple: false
   });
@@ -830,21 +830,21 @@ function SingleTab() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     className: "ai-cis-page",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_6__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Image Metadata', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Image Metadata', 'wbd-content-image-seo-assistant'),
       actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         onClick: () => openMediaFrame(setAttachmentId),
-        children: attachmentId ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose another image', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select Image', 'ai-content-image-seo')
+        children: attachmentId ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose another image', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select Image', 'wbd-content-image-seo-assistant')
       }),
       children: attachmentId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_image_metadata_panel__WEBPACK_IMPORTED_MODULE_7__["default"], {
         attachmentId: attachmentId
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_6__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No image selected.', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pick an image from the Media Library to generate alt text, title, caption and description. You review everything before it is saved.', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No image selected.', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pick an image from the Media Library to generate alt text, title, caption and description. You review everything before it is saved.', 'wbd-content-image-seo-assistant'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "primary",
           onClick: () => openMediaFrame(setAttachmentId),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select Image', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select Image', 'wbd-content-image-seo-assistant')
         })
       })
     })
@@ -859,32 +859,32 @@ function JobPanel({
     return null;
   }
   const statusText = {
-    running: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimizing Images', 'ai-content-image-seo'),
-    paused: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused', 'ai-content-image-seo'),
-    completed: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Completed', 'ai-content-image-seo')
+    running: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimizing Images', 'wbd-content-image-seo-assistant'),
+    paused: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused', 'wbd-content-image-seo-assistant'),
+    completed: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Completed', 'wbd-content-image-seo-assistant')
   }[job.status];
   const reasons = {
-    limit: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because the monthly image limit was reached. It can resume when the limit resets or is raised.', 'ai-content-image-seo'),
-    provider: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because no AI provider is configured.', 'ai-content-image-seo'),
-    rate_limit: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because your AI provider rate limit was reached. Please resume in a few minutes.', 'ai-content-image-seo'),
-    user: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused by you.', 'ai-content-image-seo')
+    limit: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because the monthly image limit was reached. It can resume when the limit resets or is raised.', 'wbd-content-image-seo-assistant'),
+    provider: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because no AI provider is configured.', 'wbd-content-image-seo-assistant'),
+    rate_limit: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused because your AI provider rate limit was reached. Please resume in a few minutes.', 'wbd-content-image-seo-assistant'),
+    user: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paused by you.', 'wbd-content-image-seo-assistant')
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_6__.Section, {
     title: statusText,
     className: "ai-cis-job",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_6__.ProgressBar, {
       percent: job.percent,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization progress', 'ai-content-image-seo')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization progress', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
       className: "ai-cis-job__numbers",
       "aria-live": "polite",
       children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: percent, 2: processed, 3: remaining. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%1$d%% · Processed: %2$d · Remaining: %3$d', 'ai-content-image-seo'), job.percent, job.processed, job.remaining), ' · ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: optimized count, 2: skipped count, 3: failed count. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Updated: %1$d · Already complete: %2$d · Failed: %3$d', 'ai-content-image-seo'), job.optimized, job.skipped, job.failed)]
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%1$d%% · Processed: %2$d · Remaining: %3$d', 'wbd-content-image-seo-assistant'), job.percent, job.processed, job.remaining), ' · ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: optimized count, 2: skipped count, 3: failed count. */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Updated: %1$d · Already complete: %2$d · Failed: %3$d', 'wbd-content-image-seo-assistant'), job.optimized, job.skipped, job.failed)]
     }), job.truncated > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
       className: "description",
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number of images not included. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__._n)('%d image was not included because of the bulk batch limit.', '%d images were not included because of the bulk batch limit.', job.truncated, 'ai-content-image-seo'), job.truncated)
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__._n)('%d image was not included because of the bulk batch limit.', '%d images were not included because of the bulk batch limit.', job.truncated, 'wbd-content-image-seo-assistant'), job.truncated)
     }), job.status === 'paused' && job.stop_reason && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
       children: reasons[job.stop_reason]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -893,28 +893,28 @@ function JobPanel({
         variant: "secondary",
         onClick: () => onControl('pause'),
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pause', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pause', 'wbd-content-image-seo-assistant')
       }), job.status === 'paused' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "primary",
         onClick: () => onControl('resume'),
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Resume', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Resume', 'wbd-content-image-seo-assistant')
       }), job.status !== 'completed' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "tertiary",
         isDestructive: true,
         onClick: () => onControl('cancel'),
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cancel', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cancel', 'wbd-content-image-seo-assistant')
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         onClick: () => onControl('cancel'),
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Clear', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Clear', 'wbd-content-image-seo-assistant')
       })]
     }), job.errors?.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("details", {
       className: "ai-cis-errors",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("summary", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed images', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed images', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
         children: job.errors.map((e, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
           children: ["#", e.id, " ", e.title, ": ", e.message]
@@ -928,7 +928,7 @@ function AltCell({
 }) {
   if (item.image_type === 'decorative') {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("em", {
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (empty by design)', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (empty by design)', 'wbd-content-image-seo-assistant')
     });
   }
   if (item.alt) {
@@ -936,7 +936,7 @@ function AltCell({
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
     className: "ai-cis-missing",
-    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing', 'ai-content-image-seo')
+    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing', 'wbd-content-image-seo-assistant')
   });
 }
 function BulkTab() {
@@ -992,7 +992,7 @@ function BulkTab() {
         });
         setJob(next);
         if (next.status === 'completed') {
-          (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_4__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization completed.', 'ai-content-image-seo'));
+          (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_4__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization completed.', 'wbd-content-image-seo-assistant'));
           loadStats();
           loadList();
         }
@@ -1024,7 +1024,7 @@ function BulkTab() {
       });
       setJob(res);
       setSelected([]);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_4__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization started.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_4__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization started.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_5__.errorInfo)(e));
     }
@@ -1053,43 +1053,43 @@ function BulkTab() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "ai-cis-page",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_6__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Media Library', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Media Library', 'wbd-content-image-seo-assistant'),
       actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         onClick: () => loadStats().then(loadList),
         isBusy: scanning,
         disabled: scanning,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Scan Library', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Scan Library', 'wbd-content-image-seo-assistant')
       }),
       children: !stats ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("dl", {
         className: "ai-cis-stats",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dt", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total Images', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Total Images', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dd", {
             children: stats.total
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dt", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Alt Text', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Alt Text', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dd", {
             children: stats.missing_alt
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dt", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Title', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Title', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dd", {
             children: stats.missing_title
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dt", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Description', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing Description', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dd", {
             children: stats.missing_description
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dt", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("dd", {
             children: stats.decorative
           })]
@@ -1103,19 +1103,19 @@ function BulkTab() {
       onControl: control,
       busy: busy
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_6__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'wbd-content-image-seo-assistant'),
       children: [!d.canBulk && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
         status: "info",
         isDismissible: false,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization is available to editors and administrators.', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk optimization is available to editors and administrators.', 'wbd-content-image-seo-assistant')
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "ai-cis-bulk-options",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("fieldset", {
           className: "ai-cis-fieldset ai-cis-inline",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("legend", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields to fill', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields to fill', 'wbd-content-image-seo-assistant')
           }), fieldLabels.map(f => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
             __nextHasNoMarginBottom: true,
             label: f.label,
@@ -1124,8 +1124,8 @@ function BulkTab() {
           }, f.value))]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
           __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Overwrite existing metadata', 'ai-content-image-seo'),
-          help: overwrite ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Existing values will be replaced.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Only empty fields (and default filename titles) are filled.', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Overwrite existing metadata', 'wbd-content-image-seo-assistant'),
+          help: overwrite ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Existing values will be replaced.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Only empty fields (and default filename titles) are filled.', 'wbd-content-image-seo-assistant'),
           checked: overwrite,
           onChange: setOverwrite
         })]
@@ -1134,7 +1134,7 @@ function BulkTab() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Filter', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Filter', 'wbd-content-image-seo-assistant'),
           value: filter,
           options: d.options.imageFilters,
           onChange: v => {
@@ -1144,7 +1144,7 @@ function BulkTab() {
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SearchControl, {
           __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search images', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search images', 'wbd-content-image-seo-assistant'),
           value: search,
           onChange: v => {
             setSearch(v);
@@ -1152,8 +1152,8 @@ function BulkTab() {
           }
         })]
       }), !list && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), list && list.total === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_6__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images need optimization.', 'ai-content-image-seo'),
-        text: filter === 'missing_alt' || filter === 'missing_metadata' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your media library is already optimized.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images match this filter.', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images need optimization.', 'wbd-content-image-seo-assistant'),
+        text: filter === 'missing_alt' || filter === 'missing_metadata' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your media library is already optimized.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images match this filter.', 'wbd-content-image-seo-assistant')
       }), list && list.total > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "ai-cis-actions",
@@ -1162,16 +1162,16 @@ function BulkTab() {
             onClick: () => start(false),
             disabled: busy || jobActive || !selected.length || !fields.length || !d.canBulk,
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number of selected images. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Selected (%d)', 'ai-content-image-seo'), selected.length)
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize Selected (%d)', 'wbd-content-image-seo-assistant'), selected.length)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
             variant: "secondary",
             onClick: () => start(true),
             disabled: busy || jobActive || !fields.length || !d.canBulk,
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number of matching images. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize all %d matching images', 'ai-content-image-seo'), list.total)
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Optimize all %d matching images', 'wbd-content-image-seo-assistant'), list.total)
           }), jobActive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             className: "description",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A job is already in progress.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A job is already in progress.', 'wbd-content-image-seo-assistant')
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("table", {
           className: "widefat striped ai-cis-table",
@@ -1181,23 +1181,23 @@ function BulkTab() {
                 className: "check-column",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
                   __nextHasNoMarginBottom: true,
-                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select all on this page', 'ai-content-image-seo'),
+                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select all on this page', 'wbd-content-image-seo-assistant'),
                   className: "ai-cis-sr-label",
                   checked: allOnPage,
                   onChange: c => setSelected(prev => c ? [...new Set([...prev, ...pageIds])] : prev.filter(id => !pageIds.includes(id)))
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
                 scope: "col",
-                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image', 'ai-content-image-seo')
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image', 'wbd-content-image-seo-assistant')
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
                 scope: "col",
-                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text', 'ai-content-image-seo')
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text', 'wbd-content-image-seo-assistant')
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
                 scope: "col",
-                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title', 'ai-content-image-seo')
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title', 'wbd-content-image-seo-assistant')
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("th", {
                 scope: "col",
-                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used in', 'ai-content-image-seo')
+                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used in', 'wbd-content-image-seo-assistant')
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tbody", {
@@ -1209,7 +1209,7 @@ function BulkTab() {
                   __nextHasNoMarginBottom: true,
                   className: "ai-cis-sr-label",
                   label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: file name. */
-                  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select %s', 'ai-content-image-seo'), item.filename),
+                  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select %s', 'wbd-content-image-seo-assistant'), item.filename),
                   checked: selected.includes(item.id),
                   onChange: c => setSelected(prev => c ? [...prev, item.id] : prev.filter(id => id !== item.id))
                 })
@@ -1227,13 +1227,13 @@ function BulkTab() {
                       children: item.filename
                     }), item.status === 'failed' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                       className: "ai-cis-badge is-error",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed', 'ai-content-image-seo')
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Failed', 'wbd-content-image-seo-assistant')
                     }), item.status === 'limit' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                       className: "ai-cis-badge is-warn",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Waiting for limit reset', 'ai-content-image-seo')
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Waiting for limit reset', 'wbd-content-image-seo-assistant')
                     }), item.status === 'queued' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                       className: "ai-cis-badge",
-                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Queued', 'ai-content-image-seo')
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Queued', 'wbd-content-image-seo-assistant')
                     })]
                   })]
                 })
@@ -1254,20 +1254,20 @@ function BulkTab() {
             variant: "secondary",
             disabled: page <= 1,
             onClick: () => setPage(page - 1),
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: current page, 2: total pages. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page %1$d of %2$d', 'ai-content-image-seo'), page, list.total_pages)
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page %1$d of %2$d', 'wbd-content-image-seo-assistant'), page, list.total_pages)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
             variant: "secondary",
             disabled: page >= list.total_pages,
             onClick: () => setPage(page + 1),
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'wbd-content-image-seo-assistant')
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         className: "description",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images are processed a few at a time in the background (Action Scheduler or WP-Cron). Keeping this page open speeds things up. Each processed image counts as one image generation; images that already have the selected fields are skipped without using AI.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images are processed a few at a time in the background (Action Scheduler or WP-Cron). Keeping this page open speeds things up. Each processed image counts as one image generation; images that already have the selected fields are skipped without using AI.', 'wbd-content-image-seo-assistant')
       })]
     })]
   });
@@ -1281,29 +1281,29 @@ function AutomationTab() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     className: "ai-cis-page",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_6__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatic Image Optimization', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatic Image Optimization', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Status:', 'ai-content-image-seo')
-        }), ' ', d.defaults.autoOptimize ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enabled. New uploads are optimized in the background.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Disabled.', 'ai-content-image-seo')]
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Status:', 'wbd-content-image-seo-assistant')
+        }), ' ', d.defaults.autoOptimize ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Enabled. New uploads are optimized in the background.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Disabled.', 'wbd-content-image-seo-assistant')]
       }), usage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: images waiting. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images waiting in the queue: %d', 'ai-content-image-seo'), usage.auto_queue)
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images waiting in the queue: %d', 'wbd-content-image-seo-assistant'), usage.auto_queue)
         }), usage.auto_limit_hit && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
           status: "warning",
           isDismissible: false,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached. New images will remain unprocessed until the limit resets.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached. New images will remain unprocessed until the limit resets.', 'wbd-content-image-seo-assistant')
           })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         className: "description",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation only fills empty fields, respects the monthly automation limit and never retries failed images automatically. Use the Bulk Optimizer with the "Failed / Not Processed" filter to retry.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation only fills empty fields, respects the monthly automation limit and never retries failed images automatically. Use the Bulk Optimizer with the "Failed / Not Processed" filter to retry.', 'wbd-content-image-seo-assistant')
       }), d.isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         href: d.pages.settings + '&tab=images',
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation Settings', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation Settings', 'wbd-content-image-seo-assistant')
       })]
     })
   });
@@ -1324,13 +1324,13 @@ function ImageAI() {
       initialTabName: initial,
       tabs: [{
         name: 'bulk',
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk Optimizer', 'wbd-content-image-seo-assistant')
       }, {
         name: 'single',
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Single Image', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Single Image', 'wbd-content-image-seo-assistant')
       }, {
         name: 'automation',
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation', 'wbd-content-image-seo-assistant')
       }],
       children: t => {
         if (t.name === 'single') {
@@ -1446,29 +1446,29 @@ function Onboarding() {
     }
     return n < step ? 'is-done' : '';
   };
-  let connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The WordPress AI Client is not available on this site. Go back and choose another provider.', 'ai-content-image-seo');
+  let connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The WordPress AI Client is not available on this site. Go back and choose another provider.', 'wbd-content-image-seo-assistant');
   if (info?.available) {
-    connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI is configured. No API key is needed here.', 'ai-content-image-seo');
+    connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI is configured. No API key is needed here.', 'wbd-content-image-seo-assistant');
   } else if (info?.api_exists) {
-    connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Configure a provider in Settings → Connectors, then come back. You can also go back and pick another provider.', 'ai-content-image-seo');
+    connectorText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Configure a provider in Settings → Connectors, then come back. You can also go back and pick another provider.', 'wbd-content-image-seo-assistant');
   }
-  const steps = [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose AI Provider', 'ai-content-image-seo'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Configure API', 'ai-content-image-seo'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose Default Language', 'ai-content-image-seo'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose Alt Text Style', 'ai-content-image-seo')];
+  const steps = [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose AI Provider', 'wbd-content-image-seo-assistant'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Configure API', 'wbd-content-image-seo-assistant'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose Default Language', 'wbd-content-image-seo-assistant'), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose Alt Text Style', 'wbd-content-image-seo-assistant')];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     className: "ai-cis-onboarding",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "ai-cis-onboarding__card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Welcome to AI Content & Image SEO', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Welcome to WBD Content & Image SEO', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Every feature is free to use. Let’s connect an AI provider and set a few defaults.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Every feature is free to use. Let’s connect an AI provider and set a few defaults.', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ol", {
         className: "ai-cis-steps",
-        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Setup steps', 'ai-content-image-seo'),
+        "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Setup steps', 'wbd-content-image-seo-assistant'),
         children: steps.map((label, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
           className: stepClass(i + 1),
           "aria-current": i + 1 === step ? 'step' : undefined,
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: step number, 2: step name. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Step %1$d: %2$s', 'ai-content-image-seo'), i + 1, label)
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Step %1$d: %2$s', 'wbd-content-image-seo-assistant'), i + 1, label)
         }, label))
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
         tabIndex: -1,
@@ -1478,13 +1478,13 @@ function Onboarding() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.ErrorNotice, {
         error: error
       }), step === 1 && status && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Provider', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Provider', 'wbd-content-image-seo-assistant'),
         hideLabelFromVision: true,
         selected: provider,
         onChange: setProvider,
         options: Object.values(status.providers).map(p => ({
           value: p.id,
-          label: p.label + (p.available ? ' — ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('ready', 'ai-content-image-seo') : '')
+          label: p.label + (p.available ? ' — ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('ready', 'wbd-content-image-seo-assistant') : '')
         }))
       }), step === 2 && info && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
         children: provider === 'wp_ai_connector' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
@@ -1500,37 +1500,37 @@ function Onboarding() {
             type: "password",
             autoComplete: "new-password",
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: provider name. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s API Key', 'ai-content-image-seo'), info.label),
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s API Key', 'wbd-content-image-seo-assistant'), info.label),
             value: apiKey,
-            placeholder: info.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A key is already saved — leave empty to keep it', 'ai-content-image-seo') : '',
+            placeholder: info.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A key is already saved — leave empty to keep it', 'wbd-content-image-seo-assistant') : '',
             onChange: setApiKey
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ExternalLink, {
               href: KEY_LINKS[provider],
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Get an API key', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Get an API key', 'wbd-content-image-seo-assistant')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
             className: "description",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your key is stored encrypted on your own site and is only sent to this provider.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Your key is stored encrypted on your own site and is only sent to this provider.', 'wbd-content-image-seo-assistant')
           })]
         })
       }), step === 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_content_ai__WEBPACK_IMPORTED_MODULE_5__.LanguageControl, {
         value: language,
         onChange: setLanguage
       }), step === 4 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'wbd-content-image-seo-assistant'),
         hideLabelFromVision: true,
         selected: style,
         onChange: setStyle,
         options: [{
           value: 'balanced',
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced (recommended)', 'ai-content-image-seo')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced (recommended)', 'wbd-content-image-seo-assistant')
         }, {
           value: 'accessibility',
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First', 'ai-content-image-seo')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First', 'wbd-content-image-seo-assistant')
         }, {
           value: 'seo',
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'ai-content-image-seo')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'wbd-content-image-seo-assistant')
         }]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "ai-cis-actions ai-cis-onboarding__nav",
@@ -1538,23 +1538,23 @@ function Onboarding() {
           variant: "secondary",
           onClick: () => setStep(step - 1),
           disabled: busy,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Back', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Back', 'wbd-content-image-seo-assistant')
         }), step < 4 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "primary",
           onClick: () => setStep(step + 1),
           disabled: !status,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Continue', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Continue', 'wbd-content-image-seo-assistant')
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "primary",
           onClick: () => finish(false),
           isBusy: busy,
           disabled: busy,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Finish Setup', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Finish Setup', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "tertiary",
           onClick: () => finish(true),
           disabled: busy,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Skip setup', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Skip setup', 'wbd-content-image-seo-assistant')
         })]
       })]
     })
@@ -1623,7 +1623,7 @@ function MetadataPanel({
       });
       setDraft(res);
       setKeywords(res.keywords || []);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata generated. Review the Google preview before saving.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata generated. Review the Google preview before saving.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -1659,7 +1659,7 @@ function MetadataPanel({
         }
       });
       setNotice((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: SEO plugin name. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved to %s.', 'ai-content-image-seo'), res.target));
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved to %s.', 'wbd-content-image-seo-assistant'), res.target));
       onSaved(res.seo);
       setDraft(null);
     } catch (e) {
@@ -1669,14 +1669,14 @@ function MetadataPanel({
   };
   const current = item.seo || {};
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title & Meta Description', 'ai-content-image-seo'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title & Meta Description', 'wbd-content-image-seo-assistant'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
       className: "description",
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: SEO plugin name. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Metadata is saved to: %s. Nothing is changed until you click Save.', 'ai-content-image-seo'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel)
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Metadata is saved to: %s. Nothing is changed until you click Save.', 'wbd-content-image-seo-assistant'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel)
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
       className: "ai-cis-label",
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.GooglePreview, {
       title: current.seo_title || item.title,
       description: current.meta_description,
@@ -1688,12 +1688,12 @@ function MetadataPanel({
         onClick: generate,
         isBusy: busy,
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO Title & Meta Description', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO Title & Meta Description', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         onClick: suggestKeywords,
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggest Focus Keywords', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggest Focus Keywords', 'wbd-content-image-seo-assistant')
       })]
     }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error,
@@ -1701,10 +1701,10 @@ function MetadataPanel({
     }), keywords.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "ai-cis-chips",
       role: "group",
-      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keyword suggestions', 'ai-content-image-seo'),
+      "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keyword suggestions', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keyword suggestions (click to use as focus keyword)', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Keyword suggestions (click to use as focus keyword)', 'wbd-content-image-seo-assistant')
       }), keywords.map(k => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         size: "compact",
@@ -1721,11 +1721,11 @@ function MetadataPanel({
       className: "ai-cis-result",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'wbd-content-image-seo-assistant'),
         value: draft.seo_title || '',
         onChange: v => setDraft({
           ...draft,
@@ -1733,7 +1733,7 @@ function MetadataPanel({
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'wbd-content-image-seo-assistant'),
         value: draft.meta_description || '',
         onChange: v => setDraft({
           ...draft,
@@ -1742,7 +1742,7 @@ function MetadataPanel({
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Focus Keyword', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Focus Keyword', 'wbd-content-image-seo-assistant'),
         value: draft.focus_keyword || '',
         onChange: v => setDraft({
           ...draft,
@@ -1754,7 +1754,7 @@ function MetadataPanel({
         url: item.link
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
         onUse: save,
-        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save SEO Metadata', 'ai-content-image-seo'),
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save SEO Metadata', 'wbd-content-image-seo-assistant'),
         busy: saving,
         copyText: (draft.seo_title || '') + '\n' + (draft.meta_description || ''),
         onRegenerate: generate
@@ -1787,19 +1787,19 @@ function OptimizationPanel({
         }
       });
       setReport(res);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content analysis ready.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content analysis ready.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
     setBusy(false);
   };
   const priorityLabel = {
-    high: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('High priority', 'ai-content-image-seo'),
-    medium: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Medium priority', 'ai-content-image-seo'),
-    low: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Low priority', 'ai-content-image-seo')
+    high: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('High priority', 'wbd-content-image-seo-assistant'),
+    medium: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Medium priority', 'wbd-content-image-seo-assistant'),
+    low: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Low priority', 'wbd-content-image-seo-assistant')
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Optimization', 'ai-content-image-seo'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Optimization', 'wbd-content-image-seo-assistant'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "ai-cis-actions",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
@@ -1807,10 +1807,10 @@ function OptimizationPanel({
         onClick: analyze,
         isBusy: busy,
         disabled: busy,
-        children: report ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyze Again', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyze Content', 'ai-content-image-seo')
+        children: report ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyze Again', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyze Content', 'wbd-content-image-seo-assistant')
       })
     }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyzing…', 'ai-content-image-seo')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Analyzing…', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error,
       onDismiss: () => setError(null)
@@ -1819,7 +1819,7 @@ function OptimizationPanel({
       children: [report.score !== null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         className: "ai-cis-big-number",
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: SEO score. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI SEO score: %d / 100', 'ai-content-image-seo'), report.score)
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI SEO score: %d / 100', 'wbd-content-image-seo-assistant'), report.score)
       }), report.summary && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         children: report.summary
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
@@ -1831,13 +1831,13 @@ function OptimizationPanel({
             "aria-hidden": "true"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             className: "screen-reader-text",
-            children: c.pass ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Passed:', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Needs work:', 'ai-content-image-seo')
+            children: c.pass ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Passed:', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Needs work:', 'wbd-content-image-seo-assistant')
           }), c.label, ": ", c.note]
         }, c.label))
       }), report.suggestions.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
           className: "ai-cis-label",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggestions', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggestions', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
           className: "ai-cis-suggestions",
           children: report.suggestions.map((s, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
@@ -1850,7 +1850,7 @@ function OptimizationPanel({
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
           href: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.content + '&tab=rewrite',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use the Content Rewriter to apply improvements', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use the Content Rewriter to apply improvements', 'wbd-content-image-seo-assistant')
         })
       })]
     })]
@@ -1863,9 +1863,9 @@ function ImageSeoPanel({
   const [editing, setEditing] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
   const images = item.images || [];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image SEO', 'ai-content-image-seo'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image SEO', 'wbd-content-image-seo-assistant'),
     children: [images.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images found in this content.', 'ai-content-image-seo')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No images found in this content.', 'wbd-content-image-seo-assistant')
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
       className: "ai-cis-image-list",
       children: images.map(img => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
@@ -1878,22 +1878,22 @@ function ImageSeoPanel({
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
             children: img.title
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), img.decorative && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("em", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (empty alt by design)', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (empty alt by design)', 'wbd-content-image-seo-assistant')
           }), !img.decorative && (img.alt ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
-            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt:', 'ai-content-image-seo'), ' ', img.alt]
+            children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt:', 'wbd-content-image-seo-assistant'), ' ', img.alt]
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             className: "ai-cis-missing",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing alt text', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Missing alt text', 'wbd-content-image-seo-assistant')
           }))]
         }), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().canUpload && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "secondary",
           size: "compact",
           onClick: () => setEditing(img.id),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate AI Metadata', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate AI Metadata', 'wbd-content-image-seo-assistant')
         })]
       }, img.id))
     }), editing && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Modal, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate AI Metadata', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate AI Metadata', 'wbd-content-image-seo-assistant'),
       onRequestClose: () => setEditing(null),
       className: "ai-cis-modal",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_image_metadata_panel__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -1925,12 +1925,12 @@ function SeoAssistant() {
       className: "ai-cis-notice",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         children: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPlugin ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: SEO plugin name. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s detected. SEO metadata is read from and saved to it.', 'ai-content-image-seo'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No SEO plugin detected (Yoast SEO, Rank Math and All in One SEO are supported). Metadata is stored by this plugin and output in your page head.', 'ai-content-image-seo')
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s detected. SEO metadata is read from and saved to it.', 'wbd-content-image-seo-assistant'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No SEO plugin detected (Yoast SEO, Rank Math and All in One SEO are supported). Metadata is stored by this plugin and output in your page head.', 'wbd-content-image-seo-assistant')
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "ai-cis-sidebar-layout",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose content', 'ai-content-image-seo'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose content', 'wbd-content-image-seo-assistant'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_item_picker__WEBPACK_IMPORTED_MODULE_6__["default"], {
           onSelect: load,
           selectedId: item?.id,
@@ -1941,15 +1941,15 @@ function SeoAssistant() {
           error: error
         }), loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), !loading && !item && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select a post, page or product.', 'ai-content-image-seo'),
-            text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Then generate an SEO title and meta description, get keyword ideas, analyze the content and check image alt text.', 'ai-content-image-seo')
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select a post, page or product.', 'wbd-content-image-seo-assistant'),
+            text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Then generate an SEO title and meta description, get keyword ideas, analyze the content and check image alt text.', 'wbd-content-image-seo-assistant')
           })
         }), !loading && item && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
             className: "ai-cis-section-title",
             children: [item.title, ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
               href: item.edit_link,
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit', 'wbd-content-image-seo-assistant')
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(MetadataPanel, {
             item: item,
@@ -2067,7 +2067,7 @@ function ProviderTab({
         }
       });
       onModelsRefreshed(provider, res.models);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Model list updated.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Model list updated.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -2075,9 +2075,9 @@ function ProviderTab({
   };
   const keyInfo = publicKeys[provider];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Provider', 'ai-content-image-seo'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Provider', 'wbd-content-image-seo-assistant'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Provider', 'ai-content-image-seo'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Provider', 'wbd-content-image-seo-assistant'),
       selected: provider,
       onChange: v => {
         set('provider', v);
@@ -2087,44 +2087,44 @@ function ProviderTab({
       },
       options: Object.values(status.providers).map(p => ({
         value: p.id,
-        label: p.label + ' — ' + (p.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('ready', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('not configured', 'ai-content-image-seo'))
+        label: p.label + ' — ' + (p.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('ready', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('not configured', 'wbd-content-image-seo-assistant'))
       }))
     }), provider === 'wp_ai_connector' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
       status: info.available ? 'success' : 'info',
       isDismissible: false,
       className: "ai-cis-notice",
       children: info.api_exists ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
-        children: [info.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI is available. Requests use the provider configured in Settings → Connectors.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI Client is available, but no text-generation connector is configured yet.', 'ai-content-image-seo'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
+        children: [info.available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI is available. Requests use the provider configured in Settings → Connectors.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WordPress AI Client is available, but no text-generation connector is configured yet.', 'wbd-content-image-seo-assistant'), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
           href: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().connectorsUrl,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open Connectors', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open Connectors', 'wbd-content-image-seo-assistant')
         })]
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The WordPress AI Client is not available on this site (it ships with WordPress 7.0+). Choose another provider and add an API key instead.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The WordPress AI Client is not available on this site (it ships with WordPress 7.0+). Choose another provider and add an API key instead.', 'wbd-content-image-seo-assistant')
       })
     }), info.needs_key && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "ai-cis-key",
       children: keyInfo?.via_constant ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: constant name. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The API key is defined in wp-config.php (%s).', 'ai-content-image-seo'), 'AI_CIS_' + provider.toUpperCase() + '_API_KEY')
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The API key is defined in wp-config.php (%s).', 'wbd-content-image-seo-assistant'), 'AI_CIS_' + provider.toUpperCase() + '_API_KEY')
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           type: "password",
           autoComplete: "new-password",
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('API Key', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('API Key', 'wbd-content-image-seo-assistant'),
           value: keys[provider] && keys[provider] !== '__delete__' ? keys[provider] : '',
           placeholder: keyInfo?.configured ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: last characters of the key. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved key %s — leave empty to keep it', 'ai-content-image-seo'), keyInfo.hint) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paste your API key', 'ai-content-image-seo'),
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved key %s — leave empty to keep it', 'wbd-content-image-seo-assistant'), keyInfo.hint) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Paste your API key', 'wbd-content-image-seo-assistant'),
           onChange: v => setKeys({
             ...keys,
             [provider]: v
           }),
-          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Stored encrypted in your database and never shown in the browser again. You can also define it in wp-config.php.', 'ai-content-image-seo')
+          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Stored encrypted in your database and never shown in the browser again. You can also define it in wp-config.php.', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("p", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ExternalLink, {
             href: KEY_LINKS[provider],
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Get an API key', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Get an API key', 'wbd-content-image-seo-assistant')
           }), keyInfo?.configured && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
             children: [' · ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
               variant: "link",
@@ -2133,7 +2133,7 @@ function ProviderTab({
                 ...keys,
                 [provider]: '__delete__'
               }),
-              children: keys[provider] === '__delete__' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Key will be removed on save', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remove saved key', 'ai-content-image-seo')
+              children: keys[provider] === '__delete__' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Key will be removed on save', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remove saved key', 'wbd-content-image-seo-assistant')
             })]
           })]
         })]
@@ -2144,14 +2144,14 @@ function ProviderTab({
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Model', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Model', 'wbd-content-image-seo-assistant'),
           value: customModel ? '__custom' : currentModel,
           options: [...Object.entries(models).map(([value, label]) => ({
             value,
             label
           })), {
             value: '__custom',
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom model ID…', 'ai-content-image-seo')
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom model ID…', 'wbd-content-image-seo-assistant')
           }],
           onChange: v => {
             if (v === '__custom') {
@@ -2164,7 +2164,7 @@ function ProviderTab({
         }), customModel && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom model ID', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom model ID', 'wbd-content-image-seo-assistant'),
           value: currentModel === 'auto' ? '' : currentModel,
           onChange: setModel
         }), info.needs_key && keyInfo?.configured && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
@@ -2172,14 +2172,14 @@ function ProviderTab({
           onClick: refreshModels,
           isBusy: refreshing,
           disabled: refreshing,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Load models from provider', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Load models from provider', 'wbd-content-image-seo-assistant')
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RangeControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Temperature', 'ai-content-image-seo'),
-          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Lower is more focused, higher is more creative.', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Temperature', 'wbd-content-image-seo-assistant'),
+          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Lower is more focused, higher is more creative.', 'wbd-content-image-seo-assistant'),
           value: Number(form.temperature),
           min: 0,
           max: 2,
@@ -2192,7 +2192,7 @@ function ProviderTab({
         type: "number",
         min: 64,
         max: 32000,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Max Tokens', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Max Tokens', 'wbd-content-image-seo-assistant'),
         value: form.max_tokens,
         onChange: v => set('max_tokens', parseInt(v, 10) || 0)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
@@ -2201,7 +2201,7 @@ function ProviderTab({
         type: "number",
         min: 10,
         max: 300,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Request timeout (seconds)', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Request timeout (seconds)', 'wbd-content-image-seo-assistant'),
         value: form.request_timeout,
         onChange: v => set('request_timeout', parseInt(v, 10) || 0)
       })]
@@ -2212,10 +2212,10 @@ function ProviderTab({
         onClick: test,
         isBusy: testing,
         disabled: testing,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Test Connection', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Test Connection', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
         className: "description",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tests the saved settings. Save changes first. Tests are not counted as usage.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tests the saved settings. Save changes first. Tests are not counted as usage.', 'wbd-content-image-seo-assistant')
       })]
     }), testResult && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
       status: "success",
@@ -2301,7 +2301,7 @@ function SettingsPage() {
       apply(res);
       setKeys({});
       setSaved(true);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings saved.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings saved.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_common_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -2325,35 +2325,35 @@ function SettingsPage() {
   const params = new window.URLSearchParams(window.location.search);
   const tabs = [{
     name: 'provider',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Provider', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Provider', 'wbd-content-image-seo-assistant')
   }, {
     name: 'content',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content & Language', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content & Language', 'wbd-content-image-seo-assistant')
   }, {
     name: 'images',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images & Automation', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Images & Automation', 'wbd-content-image-seo-assistant')
   }, {
     name: 'seo',
-    title: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().isWooActive ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO & WooCommerce', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO', 'ai-content-image-seo')
+    title: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().isWooActive ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO & WooCommerce', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO', 'wbd-content-image-seo-assistant')
   }, {
     name: 'prompts',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom Prompts', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom Prompts', 'wbd-content-image-seo-assistant')
   }, {
     name: 'limits',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage Limits', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage Limits', 'wbd-content-image-seo-assistant')
   }, {
     name: 'privacy',
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Privacy & Data', 'ai-content-image-seo')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Privacy & Data', 'wbd-content-image-seo-assistant')
   }];
   const initial = tabs.some(t => t.name === params.get('tab')) ? params.get('tab') : 'provider';
-  const promptGroups = [['content', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content generation', 'ai-content-image-seo')], ['rewrite', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content rewriting', 'ai-content-image-seo')], ['image', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image metadata', 'ai-content-image-seo')], ['product', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce products', 'ai-content-image-seo')], ['seo', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata', 'ai-content-image-seo')], ['review', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summaries', 'ai-content-image-seo')]];
+  const promptGroups = [['content', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content generation', 'wbd-content-image-seo-assistant')], ['rewrite', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content rewriting', 'wbd-content-image-seo-assistant')], ['image', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image metadata', 'wbd-content-image-seo-assistant')], ['product', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce products', 'wbd-content-image-seo-assistant')], ['seo', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata', 'wbd-content-image-seo-assistant')], ['review', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summaries', 'wbd-content-image-seo-assistant')]];
   const limitLabels = {
-    content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI content generations per month', 'ai-content-image-seo'),
-    image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image metadata generations per month', 'ai-content-image-seo'),
-    product: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce product generations per month', 'ai-content-image-seo'),
-    auto_image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatic image optimizations per month', 'ai-content-image-seo'),
-    review: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summaries per month', 'ai-content-image-seo'),
-    bulk_batch: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk items per batch', 'ai-content-image-seo')
+    content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI content generations per month', 'wbd-content-image-seo-assistant'),
+    image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image metadata generations per month', 'wbd-content-image-seo-assistant'),
+    product: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce product generations per month', 'wbd-content-image-seo-assistant'),
+    auto_image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatic image optimizations per month', 'wbd-content-image-seo-assistant'),
+    review: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summaries per month', 'wbd-content-image-seo-assistant'),
+    bulk_batch: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk items per batch', 'wbd-content-image-seo-assistant')
   };
   const renderTab = tab => {
     switch (tab.name) {
@@ -2369,7 +2369,7 @@ function SettingsPage() {
         });
       case 'content':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content & Language', 'ai-content-image-seo'),
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content & Language', 'wbd-content-image-seo-assistant'),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_content_ai__WEBPACK_IMPORTED_MODULE_6__.LanguageControl, {
             value: form.default_language === 'Custom' ? 'Custom:' + form.custom_language : form.default_language,
             onChange: v => {
@@ -2383,7 +2383,7 @@ function SettingsPage() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
             __nextHasNoMarginBottom: true,
             __next40pxDefaultSize: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Default tone', 'ai-content-image-seo'),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Default tone', 'wbd-content-image-seo-assistant'),
             value: form.default_tone,
             options: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().options.tones,
             onChange: v => set('default_tone', v)
@@ -2392,42 +2392,42 @@ function SettingsPage() {
       case 'images':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image AI', 'ai-content-image-seo'),
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image AI', 'wbd-content-image-seo-assistant'),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'ai-content-image-seo'),
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'wbd-content-image-seo-assistant'),
               selected: form.alt_text_style,
               onChange: v => set('alt_text_style', v),
               options: [{
                 value: 'balanced',
-                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced (default)', 'ai-content-image-seo')
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced (default)', 'wbd-content-image-seo-assistant')
               }, {
                 value: 'accessibility',
-                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First — concise, factual, no keyword stuffing', 'ai-content-image-seo')
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First — concise, factual, no keyword stuffing', 'wbd-content-image-seo-assistant')
               }, {
                 value: 'seo',
-                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'ai-content-image-seo')
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'wbd-content-image-seo-assistant')
               }]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(FieldChecks, {
-              legend: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Default fields for single and bulk generation', 'ai-content-image-seo'),
+              legend: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Default fields for single and bulk generation', 'wbd-content-image-seo-assistant'),
               value: form.image_default_fields,
               onChange: v => set('image_default_fields', v)
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
               __nextHasNoMarginBottom: true,
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Send the image to the AI provider for visual analysis', 'ai-content-image-seo'),
-              help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Recommended for accurate alt text. When off, only the filename and surrounding context are used.', 'ai-content-image-seo'),
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Send the image to the AI provider for visual analysis', 'wbd-content-image-seo-assistant'),
+              help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Recommended for accurate alt text. When off, only the filename and surrounding context are used.', 'wbd-content-image-seo-assistant'),
               checked: !!form.image_send_file,
               onChange: v => set('image_send_file', v)
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation', 'ai-content-image-seo'),
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automation', 'wbd-content-image-seo-assistant'),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
               __nextHasNoMarginBottom: true,
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatically optimize new images', 'ai-content-image-seo'),
-              help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New uploads are processed in the background. Only empty fields are filled, the automation limit is respected and failed images are not retried.', 'ai-content-image-seo'),
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Automatically optimize new images', 'wbd-content-image-seo-assistant'),
+              help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('New uploads are processed in the background. Only empty fields are filled, the automation limit is respected and failed images are not retried.', 'wbd-content-image-seo-assistant'),
               checked: !!form.auto_optimize,
               onChange: v => set('auto_optimize', v)
             }), form.auto_optimize && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(FieldChecks, {
-              legend: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields', 'ai-content-image-seo'),
+              legend: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields', 'wbd-content-image-seo-assistant'),
               value: form.auto_fields,
               onChange: v => set('auto_fields', v)
             })]
@@ -2438,26 +2438,26 @@ function SettingsPage() {
           title: tab.title,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
             children: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPlugin ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: plugin name. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Detected SEO plugin: %s. SEO metadata is saved there.', 'ai-content-image-seo'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No SEO plugin detected. Supported: Yoast SEO, Rank Math, All in One SEO.', 'ai-content-image-seo')
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Detected SEO plugin: %s. SEO metadata is saved there.', 'wbd-content-image-seo-assistant'), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No SEO plugin detected. Supported: Yoast SEO, Rank Math, All in One SEO.', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Output SEO title and meta description when no SEO plugin is active', 'ai-content-image-seo'),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Output SEO title and meta description when no SEO plugin is active', 'wbd-content-image-seo-assistant'),
             checked: !!form.seo_output_meta,
             onChange: v => set('seo_output_meta', v)
           }), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().isWooActive && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show saved AI review summaries above product reviews', 'ai-content-image-seo'),
-            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You can also place a summary anywhere with the [ai_cis_review_summary] shortcode.', 'ai-content-image-seo'),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show saved AI review summaries above product reviews', 'wbd-content-image-seo-assistant'),
+            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('You can also place a summary anywhere with the [ai_cis_review_summary] shortcode.', 'wbd-content-image-seo-assistant'),
             checked: !!form.review_summary_display,
             onChange: v => set('review_summary_display', v)
           })]
         });
       case 'prompts':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom Prompts', 'ai-content-image-seo'),
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom Prompts', 'wbd-content-image-seo-assistant'),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
             className: "description",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Extra instructions appended to every prompt in a group, for example your brand voice or words to avoid. Developers can replace prompts entirely with the ai_cis_*_prompt filters.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Extra instructions appended to every prompt in a group, for example your brand voice or words to avoid. Developers can replace prompts entirely with the ai_cis_*_prompt filters.', 'wbd-content-image-seo-assistant')
           }), promptGroups.map(([key, label]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
             __nextHasNoMarginBottom: true,
             label: label,
@@ -2468,13 +2468,13 @@ function SettingsPage() {
         });
       case 'limits':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage Limits', 'ai-content-image-seo'),
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage Limits', 'wbd-content-image-seo-assistant'),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
             status: "info",
             isDismissible: false,
             className: "ai-cis-notice",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('All features are free and unlimited by default. Set a number to cap monthly usage on this site (for example to control AI provider costs). 0 = unlimited.', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('All features are free and unlimited by default. Set a number to cap monthly usage on this site (for example to control AI provider costs). 0 = unlimited.', 'wbd-content-image-seo-assistant')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "ai-cis-grid-2",
@@ -2486,29 +2486,29 @@ function SettingsPage() {
               label: limitLabels[key],
               value: form.limits[key],
               onChange: v => setNested('limits', key, Math.max(0, parseInt(v, 10) || 0)),
-              help: Number(form.limits[key]) === 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'ai-content-image-seo') : ''
+              help: Number(form.limits[key]) === 0 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'wbd-content-image-seo-assistant') : ''
             }, key))
           })]
         });
       case 'privacy':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Privacy & Data', 'ai-content-image-seo'),
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Privacy & Data', 'wbd-content-image-seo-assistant'),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI requests send the content you select (post text, image files and context, product details, or review text and star ratings) to the AI provider configured above. Nothing is sent without a user action or enabled automation.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI requests send the content you select (post text, image files and context, product details, or review text and star ratings) to the AI provider configured above. Nothing is sent without a user action or enabled automation.', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Never sent: passwords, payment information, customer accounts, reviewer names, emails or IP addresses. The plugin has no tracking and sends nothing to its author.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Never sent: passwords, payment information, customer accounts, reviewer names, emails or IP addresses. The plugin has no tracking and sends nothing to its author.', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review your AI provider’s data policy before use. Suggested text has been added to Settings → Privacy → Policy Guide.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review your AI provider’s data policy before use. Suggested text has been added to Settings → Privacy → Policy Guide.', 'wbd-content-image-seo-assistant')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Delete plugin settings on uninstall', 'ai-content-image-seo'),
-            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Removes settings, API keys and usage data when the plugin is deleted. Your posts, products, media and generated content are never deleted.', 'ai-content-image-seo'),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Delete plugin settings on uninstall', 'wbd-content-image-seo-assistant'),
+            help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Removes settings, API keys and usage data when the plugin is deleted. Your posts, products, media and generated content are never deleted.', 'wbd-content-image-seo-assistant'),
             checked: !!form.delete_on_uninstall,
             onChange: v => set('delete_on_uninstall', v)
           }), (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
               href: (0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.dashboard + '&setup=1',
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Run the setup wizard again', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Run the setup wizard again', 'wbd-content-image-seo-assistant')
             })
           })]
         });
@@ -2529,11 +2529,11 @@ function SettingsPage() {
         onClick: save,
         isBusy: saving,
         disabled: saving,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save Settings', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save Settings', 'wbd-content-image-seo-assistant')
       }), saved && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
         className: "ai-cis-saved",
         role: "status",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings saved.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings saved.', 'wbd-content-image-seo-assistant')
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error,
@@ -2583,7 +2583,7 @@ function UsagePage() {
   const reset = async () => {
     if (
     // eslint-disable-next-line no-alert
-    !window.confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Reset this month’s usage counters to zero?', 'ai-content-image-seo'))) {
+    !window.confirm((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Reset this month’s usage counters to zero?', 'wbd-content-image-seo-assistant'))) {
       return;
     }
     setBusy(true);
@@ -2610,31 +2610,31 @@ function UsagePage() {
       isDismissible: false,
       className: "ai-cis-notice",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Every feature is available for free. Usage is tracked so you can see how much AI you use; limits are optional and can be set in Settings → Usage Limits (0 = unlimited).', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Every feature is available for free. Usage is tracked so you can see how much AI you use; limits are optional and can be set in Settings → Usage Limits (0 = unlimited).', 'wbd-content-image-seo-assistant')
       })
     }), usage.auto_limit_hit && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
       status: "warning",
       isDismissible: false,
       className: "ai-cis-notice",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached. New images will remain unprocessed until the limit resets.', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI usage limit reached. New images will remain unprocessed until the limit resets.', 'wbd-content-image-seo-assistant')
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.ErrorNotice, {
       error: error
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_4__.Section, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: period YYYY-MM. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage for %s', 'ai-content-image-seo'), usage.period),
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Usage for %s', 'wbd-content-image-seo-assistant'), usage.period),
       actions: (0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "secondary",
           href: (0,_common_api__WEBPACK_IMPORTED_MODULE_3__.data)().pages.settings + '&tab=limits',
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit Limits', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit Limits', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "tertiary",
           isDestructive: true,
           onClick: reset,
           disabled: busy,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Reset Counters', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Reset Counters', 'wbd-content-image-seo-assistant')
         })]
       }),
       children: [Object.entries(types).map(([key, type]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.UsageMeter, {
@@ -2645,16 +2645,16 @@ function UsagePage() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Type', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Type', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Limit', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Limit', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remaining', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remaining', 'wbd-content-image-seo-assistant')
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tbody", {
@@ -2664,17 +2664,17 @@ function UsagePage() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: type.used
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'ai-content-image-seo') : type.limit
+              children: type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'wbd-content-image-seo-assistant') : type.limit
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'ai-content-image-seo') : type.remaining
+              children: type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'wbd-content-image-seo-assistant') : type.remaining
             })]
           }, key)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk items per batch', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bulk items per batch', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: "\u2014"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: usage.bulk_batch ? usage.bulk_batch : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'ai-content-image-seo')
+              children: usage.bulk_batch ? usage.bulk_batch : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unlimited', 'wbd-content-image-seo-assistant')
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: "\u2014"
             })]
@@ -2683,20 +2683,20 @@ function UsagePage() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         className: "description",
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: date. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Counters reset automatically on %s (site timezone). Regenerating a result counts as a new generation. Connection tests are never counted.', 'ai-content-image-seo'), usage.reset_date)
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Counters reset automatically on %s (site timezone). Regenerating a result counts as a new generation. Connection tests are never counted.', 'wbd-content-image-seo-assistant'), usage.reset_date)
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('History', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('History', 'wbd-content-image-seo-assistant'),
       children: history.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_4__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No history yet.', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Monthly totals appear here after your first full month.', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No history yet.', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Monthly totals appear here after your first full month.', 'wbd-content-image-seo-assistant')
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
         className: "widefat striped ai-cis-table",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Month', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Month', 'wbd-content-image-seo-assistant')
             }), Object.entries(types).map(([key, type]) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
               scope: "col",
               children: type.label
@@ -2784,8 +2784,8 @@ function WooCommercePage() {
   if (!(0,_common_api__WEBPACK_IMPORTED_MODULE_4__.data)().isWooActive) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce is not active.', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install and activate WooCommerce to use product AI features.', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('WooCommerce is not active.', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Install and activate WooCommerce to use product AI features.', 'wbd-content-image-seo-assistant')
       })
     });
   }
@@ -2798,10 +2798,10 @@ function WooCommercePage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "ai-cis-sidebar-layout",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Products', 'ai-content-image-seo'),
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Products', 'wbd-content-image-seo-assistant'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SearchControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search products', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search products', 'wbd-content-image-seo-assistant'),
         value: search,
         onChange: v => {
           setSearch(v);
@@ -2810,8 +2810,8 @@ function WooCommercePage() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
         error: error
       }), !list && !error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), list && list.items.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No products found.', 'ai-content-image-seo'),
-        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create a product in WooCommerce first, then come back to generate its content.', 'ai-content-image-seo')
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No products found.', 'wbd-content-image-seo-assistant'),
+        text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Create a product in WooCommerce first, then come back to generate its content.', 'wbd-content-image-seo-assistant')
       }), list && list.items.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
         className: "ai-cis-picker__list",
         children: list.items.map(item => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
@@ -2829,7 +2829,7 @@ function WooCommercePage() {
               children: item.name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
               className: "ai-cis-picker__meta",
-              children: [item.status, !item.has_description && ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('no description', 'ai-content-image-seo')]
+              children: [item.status, !item.has_description && ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('no description', 'wbd-content-image-seo-assistant')]
             })]
           })
         }, item.id))
@@ -2839,38 +2839,38 @@ function WooCommercePage() {
           variant: "secondary",
           disabled: page <= 1,
           onClick: () => setPage(page - 1),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
           variant: "secondary",
           disabled: page >= list.total_pages,
           onClick: () => setPage(page + 1),
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'wbd-content-image-seo-assistant')
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       children: !product ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select a product.', 'ai-content-image-seo'),
-          text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate titles, descriptions, tags, category suggestions, SEO metadata and review summaries. Every result is previewed before it is saved.', 'ai-content-image-seo')
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select a product.', 'wbd-content-image-seo-assistant'),
+          text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate titles, descriptions, tags, category suggestions, SEO metadata and review summaries. Every result is previewed before it is saved.', 'wbd-content-image-seo-assistant')
         })
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
           className: "ai-cis-section-title",
           children: [product.name, ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
             href: product.edit_link,
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit product', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Edit product', 'wbd-content-image-seo-assistant')
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TabPanel, {
           className: "ai-cis-tabs",
           tabs: [{
             name: 'assistant',
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Product Assistant', 'ai-content-image-seo')
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Product Assistant', 'wbd-content-image-seo-assistant')
           }, {
             name: 'reviews',
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Review Summary', 'ai-content-image-seo')
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Review Summary', 'wbd-content-image-seo-assistant')
           }, {
             name: 'current',
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current Content', 'ai-content-image-seo')
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current Content', 'wbd-content-image-seo-assistant')
           }],
           children: tab => {
             if (tab.name === 'reviews') {
@@ -2884,36 +2884,36 @@ function WooCommercePage() {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_common_components__WEBPACK_IMPORTED_MODULE_5__.Section, {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   className: "ai-cis-label",
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Short Description', 'ai-content-image-seo')
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Short Description', 'wbd-content-image-seo-assistant')
                 }), product.short_description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
                   html: product.short_description
                 }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("em", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'wbd-content-image-seo-assistant')
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   className: "ai-cis-label",
-                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Description', 'ai-content-image-seo')
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Description', 'wbd-content-image-seo-assistant')
                 }), product.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_common_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
                   html: product.description
                 }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("em", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'wbd-content-image-seo-assistant')
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("p", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories:', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories:', 'wbd-content-image-seo-assistant')
                   }), ' ', product.categories.join(', ') || '—', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags:', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags:', 'wbd-content-image-seo-assistant')
                   }), ' ', product.tags.join(', ') || '—', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO title:', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO title:', 'wbd-content-image-seo-assistant')
                   }), ' ', product.seo.seo_title || '—', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
-                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta description:', 'ai-content-image-seo')
+                    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta description:', 'wbd-content-image-seo-assistant')
                   }), ' ', product.seo.meta_description || '—']
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   className: "description",
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: review count. */
-                  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Approved reviews: %d', 'ai-content-image-seo'), product.review_count)
+                  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Approved reviews: %d', 'wbd-content-image-seo-assistant'), product.review_count)
                 })]
               });
             }
@@ -3025,7 +3025,7 @@ function errorInfo(error) {
       code: 'abort'
     };
   }
-  const message = error.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unable to generate content. Please check your AI provider settings and try again.', 'ai-content-image-seo');
+  const message = error.message || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unable to generate content. Please check your AI provider settings and try again.', 'wbd-content-image-seo-assistant');
   return {
     message,
     details: error.data && error.data.details || '',
@@ -3338,8 +3338,8 @@ function Loading({
     "aria-live": "polite",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
-        children: label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'ai-content-image-seo')
-      }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please wait.', 'ai-content-image-seo')]
+        children: label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generating…', 'wbd-content-image-seo-assistant')
+      }), ' ', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Please wait.', 'wbd-content-image-seo-assistant')]
     })]
   });
 }
@@ -3371,14 +3371,14 @@ function ErrorNotice({
     }), isProvider && (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
         href: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.settings,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open AI Provider settings', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Open AI Provider settings', 'wbd-content-image-seo-assistant')
       })
     }), error.details && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "link",
         onClick: () => setOpen(!open),
         "aria-expanded": open,
-        children: open ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hide technical details', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show technical details', 'ai-content-image-seo')
+        children: open ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Hide technical details', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Show technical details', 'wbd-content-image-seo-assistant')
       }), open && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
         className: "ai-cis-details",
         children: error.details
@@ -3402,13 +3402,13 @@ function ProviderNotice() {
     className: "ai-cis-notice",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No AI provider configured.', 'ai-content-image-seo')
-      }), ' ', (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect an AI provider from Settings → AI Provider.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ask a site administrator to connect an AI provider.', 'ai-content-image-seo')]
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No AI provider configured.', 'wbd-content-image-seo-assistant')
+      }), ' ', (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect an AI provider from Settings → AI Provider.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Ask a site administrator to connect an AI provider.', 'wbd-content-image-seo-assistant')]
     }), (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isManager && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         href: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().pages.settings,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect AI Provider', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Connect AI Provider', 'wbd-content-image-seo-assistant')
       })
     })]
   });
@@ -3430,7 +3430,7 @@ function CopyButton({
   const onClick = async () => {
     const ok = await (0,_api__WEBPACK_IMPORTED_MODULE_4__.copyText)(text);
     setCopied(ok);
-    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)(ok ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied to clipboard.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy failed. Select the text and copy it manually.', 'ai-content-image-seo'));
+    (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)(ok ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied to clipboard.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy failed. Select the text and copy it manually.', 'wbd-content-image-seo-assistant'));
     if (ok) {
       setTimeout(() => setCopied(false), 2000);
     }
@@ -3439,7 +3439,7 @@ function CopyButton({
     variant: "secondary",
     onClick: onClick,
     disabled: !text,
-    children: copied ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied!', 'ai-content-image-seo') : label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy', 'ai-content-image-seo')
+    children: copied ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copied!', 'wbd-content-image-seo-assistant') : label || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy', 'wbd-content-image-seo-assistant')
   });
 }
 
@@ -3479,8 +3479,8 @@ function UsageMeter({
   type
 }) {
   const valueText = type.unlimited ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number used. */
-  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %d (unlimited)', 'ai-content-image-seo'), type.used) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: number used, 2: limit. */
-  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %1$d / %2$d', 'ai-content-image-seo'), type.used, type.limit);
+  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %d (unlimited)', 'wbd-content-image-seo-assistant'), type.used) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: number used, 2: limit. */
+  (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Used: %1$d / %2$d', 'wbd-content-image-seo-assistant'), type.used, type.limit);
   const percent = type.unlimited ? 0 : type.percent;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "ai-cis-meter",
@@ -3550,7 +3550,7 @@ function HtmlPreview({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "ai-cis-html-preview",
     tabIndex: 0,
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI result preview', 'ai-content-image-seo'),
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI result preview', 'wbd-content-image-seo-assistant'),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
       children: html
     })
@@ -3575,23 +3575,23 @@ function GooglePreview({
   const descLen = (description || '').length;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "ai-cis-serp",
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'ai-content-image-seo'),
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'wbd-content-image-seo-assistant'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       className: "ai-cis-serp__label",
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Google Preview', 'wbd-content-image-seo-assistant')
     }), url && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "ai-cis-serp__url",
       children: url
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "ai-cis-serp__title",
-      children: title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no SEO title)', 'ai-content-image-seo')
+      children: title || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no SEO title)', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "ai-cis-serp__desc",
-      children: description || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no meta description)', 'ai-content-image-seo')
+      children: description || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(no meta description)', 'wbd-content-image-seo-assistant')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
       className: "ai-cis-serp__meta",
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: title length, 2: description length. */
-      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)', 'ai-content-image-seo'), titleLen, descLen)
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title: %1$d characters (aim for 60 or fewer) · Description: %2$d characters (aim for 120–155)', 'wbd-content-image-seo-assistant'), titleLen, descLen)
     })]
   });
 }
@@ -3622,14 +3622,14 @@ function ResultActions({
       variant: "primary",
       onClick: onUse,
       disabled: busy,
-      children: useLabel || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use This', 'ai-content-image-seo')
+      children: useLabel || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Use This', 'wbd-content-image-seo-assistant')
     }), typeof text === 'string' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(CopyButton, {
       text: text
     }), onRegenerate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
       variant: "tertiary",
       onClick: onRegenerate,
       disabled: busy,
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate', 'ai-content-image-seo')
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate', 'wbd-content-image-seo-assistant')
     }), children]
   });
 }
@@ -3642,7 +3642,7 @@ function ResultActions({
 function PrivacyHint() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
     className: "description ai-cis-privacy-hint",
-    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The selected content is sent to your configured AI provider only when you click a generate button.', 'ai-content-image-seo')
+    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('The selected content is sent to your configured AI provider only when you click a generate button.', 'wbd-content-image-seo-assistant')
   });
 }
 
@@ -3759,7 +3759,7 @@ function ImageMetadataPanel({
       });
       setResult(res.values);
       setApply(Object.keys(res.values));
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI metadata generated. Review it before applying.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI metadata generated. Review it before applying.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -3785,7 +3785,7 @@ function ImageMetadataPanel({
         ...res.current,
         image_type: imageType
       });
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Metadata saved.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Metadata saved.', 'wbd-content-image-seo-assistant'));
       if (onApplied) {
         onApplied(res.current);
       }
@@ -3816,13 +3816,13 @@ function ImageMetadataPanel({
         }), item.parent && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
           className: "description",
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: parent post title. */
-          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Attached to: %s', 'ai-content-image-seo'), item.parent.title)
+          (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Attached to: %s', 'wbd-content-image-seo-assistant'), item.parent.title)
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ProviderNotice, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("fieldset", {
       className: "ai-cis-fieldset",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("legend", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields to generate', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fields to generate', 'wbd-content-image-seo-assistant')
       }), FIELD_ORDER.map(field => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
         __nextHasNoMarginBottom: true,
         label: labels[field] || field,
@@ -3832,33 +3832,33 @@ function ImageMetadataPanel({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "ai-cis-grid-2",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image Type', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Image Type', 'wbd-content-image-seo-assistant'),
         selected: imageType,
         onChange: setImageType,
         options: [{
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Informative', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Informative', 'wbd-content-image-seo-assistant'),
           value: 'informative'
         }, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (alt text stays empty)', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative (alt text stays empty)', 'wbd-content-image-seo-assistant'),
           value: 'decorative'
         }, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unsure', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Unsure', 'wbd-content-image-seo-assistant'),
           value: 'unsure'
         }]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
         __next40pxDefaultSize: true,
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Alt Text Style', 'wbd-content-image-seo-assistant'),
         value: style,
         onChange: setStyle,
         options: [{
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Balanced', 'wbd-content-image-seo-assistant'),
           value: 'balanced'
         }, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Accessibility First', 'wbd-content-image-seo-assistant'),
           value: 'accessibility'
         }, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Focused', 'wbd-content-image-seo-assistant'),
           value: 'seo'
         }]
       })]
@@ -3874,12 +3874,12 @@ function ImageMetadataPanel({
         } : generate,
         isBusy: busy,
         disabled: busy || !fields.length,
-        children: decorativeOnlyAlt ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Mark as Decorative', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Image Metadata', 'ai-content-image-seo')
+        children: decorativeOnlyAlt ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Mark as Decorative', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Image Metadata', 'wbd-content-image-seo-assistant')
       }), result && !decorativeOnlyAlt && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "tertiary",
         onClick: generate,
         disabled: busy,
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Regenerate', 'wbd-content-image-seo-assistant')
       })]
     }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error,
@@ -3888,7 +3888,7 @@ function ImageMetadataPanel({
       className: "ai-cis-compare",
       "aria-live": "polite",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review AI result', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review AI result', 'wbd-content-image-seo-assistant')
       }), FIELD_ORDER.filter(f => f in result).map(field => {
         const Control = field === 'description' || field === 'caption' ? _wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl : _wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl;
         const hasCurrent = (current[field] || '').trim() !== '';
@@ -3897,26 +3897,26 @@ function ImageMetadataPanel({
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
             __nextHasNoMarginBottom: true,
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: field label. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Apply %s', 'ai-content-image-seo'), labels[field] || field),
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Apply %s', 'wbd-content-image-seo-assistant'), labels[field] || field),
             checked: apply.includes(field),
             onChange: checked => setApply(prev => checked ? [...prev, field] : prev.filter(f => f !== field))
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
             className: "ai-cis-compare__current",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("strong", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current:', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Current:', 'wbd-content-image-seo-assistant')
             }), ' ', hasCurrent ? current[field] : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("em", {
-              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'ai-content-image-seo')
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('(empty)', 'wbd-content-image-seo-assistant')
             })]
           }), field === 'alt' && imageType === 'decorative' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
             className: "description",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative image: the alt text will be saved as empty so screen readers skip it.', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Decorative image: the alt text will be saved as empty so screen readers skip it.', 'wbd-content-image-seo-assistant')
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
             className: "ai-cis-compare__edit",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Control, {
               __nextHasNoMarginBottom: true,
               __next40pxDefaultSize: true,
               label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: field label. */
-              (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI %s', 'ai-content-image-seo'), labels[field] || field),
+              (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI %s', 'wbd-content-image-seo-assistant'), labels[field] || field),
               value: result[field],
               onChange: value => setResult({
                 ...result,
@@ -3927,12 +3927,12 @@ function ImageMetadataPanel({
             })]
           }), hasCurrent && !overwrite && apply.includes(field) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
             className: "description ai-cis-warn-text",
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('This field already has a value and will be kept unless you enable "Overwrite existing metadata".', 'ai-content-image-seo')
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('This field already has a value and will be kept unless you enable "Overwrite existing metadata".', 'wbd-content-image-seo-assistant')
           })]
         }, field);
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Overwrite existing metadata', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Overwrite existing metadata', 'wbd-content-image-seo-assistant'),
         checked: overwrite,
         onChange: setOverwrite
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -3942,7 +3942,7 @@ function ImageMetadataPanel({
           onClick: applySelected,
           isBusy: saving,
           disabled: saving || !apply.length,
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Apply Selected', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Apply Selected', 'wbd-content-image-seo-assistant')
         })
       })]
     }), saved && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Notice, {
@@ -3952,8 +3952,8 @@ function ImageMetadataPanel({
       className: "ai-cis-notice",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
         children: [saved.updated.length ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: list of fields. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved: %s.', 'ai-content-image-seo'), saved.updated.map(f => labels[f] || f).join(', ')) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Nothing was changed.', 'ai-content-image-seo'), ' ', saved.skipped.length > 0 && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: list of fields. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Kept existing: %s.', 'ai-content-image-seo'), saved.skipped.map(f => labels[f] || f).join(', '))]
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved: %s.', 'wbd-content-image-seo-assistant'), saved.updated.map(f => labels[f] || f).join(', ')) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Nothing was changed.', 'wbd-content-image-seo-assistant'), ' ', saved.skipped.length > 0 && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: list of fields. */
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Kept existing: %s.', 'wbd-content-image-seo-assistant'), saved.skipped.map(f => labels[f] || f).join(', '))]
       })
     })]
   });
@@ -4020,18 +4020,18 @@ function ItemPicker({
   }, [query, type, page]);
   const typeOptions = [{
     value: 'any',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('All content', 'ai-content-image-seo')
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('All content', 'wbd-content-image-seo-assistant')
   }, {
     value: 'post',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Posts', 'ai-content-image-seo')
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Posts', 'wbd-content-image-seo-assistant')
   }, {
     value: 'page',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pages', 'ai-content-image-seo')
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pages', 'wbd-content-image-seo-assistant')
   }];
   if ((0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().isWooActive) {
     typeOptions.push({
       value: 'product',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Products', 'ai-content-image-seo')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Products', 'wbd-content-image-seo-assistant')
     });
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -4040,7 +4040,7 @@ function ItemPicker({
       className: "ai-cis-picker__filters",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SearchControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search content', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Search content', 'wbd-content-image-seo-assistant'),
         value: search,
         onChange: v => {
           setSearch(v);
@@ -4049,7 +4049,7 @@ function ItemPicker({
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Type', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Type', 'wbd-content-image-seo-assistant'),
         hideLabelFromVision: true,
         value: type,
         options: typeOptions,
@@ -4061,8 +4061,8 @@ function ItemPicker({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
       error: error
     }), !result && !error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Spinner, {}), result && result.items.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No content found.', 'ai-content-image-seo'),
-      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Try a different search, or create a post first.', 'ai-content-image-seo')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No content found.', 'wbd-content-image-seo-assistant'),
+      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Try a different search, or create a post first.', 'wbd-content-image-seo-assistant')
     }), result && result.items.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
       className: "ai-cis-picker__list",
       children: result.items.map(item => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
@@ -4075,7 +4075,7 @@ function ItemPicker({
             children: item.title
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
             className: "ai-cis-picker__meta",
-            children: [item.type, " \xB7 ", item.status, showSeo && (item.seo?.meta_description ? ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('has meta description', 'ai-content-image-seo') : ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('no meta description', 'ai-content-image-seo'))]
+            children: [item.type, " \xB7 ", item.status, showSeo && (item.seo?.meta_description ? ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('has meta description', 'wbd-content-image-seo-assistant') : ' · ' + (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('no meta description', 'wbd-content-image-seo-assistant'))]
           })]
         })
       }, item.id))
@@ -4085,15 +4085,15 @@ function ItemPicker({
         variant: "secondary",
         disabled: page <= 1,
         onClick: () => setPage(page - 1),
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Previous', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: 1: current page, 2: total pages. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page %1$d of %2$d', 'ai-content-image-seo'), page, result.total_pages)
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Page %1$d of %2$d', 'wbd-content-image-seo-assistant'), page, result.total_pages)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.Button, {
         variant: "secondary",
         disabled: page >= result.total_pages,
         onClick: () => setPage(page + 1),
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Next', 'wbd-content-image-seo-assistant')
       })]
     })]
   });
@@ -4138,25 +4138,25 @@ __webpack_require__.r(__webpack_exports__);
 
 const ACTIONS = [{
   field: 'title',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Title', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Title', 'wbd-content-image-seo-assistant')
 }, {
   field: 'description',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Description', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Description', 'wbd-content-image-seo-assistant')
 }, {
   field: 'short_description',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Short Description', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Short Description', 'wbd-content-image-seo-assistant')
 }, {
   field: 'seo',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO Metadata', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate SEO Metadata', 'wbd-content-image-seo-assistant')
 }, {
   field: 'tags',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Tags', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Tags', 'wbd-content-image-seo-assistant')
 }, {
   field: 'categories',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggest Categories', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Suggest Categories', 'wbd-content-image-seo-assistant')
 }, {
   field: 'improve',
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve Existing Content', 'ai-content-image-seo')
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Improve Existing Content', 'wbd-content-image-seo-assistant')
 }];
 function ProductAssistant({
   productId,
@@ -4198,7 +4198,7 @@ function ProductAssistant({
         setChoice(res.options[0]);
         setSelected(target === 'categories' ? res.options.filter(o => res.existing && res.existing[o]) : res.options);
       }
-      ;(0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI result ready. Review it before using it.', 'ai-content-image-seo'));
+      ;(0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI result ready. Review it before using it.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -4231,27 +4231,27 @@ function ProductAssistant({
       if (target === 'title') {
         if (isEditor && (0,_classic_editor__WEBPACK_IMPORTED_MODULE_6__.setInputValue)('#title', choice)) {
           document.getElementById('title-prompt-text')?.classList.add('screen-reader-text');
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title inserted. Click "Update" to save the product.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title inserted. Click "Update" to save the product.', 'wbd-content-image-seo-assistant'));
         } else {
           await saveDirect(choice);
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product title saved.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product title saved.', 'wbd-content-image-seo-assistant'));
         }
       } else if (['description', 'improve', 'short_description'].includes(target)) {
         const editorId = target === 'short_description' ? 'excerpt' : 'content';
         if (isEditor && (0,_classic_editor__WEBPACK_IMPORTED_MODULE_6__.setEditorValue)(editorId, result.value)) {
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Inserted into the editor. Click "Update" to save the product.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Inserted into the editor. Click "Update" to save the product.', 'wbd-content-image-seo-assistant'));
         } else {
           await saveDirect(result.value);
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product content saved.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Product content saved.', 'wbd-content-image-seo-assistant'));
         }
       } else if (target === 'tags') {
         if (isEditor && (0,_classic_editor__WEBPACK_IMPORTED_MODULE_6__.addTagsToForm)(selected)) {
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags added. Click "Update" to save the product.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags added. Click "Update" to save the product.', 'wbd-content-image-seo-assistant'));
         } else {
           await saveDirect(selected, {
             mode: 'append'
           });
-          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags added to the product.', 'ai-content-image-seo'));
+          done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tags added to the product.', 'wbd-content-image-seo-assistant'));
         }
       } else if (target === 'categories') {
         const res = await saveDirect(selected, {
@@ -4260,7 +4260,7 @@ function ProductAssistant({
         if (isEditor) {
           (0,_classic_editor__WEBPACK_IMPORTED_MODULE_6__.checkCategoriesInForm)(res.terms || []);
         }
-        done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories assigned.', 'ai-content-image-seo'));
+        done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories assigned.', 'wbd-content-image-seo-assistant'));
       } else if (target === 'seo') {
         const seo = {
           seo_title: result.seo_title,
@@ -4272,7 +4272,7 @@ function ProductAssistant({
           (0,_classic_editor__WEBPACK_IMPORTED_MODULE_6__.syncSeoFields)(seo);
         }
         done((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: SEO plugin name. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata saved to %s.', 'ai-content-image-seo'), (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel));
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO metadata saved to %s.', 'wbd-content-image-seo-assistant'), (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().seoPluginLabel));
       }
     } catch (e) {
       setError((0,_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
@@ -4287,7 +4287,7 @@ function ProductAssistant({
     if (target === 'title') {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RadioControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose a title', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Choose a title', 'wbd-content-image-seo-assistant'),
           selected: choice,
           options: result.options.map(o => ({
             label: o,
@@ -4307,20 +4307,20 @@ function ProductAssistant({
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("fieldset", {
           className: "ai-cis-fieldset",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("legend", {
-            children: target === 'tags' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select tags to add', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select categories to assign', 'ai-content-image-seo')
+            children: target === 'tags' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select tags to add', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Select categories to assign', 'wbd-content-image-seo-assistant')
           }), result.options.map(option => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
             __nextHasNoMarginBottom: true,
             label: target === 'categories' && result.existing && !result.existing[option] ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %s: category name. */
-            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s (new category)', 'ai-content-image-seo'), option) : option,
+            (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('%s (new category)', 'wbd-content-image-seo-assistant'), option) : option,
             checked: selected.includes(option),
             onChange: checked => setSelected(prev => checked ? [...prev, option] : prev.filter(o => o !== option))
           }, option))]
         }), target === 'categories' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           className: "description",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories are never assigned automatically. Only the categories you select are added.', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Categories are never assigned automatically. Only the categories you select are added.', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
           onUse: selected.length ? use : null,
-          useLabel: target === 'tags' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Selected Tags', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Assign Selected Categories', 'ai-content-image-seo'),
+          useLabel: target === 'tags' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add Selected Tags', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Assign Selected Categories', 'wbd-content-image-seo-assistant'),
           busy: saving,
           copyText: selected.join(', '),
           onRegenerate: () => generate(target)
@@ -4332,7 +4332,7 @@ function ProductAssistant({
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('SEO Title', 'wbd-content-image-seo-assistant'),
           value: result.seo_title,
           onChange: v => setResult({
             ...result,
@@ -4340,7 +4340,7 @@ function ProductAssistant({
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
           __nextHasNoMarginBottom: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Meta Description', 'wbd-content-image-seo-assistant'),
           value: result.meta_description,
           onChange: v => setResult({
             ...result,
@@ -4349,7 +4349,7 @@ function ProductAssistant({
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Focus Keyword', 'ai-content-image-seo'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Focus Keyword', 'wbd-content-image-seo-assistant'),
           value: result.focus_keyword,
           onChange: v => setResult({
             ...result,
@@ -4360,7 +4360,7 @@ function ProductAssistant({
           description: result.meta_description
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
           onUse: use,
-          useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save SEO Metadata', 'ai-content-image-seo'),
+          useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save SEO Metadata', 'wbd-content-image-seo-assistant'),
           busy: saving,
           copyText: result.seo_title + '\n' + result.meta_description,
           onRegenerate: () => generate(target)
@@ -4375,24 +4375,24 @@ function ProductAssistant({
       children: [target === 'improve' && original && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("details", {
         className: "ai-cis-original",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("summary", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Original', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Original', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
           html: original
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.HtmlPreview, {
         html: result.value
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
         onUse: use,
-        useLabel: isEditor ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert into Editor', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save to Product', 'ai-content-image-seo'),
+        useLabel: isEditor ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Insert into Editor', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save to Product', 'wbd-content-image-seo-assistant'),
         busy: saving,
         copyText: (0,_api__WEBPACK_IMPORTED_MODULE_4__.htmlToText)(result.value),
         onRegenerate: () => generate(target),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.CopyButton, {
           text: result.value,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy HTML', 'ai-content-image-seo')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Copy HTML', 'wbd-content-image-seo-assistant')
         })
       })]
     });
@@ -4404,14 +4404,14 @@ function ProductAssistant({
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tone', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Tone', 'wbd-content-image-seo-assistant'),
         value: tone,
         options: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().options.tones,
         onChange: setTone
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.SelectControl, {
         __nextHasNoMarginBottom: true,
         __next40pxDefaultSize: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Language', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Language', 'wbd-content-image-seo-assistant'),
         value: language,
         options: (0,_api__WEBPACK_IMPORTED_MODULE_4__.data)().options.languages,
         onChange: setLanguage
@@ -4483,7 +4483,7 @@ __webpack_require__.r(__webpack_exports__);
  * @return {string} Text.
  */
 
-const asText = s => [s.summary, s.pros?.length ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pros', 'ai-content-image-seo') + ':\n' + s.pros.map(p => '✓ ' + p).join('\n') : '', s.cons?.length ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cons', 'ai-content-image-seo') + ':\n' + s.cons.map(c => '• ' + c).join('\n') : ''].filter(Boolean).join('\n\n');
+const asText = s => [s.summary, s.pros?.length ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pros', 'wbd-content-image-seo-assistant') + ':\n' + s.pros.map(p => '✓ ' + p).join('\n') : '', s.cons?.length ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cons', 'wbd-content-image-seo-assistant') + ':\n' + s.cons.map(c => '• ' + c).join('\n') : ''].filter(Boolean).join('\n\n');
 function SummaryView({
   summary
 }) {
@@ -4494,7 +4494,7 @@ function SummaryView({
     }), summary.pros?.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pros', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Pros', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         className: "ai-cis-pros",
         children: summary.pros.map(p => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
@@ -4507,7 +4507,7 @@ function SummaryView({
     }), summary.cons?.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cons', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Cons', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         className: "ai-cis-cons",
         children: summary.cons.map(c => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
@@ -4548,7 +4548,7 @@ function ReviewSummaryPanel({
         }
       });
       setResult(res);
-      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summary generated.', 'ai-content-image-seo'));
+      (0,_wordpress_a11y__WEBPACK_IMPORTED_MODULE_3__.speak)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Review summary generated.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -4568,7 +4568,7 @@ function ReviewSummaryPanel({
         ...info,
         saved
       });
-      setNotice(info?.display ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary saved. It is shown above the reviews on the product page.', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary saved. Enable "Show review summary on product pages" in Settings, or use the [ai_cis_review_summary] shortcode.', 'ai-content-image-seo'));
+      setNotice(info?.display ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary saved. It is shown above the reviews on the product page.', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary saved. Enable "Show review summary on product pages" in Settings, or use the [ai_cis_review_summary] shortcode.', 'wbd-content-image-seo-assistant'));
     } catch (e) {
       setError((0,_api__WEBPACK_IMPORTED_MODULE_4__.errorInfo)(e));
     }
@@ -4580,17 +4580,17 @@ function ReviewSummaryPanel({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "ai-cis-review-panel",
     children: [info && info.review_count === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.EmptyState, {
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No reviews yet.', 'ai-content-image-seo'),
-      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A summary can be generated once this product has approved customer reviews. Summaries only use real review content.', 'ai-content-image-seo')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('No reviews yet.', 'wbd-content-image-seo-assistant'),
+      text: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('A summary can be generated once this product has approved customer reviews. Summaries only use real review content.', 'wbd-content-image-seo-assistant')
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
       children: [info && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "description",
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.sprintf)(/* translators: %d: number of reviews. */
-        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__._n)('Based on %d approved review. Only review text and star ratings are sent to the AI, never reviewer names or emails.', 'Based on %d approved reviews. Only review text and star ratings are sent to the AI, never reviewer names or emails.', info.review_count, 'ai-content-image-seo'), info.review_count)
+        (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__._n)('Based on %d approved review. Only review text and star ratings are sent to the AI, never reviewer names or emails.', 'Based on %d approved reviews. Only review text and star ratings are sent to the AI, never reviewer names or emails.', info.review_count, 'wbd-content-image-seo-assistant'), info.review_count)
       }), info?.saved && !result && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
           className: "ai-cis-label",
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved summary', 'ai-content-image-seo')
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Saved summary', 'wbd-content-image-seo-assistant')
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(SummaryView, {
           summary: info.saved
         })]
@@ -4601,7 +4601,7 @@ function ReviewSummaryPanel({
           onClick: generate,
           isBusy: busy,
           disabled: busy,
-          children: info?.saved ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate New Summary', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Review Summary', 'ai-content-image-seo')
+          children: info?.saved ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate New Summary', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Generate Review Summary', 'wbd-content-image-seo-assistant')
         })
       })]
     }), busy && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.Loading, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ErrorNotice, {
@@ -4611,10 +4611,10 @@ function ReviewSummaryPanel({
       className: "ai-cis-result",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "ai-cis-label",
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('AI Result', 'wbd-content-image-seo-assistant')
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.TextareaControl, {
         __nextHasNoMarginBottom: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary', 'ai-content-image-seo'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Summary', 'wbd-content-image-seo-assistant'),
         value: result.summary,
         onChange: v => setResult({
           ...result,
@@ -4627,7 +4627,7 @@ function ReviewSummaryPanel({
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components__WEBPACK_IMPORTED_MODULE_5__.ResultActions, {
         onUse: save,
-        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save Summary', 'ai-content-image-seo'),
+        useLabel: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Save Summary', 'wbd-content-image-seo-assistant'),
         busy: saving,
         copyText: asText(result),
         onRegenerate: generate
@@ -4850,13 +4850,13 @@ const VIEWS = {
   settings: _pages_settings__WEBPACK_IMPORTED_MODULE_9__["default"]
 };
 const TITLES = {
-  dashboard: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dashboard', 'ai-content-image-seo'),
-  content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content AI', 'ai-content-image-seo'),
-  image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image AI', 'ai-content-image-seo'),
-  seo: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('SEO Assistant', 'ai-content-image-seo'),
-  woocommerce: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce AI', 'ai-content-image-seo'),
-  usage: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Usage', 'ai-content-image-seo'),
-  settings: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'ai-content-image-seo')
+  dashboard: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Dashboard', 'wbd-content-image-seo-assistant'),
+  content: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Content AI', 'wbd-content-image-seo-assistant'),
+  image: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image AI', 'wbd-content-image-seo-assistant'),
+  seo: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('SEO Assistant', 'wbd-content-image-seo-assistant'),
+  woocommerce: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WooCommerce AI', 'wbd-content-image-seo-assistant'),
+  usage: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Usage', 'wbd-content-image-seo-assistant'),
+  settings: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'wbd-content-image-seo-assistant')
 };
 function Header({
   view
@@ -4869,7 +4869,7 @@ function Header({
         className: "dashicons dashicons-superhero-alt",
         "aria-hidden": "true"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('AI Content & Image SEO', 'ai-content-image-seo')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WBD Content & Image SEO', 'wbd-content-image-seo-assistant')
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
       className: "ai-cis-header__title",
@@ -4879,7 +4879,7 @@ function Header({
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("span", {
         className: 'dashicons ' + ((0,_common_api__WEBPACK_IMPORTED_MODULE_2__.data)().providerReady ? 'dashicons-yes-alt' : 'dashicons-warning'),
         "aria-hidden": "true"
-      }), (0,_common_api__WEBPACK_IMPORTED_MODULE_2__.data)().providerReady ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('AI provider connected', 'ai-content-image-seo') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No AI provider', 'ai-content-image-seo')]
+      }), (0,_common_api__WEBPACK_IMPORTED_MODULE_2__.data)().providerReady ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('AI provider connected', 'wbd-content-image-seo-assistant') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No AI provider', 'wbd-content-image-seo-assistant')]
     })]
   });
 }

@@ -90,7 +90,7 @@ final class AI_CIS_Content_Generator {
 		);
 
 		if ( '' === trim( $args['topic'] ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Please enter a topic.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Please enter a topic.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$language  = AI_CIS_Settings::resolve_language( $args['language'] );
@@ -146,12 +146,12 @@ final class AI_CIS_Content_Generator {
 	public static function rewrite( $content, $action, $language = '', $request_id = '' ) {
 		$content = trim( (string) $content );
 		if ( '' === $content ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'There is no content to rewrite.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'There is no content to rewrite.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$actions = AI_CIS_Prompts::rewrite_actions();
 		if ( ! isset( $actions[ $action ] ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown rewrite action.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown rewrite action.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$is_html = wp_strip_all_tags( $content ) !== $content;
@@ -198,7 +198,7 @@ final class AI_CIS_Content_Generator {
 	public static function field( $field, $context, $language = '', $request_id = '' ) {
 		$allowed = array( 'title', 'excerpt', 'seo_title', 'meta_description', 'keywords' );
 		if ( ! in_array( $field, $allowed, true ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown field.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Unknown field.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$context = array(
@@ -208,7 +208,7 @@ final class AI_CIS_Content_Generator {
 		);
 
 		if ( '' === $context['content'] && '' === $context['title'] ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Add a title or some content first.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Add a title or some content first.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$result = AI_CIS_AI_Manager::run(
@@ -260,7 +260,7 @@ final class AI_CIS_Content_Generator {
 		$type_obj  = get_post_type_object( $post_type );
 
 		if ( ! $type_obj || ! current_user_can( $type_obj->cap->create_posts ) ) {
-			return new WP_Error( 'ai_cis_forbidden', __( 'You are not allowed to create this content.', 'ai-content-image-seo' ), array( 'status' => 403 ) );
+			return new WP_Error( 'ai_cis_forbidden', __( 'You are not allowed to create this content.', 'wbd-content-image-seo-assistant' ), array( 'status' => 403 ) );
 		}
 
 		$post_id = wp_insert_post(
@@ -275,7 +275,7 @@ final class AI_CIS_Content_Generator {
 		);
 
 		if ( is_wp_error( $post_id ) ) {
-			return new WP_Error( 'ai_cis_save_failed', __( 'The draft could not be created.', 'ai-content-image-seo' ), array( 'status' => 500 ) );
+			return new WP_Error( 'ai_cis_save_failed', __( 'The draft could not be created.', 'wbd-content-image-seo-assistant' ), array( 'status' => 500 ) );
 		}
 
 		if ( ! empty( $data['seo_title'] ) || ! empty( $data['meta_description'] ) ) {

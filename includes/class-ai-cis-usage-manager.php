@@ -44,11 +44,11 @@ final class AI_CIS_Usage_Manager {
 	 */
 	public static function type_labels() {
 		return array(
-			'content'    => __( 'AI content generations', 'ai-content-image-seo' ),
-			'image'      => __( 'Image metadata generations', 'ai-content-image-seo' ),
-			'product'    => __( 'WooCommerce product generations', 'ai-content-image-seo' ),
-			'auto_image' => __( 'Automatic image optimizations', 'ai-content-image-seo' ),
-			'review'     => __( 'Review summaries', 'ai-content-image-seo' ),
+			'content'    => __( 'AI content generations', 'wbd-content-image-seo-assistant' ),
+			'image'      => __( 'Image metadata generations', 'wbd-content-image-seo-assistant' ),
+			'product'    => __( 'WooCommerce product generations', 'wbd-content-image-seo-assistant' ),
+			'auto_image' => __( 'Automatic image optimizations', 'wbd-content-image-seo-assistant' ),
+			'review'     => __( 'Review summaries', 'wbd-content-image-seo-assistant' ),
 		);
 	}
 

@@ -47,7 +47,7 @@ function MetadataPanel( { item, onSaved } ) {
 			speak(
 				__(
 					'SEO metadata generated. Review the Google preview before saving.',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			);
 		} catch ( e ) {
@@ -86,7 +86,7 @@ function MetadataPanel( { item, onSaved } ) {
 			setNotice(
 				sprintf(
 					/* translators: %s: SEO plugin name. */
-					__( 'Saved to %s.', 'ai-content-image-seo' ),
+					__( 'Saved to %s.', 'wbd-content-image-seo-assistant' ),
 					res.target
 				)
 			);
@@ -104,7 +104,7 @@ function MetadataPanel( { item, onSaved } ) {
 		<Section
 			title={ __(
 				'SEO Title & Meta Description',
-				'ai-content-image-seo'
+				'wbd-content-image-seo-assistant'
 			) }
 		>
 			<p className="description">
@@ -112,13 +112,13 @@ function MetadataPanel( { item, onSaved } ) {
 					/* translators: %s: SEO plugin name. */
 					__(
 						'Metadata is saved to: %s. Nothing is changed until you click Save.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					),
 					data().seoPluginLabel
 				) }
 			</p>
 			<p className="ai-cis-label">
-				{ __( 'Current', 'ai-content-image-seo' ) }
+				{ __( 'Current', 'wbd-content-image-seo-assistant' ) }
 			</p>
 			<GooglePreview
 				title={ current.seo_title || item.title }
@@ -134,7 +134,7 @@ function MetadataPanel( { item, onSaved } ) {
 				>
 					{ __(
 						'Generate SEO Title & Meta Description',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</Button>
 				<Button
@@ -142,7 +142,10 @@ function MetadataPanel( { item, onSaved } ) {
 					onClick={ suggestKeywords }
 					disabled={ busy }
 				>
-					{ __( 'Suggest Focus Keywords', 'ai-content-image-seo' ) }
+					{ __(
+						'Suggest Focus Keywords',
+						'wbd-content-image-seo-assistant'
+					) }
 				</Button>
 			</div>
 			{ busy && <Loading /> }
@@ -153,13 +156,13 @@ function MetadataPanel( { item, onSaved } ) {
 					role="group"
 					aria-label={ __(
 						'Keyword suggestions',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				>
 					<p className="ai-cis-label">
 						{ __(
 							'Keyword suggestions (click to use as focus keyword)',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					</p>
 					{ keywords.map( ( k ) => (
@@ -186,12 +189,15 @@ function MetadataPanel( { item, onSaved } ) {
 			{ draft && ! busy && (
 				<div className="ai-cis-result">
 					<p className="ai-cis-label">
-						{ __( 'AI Result', 'ai-content-image-seo' ) }
+						{ __( 'AI Result', 'wbd-content-image-seo-assistant' ) }
 					</p>
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'SEO Title', 'ai-content-image-seo' ) }
+						label={ __(
+							'SEO Title',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ draft.seo_title || '' }
 						onChange={ ( v ) =>
 							setDraft( { ...draft, seo_title: v } )
@@ -201,7 +207,7 @@ function MetadataPanel( { item, onSaved } ) {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Meta Description',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						value={ draft.meta_description || '' }
 						onChange={ ( v ) =>
@@ -211,7 +217,10 @@ function MetadataPanel( { item, onSaved } ) {
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Focus Keyword', 'ai-content-image-seo' ) }
+						label={ __(
+							'Focus Keyword',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ draft.focus_keyword || '' }
 						onChange={ ( v ) =>
 							setDraft( { ...draft, focus_keyword: v } )
@@ -226,7 +235,7 @@ function MetadataPanel( { item, onSaved } ) {
 						onUse={ save }
 						useLabel={ __(
 							'Save SEO Metadata',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						busy={ saving }
 						copyText={
@@ -265,7 +274,12 @@ function OptimizationPanel( { item } ) {
 				data: { post_id: item.id, request_id: newRequestId() },
 			} );
 			setReport( res );
-			speak( __( 'Content analysis ready.', 'ai-content-image-seo' ) );
+			speak(
+				__(
+					'Content analysis ready.',
+					'wbd-content-image-seo-assistant'
+				)
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -273,13 +287,18 @@ function OptimizationPanel( { item } ) {
 	};
 
 	const priorityLabel = {
-		high: __( 'High priority', 'ai-content-image-seo' ),
-		medium: __( 'Medium priority', 'ai-content-image-seo' ),
-		low: __( 'Low priority', 'ai-content-image-seo' ),
+		high: __( 'High priority', 'wbd-content-image-seo-assistant' ),
+		medium: __( 'Medium priority', 'wbd-content-image-seo-assistant' ),
+		low: __( 'Low priority', 'wbd-content-image-seo-assistant' ),
 	};
 
 	return (
-		<Section title={ __( 'Content Optimization', 'ai-content-image-seo' ) }>
+		<Section
+			title={ __(
+				'Content Optimization',
+				'wbd-content-image-seo-assistant'
+			) }
+		>
 			<div className="ai-cis-actions">
 				<Button
 					variant="secondary"
@@ -288,12 +307,23 @@ function OptimizationPanel( { item } ) {
 					disabled={ busy }
 				>
 					{ report
-						? __( 'Analyze Again', 'ai-content-image-seo' )
-						: __( 'Analyze Content', 'ai-content-image-seo' ) }
+						? __(
+								'Analyze Again',
+								'wbd-content-image-seo-assistant'
+						  )
+						: __(
+								'Analyze Content',
+								'wbd-content-image-seo-assistant'
+						  ) }
 				</Button>
 			</div>
 			{ busy && (
-				<Loading label={ __( 'Analyzing…', 'ai-content-image-seo' ) } />
+				<Loading
+					label={ __(
+						'Analyzing…',
+						'wbd-content-image-seo-assistant'
+					) }
+				/>
 			) }
 			<ErrorNotice error={ error } onDismiss={ () => setError( null ) } />
 			{ report && ! busy && (
@@ -304,7 +334,7 @@ function OptimizationPanel( { item } ) {
 								/* translators: %d: SEO score. */
 								__(
 									'AI SEO score: %d / 100',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								report.score
 							) }
@@ -330,11 +360,11 @@ function OptimizationPanel( { item } ) {
 									{ c.pass
 										? __(
 												'Passed:',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 										  )
 										: __(
 												'Needs work:',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 										  ) }
 								</span>
 								{ c.label }: { c.note }
@@ -344,7 +374,10 @@ function OptimizationPanel( { item } ) {
 					{ report.suggestions.length > 0 && (
 						<>
 							<p className="ai-cis-label">
-								{ __( 'Suggestions', 'ai-content-image-seo' ) }
+								{ __(
+									'Suggestions',
+									'wbd-content-image-seo-assistant'
+								) }
 							</p>
 							<ul className="ai-cis-suggestions">
 								{ report.suggestions.map( ( s, i ) => (
@@ -366,7 +399,7 @@ function OptimizationPanel( { item } ) {
 						<a href={ data().pages.content + '&tab=rewrite' }>
 							{ __(
 								'Use the Content Rewriter to apply improvements',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</a>
 					</p>
@@ -381,12 +414,12 @@ function ImageSeoPanel( { item, onChanged } ) {
 	const images = item.images || [];
 
 	return (
-		<Section title={ __( 'Image SEO', 'ai-content-image-seo' ) }>
+		<Section title={ __( 'Image SEO', 'wbd-content-image-seo-assistant' ) }>
 			{ images.length === 0 ? (
 				<EmptyState
 					title={ __(
 						'No images found in this content.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				/>
 			) : (
@@ -408,7 +441,7 @@ function ImageSeoPanel( { item, onChanged } ) {
 									<em>
 										{ __(
 											'Decorative (empty alt by design)',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</em>
 								) }
@@ -417,7 +450,7 @@ function ImageSeoPanel( { item, onChanged } ) {
 										<span>
 											{ __(
 												'Alt:',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											) }{ ' ' }
 											{ img.alt }
 										</span>
@@ -425,7 +458,7 @@ function ImageSeoPanel( { item, onChanged } ) {
 										<span className="ai-cis-missing">
 											{ __(
 												'Missing alt text',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											) }
 										</span>
 									) ) }
@@ -438,7 +471,7 @@ function ImageSeoPanel( { item, onChanged } ) {
 								>
 									{ __(
 										'Generate AI Metadata',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</Button>
 							) }
@@ -450,7 +483,7 @@ function ImageSeoPanel( { item, onChanged } ) {
 				<Modal
 					title={ __(
 						'Generate AI Metadata',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 					onRequestClose={ () => setEditing( null ) }
 					className="ai-cis-modal"
@@ -495,19 +528,22 @@ export default function SeoAssistant() {
 								/* translators: %s: SEO plugin name. */
 								__(
 									'%s detected. SEO metadata is read from and saved to it.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								data().seoPluginLabel
 						  )
 						: __(
 								'No SEO plugin detected (Yoast SEO, Rank Math and All in One SEO are supported). Metadata is stored by this plugin and output in your page head.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 						  ) }
 				</p>
 			</Notice>
 			<div className="ai-cis-sidebar-layout">
 				<Section
-					title={ __( 'Choose content', 'ai-content-image-seo' ) }
+					title={ __(
+						'Choose content',
+						'wbd-content-image-seo-assistant'
+					) }
 				>
 					<ItemPicker
 						onSelect={ load }
@@ -523,11 +559,11 @@ export default function SeoAssistant() {
 							<EmptyState
 								title={ __(
 									'Select a post, page or product.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 								text={ __(
 									'Then generate an SEO title and meta description, get keyword ideas, analyze the content and check image alt text.',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							/>
 						</Section>
@@ -537,7 +573,10 @@ export default function SeoAssistant() {
 							<h2 className="ai-cis-section-title">
 								{ item.title }{ ' ' }
 								<a href={ item.edit_link }>
-									{ __( 'Edit', 'ai-content-image-seo' ) }
+									{ __(
+										'Edit',
+										'wbd-content-image-seo-assistant'
+									) }
 								</a>
 							</h2>
 							<MetadataPanel

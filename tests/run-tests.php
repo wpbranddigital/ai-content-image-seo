@@ -3,7 +3,7 @@
  * Integration test suite.
  *
  * Runs inside a real WordPress install with WP-CLI:
- *   wp eval-file wp-content/plugins/ai-content-image-seo/tests/run-tests.php
+ *   wp eval-file wp-content/plugins/wbd-content-image-seo-assistant/tests/run-tests.php
  *
  * Requires a mock AI server (tests/mock-ai-server.py) and the test mu-plugin
  * (tests/mu-plugin-mock-endpoints.php) that points provider base URLs at it.
@@ -600,7 +600,7 @@ t_ok( 'gemini' === $body['settings']['provider'] && 'Portuguese' === AI_CIS_Sett
 
 $keep_post = wp_insert_post( array( 'post_title' => 'Keep me', 'post_status' => 'publish' ) );
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	define( 'WP_UNINSTALL_PLUGIN', 'ai-content-image-seo/ai-content-image-seo.php' );
+	define( 'WP_UNINSTALL_PLUGIN', 'wbd-content-image-seo-assistant/wbd-content-image-seo-assistant.php' );
 }
 include AI_CIS_PATH . 'uninstall.php';
 wp_cache_flush();

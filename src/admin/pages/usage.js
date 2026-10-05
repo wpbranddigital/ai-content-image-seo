@@ -29,7 +29,7 @@ export default function UsagePage() {
 			! window.confirm(
 				__(
 					'Reset this month’s usage counters to zero?',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				)
 			)
 		) {
@@ -61,7 +61,7 @@ export default function UsagePage() {
 				<p>
 					{ __(
 						'Every feature is available for free. Usage is tracked so you can see how much AI you use; limits are optional and can be set in Settings → Usage Limits (0 = unlimited).',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 			</Notice>
@@ -74,7 +74,7 @@ export default function UsagePage() {
 					<p>
 						{ __(
 							'AI usage limit reached. New images will remain unprocessed until the limit resets.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					</p>
 				</Notice>
@@ -83,7 +83,7 @@ export default function UsagePage() {
 			<Section
 				title={ sprintf(
 					/* translators: %s: period YYYY-MM. */
-					__( 'Usage for %s', 'ai-content-image-seo' ),
+					__( 'Usage for %s', 'wbd-content-image-seo-assistant' ),
 					usage.period
 				) }
 				actions={
@@ -93,7 +93,10 @@ export default function UsagePage() {
 								variant="secondary"
 								href={ data().pages.settings + '&tab=limits' }
 							>
-								{ __( 'Edit Limits', 'ai-content-image-seo' ) }
+								{ __(
+									'Edit Limits',
+									'wbd-content-image-seo-assistant'
+								) }
 							</Button>
 							<Button
 								variant="tertiary"
@@ -103,7 +106,7 @@ export default function UsagePage() {
 							>
 								{ __(
 									'Reset Counters',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</Button>
 						</>
@@ -117,16 +120,28 @@ export default function UsagePage() {
 					<thead>
 						<tr>
 							<th scope="col">
-								{ __( 'Type', 'ai-content-image-seo' ) }
+								{ __(
+									'Type',
+									'wbd-content-image-seo-assistant'
+								) }
 							</th>
 							<th scope="col">
-								{ __( 'Used', 'ai-content-image-seo' ) }
+								{ __(
+									'Used',
+									'wbd-content-image-seo-assistant'
+								) }
 							</th>
 							<th scope="col">
-								{ __( 'Limit', 'ai-content-image-seo' ) }
+								{ __(
+									'Limit',
+									'wbd-content-image-seo-assistant'
+								) }
 							</th>
 							<th scope="col">
-								{ __( 'Remaining', 'ai-content-image-seo' ) }
+								{ __(
+									'Remaining',
+									'wbd-content-image-seo-assistant'
+								) }
 							</th>
 						</tr>
 					</thead>
@@ -139,7 +154,7 @@ export default function UsagePage() {
 									{ type.unlimited
 										? __(
 												'Unlimited',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 										  )
 										: type.limit }
 								</td>
@@ -147,7 +162,7 @@ export default function UsagePage() {
 									{ type.unlimited
 										? __(
 												'Unlimited',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 										  )
 										: type.remaining }
 								</td>
@@ -157,7 +172,7 @@ export default function UsagePage() {
 							<td>
 								{ __(
 									'Bulk items per batch',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</td>
 							<td>—</td>
@@ -166,7 +181,7 @@ export default function UsagePage() {
 									? usage.bulk_batch
 									: __(
 											'Unlimited',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 									  ) }
 							</td>
 							<td>—</td>
@@ -178,23 +193,25 @@ export default function UsagePage() {
 						/* translators: %s: date. */
 						__(
 							'Counters reset automatically on %s (site timezone). Regenerating a result counts as a new generation. Connection tests are never counted.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						),
 						usage.reset_date
 					) }
 				</p>
 			</Section>
 
-			<Section title={ __( 'History', 'ai-content-image-seo' ) }>
+			<Section
+				title={ __( 'History', 'wbd-content-image-seo-assistant' ) }
+			>
 				{ history.length === 0 ? (
 					<EmptyState
 						title={ __(
 							'No history yet.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						text={ __(
 							'Monthly totals appear here after your first full month.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					/>
 				) : (
@@ -202,7 +219,10 @@ export default function UsagePage() {
 						<thead>
 							<tr>
 								<th scope="col">
-									{ __( 'Month', 'ai-content-image-seo' ) }
+									{ __(
+										'Month',
+										'wbd-content-image-seo-assistant'
+									) }
 								</th>
 								{ Object.entries( types ).map(
 									( [ key, type ] ) => (

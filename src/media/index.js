@@ -50,7 +50,10 @@ function MediaModal( { attachmentId, onClose } ) {
 	const [ id ] = useState( attachmentId );
 	return (
 		<Modal
-			title={ __( 'Generate AI Metadata', 'ai-content-image-seo' ) }
+			title={ __(
+				'Generate AI Metadata',
+				'wbd-content-image-seo-assistant'
+			) }
 			onRequestClose={ onClose }
 			className="ai-cis-modal"
 		>

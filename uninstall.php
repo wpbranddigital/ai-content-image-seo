@@ -17,8 +17,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 wp_clear_scheduled_hook( 'ai_cis_process_bulk' );
 wp_clear_scheduled_hook( 'ai_cis_process_auto' );
 if ( function_exists( 'as_unschedule_all_actions' ) ) {
-	as_unschedule_all_actions( 'ai_cis_process_bulk', array(), 'ai-content-image-seo' );
-	as_unschedule_all_actions( 'ai_cis_process_auto', array(), 'ai-content-image-seo' );
+	as_unschedule_all_actions( 'ai_cis_process_bulk', array(), 'wbd-content-image-seo-assistant' );
+	as_unschedule_all_actions( 'ai_cis_process_auto', array(), 'wbd-content-image-seo-assistant' );
 }
 
 $ai_cis_settings = get_option( 'ai_cis_settings', array() );

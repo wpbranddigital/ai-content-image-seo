@@ -63,7 +63,7 @@ export function errorInfo( error ) {
 		error.message ||
 		__(
 			'Unable to generate content. Please check your AI provider settings and try again.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		);
 	return {
 		message,

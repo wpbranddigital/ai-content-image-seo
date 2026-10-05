@@ -35,9 +35,11 @@ function openMediaFrame( onPick ) {
 		return;
 	}
 	const frame = window.wp.media( {
-		title: __( 'Select an image', 'ai-content-image-seo' ),
+		title: __( 'Select an image', 'wbd-content-image-seo-assistant' ),
 		library: { type: 'image' },
-		button: { text: __( 'Use this image', 'ai-content-image-seo' ) },
+		button: {
+			text: __( 'Use this image', 'wbd-content-image-seo-assistant' ),
+		},
 		multiple: false,
 	} );
 	frame.on( 'select', () => {
@@ -60,7 +62,7 @@ function SingleTab() {
 			<Section
 				title={ __(
 					'Generate Image Metadata',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				) }
 				actions={
 					<Button
@@ -70,9 +72,12 @@ function SingleTab() {
 						{ attachmentId
 							? __(
 									'Choose another image',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 							  )
-							: __( 'Select Image', 'ai-content-image-seo' ) }
+							: __(
+									'Select Image',
+									'wbd-content-image-seo-assistant'
+							  ) }
 					</Button>
 				}
 			>
@@ -82,18 +87,21 @@ function SingleTab() {
 					<EmptyState
 						title={ __(
 							'No image selected.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						text={ __(
 							'Pick an image from the Media Library to generate alt text, title, caption and description. You review everything before it is saved.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 					>
 						<Button
 							variant="primary"
 							onClick={ () => openMediaFrame( setAttachmentId ) }
 						>
-							{ __( 'Select Image', 'ai-content-image-seo' ) }
+							{ __(
+								'Select Image',
+								'wbd-content-image-seo-assistant'
+							) }
 						</Button>
 					</EmptyState>
 				) }
@@ -107,25 +115,25 @@ function JobPanel( { job, onControl, busy } ) {
 		return null;
 	}
 	const statusText = {
-		running: __( 'Optimizing Images', 'ai-content-image-seo' ),
-		paused: __( 'Paused', 'ai-content-image-seo' ),
-		completed: __( 'Completed', 'ai-content-image-seo' ),
+		running: __( 'Optimizing Images', 'wbd-content-image-seo-assistant' ),
+		paused: __( 'Paused', 'wbd-content-image-seo-assistant' ),
+		completed: __( 'Completed', 'wbd-content-image-seo-assistant' ),
 	}[ job.status ];
 
 	const reasons = {
 		limit: __(
 			'Paused because the monthly image limit was reached. It can resume when the limit resets or is raised.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
 		provider: __(
 			'Paused because no AI provider is configured.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
 		rate_limit: __(
 			'Paused because your AI provider rate limit was reached. Please resume in a few minutes.',
-			'ai-content-image-seo'
+			'wbd-content-image-seo-assistant'
 		),
-		user: __( 'Paused by you.', 'ai-content-image-seo' ),
+		user: __( 'Paused by you.', 'wbd-content-image-seo-assistant' ),
 	};
 
 	return (
@@ -134,7 +142,7 @@ function JobPanel( { job, onControl, busy } ) {
 				percent={ job.percent }
 				label={ __(
 					'Bulk optimization progress',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				) }
 			/>
 			<p className="ai-cis-job__numbers" aria-live="polite">
@@ -142,7 +150,7 @@ function JobPanel( { job, onControl, busy } ) {
 					/* translators: 1: percent, 2: processed, 3: remaining. */
 					__(
 						'%1$d%% · Processed: %2$d · Remaining: %3$d',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					),
 					job.percent,
 					job.processed,
@@ -153,7 +161,7 @@ function JobPanel( { job, onControl, busy } ) {
 					/* translators: 1: optimized count, 2: skipped count, 3: failed count. */
 					__(
 						'Updated: %1$d · Already complete: %2$d · Failed: %3$d',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					),
 					job.optimized,
 					job.skipped,
@@ -168,7 +176,7 @@ function JobPanel( { job, onControl, busy } ) {
 							'%d image was not included because of the bulk batch limit.',
 							'%d images were not included because of the bulk batch limit.',
 							job.truncated,
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						),
 						job.truncated
 					) }
@@ -184,7 +192,7 @@ function JobPanel( { job, onControl, busy } ) {
 						onClick={ () => onControl( 'pause' ) }
 						disabled={ busy }
 					>
-						{ __( 'Pause', 'ai-content-image-seo' ) }
+						{ __( 'Pause', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 				) }
 				{ job.status === 'paused' && (
@@ -193,7 +201,7 @@ function JobPanel( { job, onControl, busy } ) {
 						onClick={ () => onControl( 'resume' ) }
 						disabled={ busy }
 					>
-						{ __( 'Resume', 'ai-content-image-seo' ) }
+						{ __( 'Resume', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 				) }
 				{ job.status !== 'completed' ? (
@@ -203,7 +211,7 @@ function JobPanel( { job, onControl, busy } ) {
 						onClick={ () => onControl( 'cancel' ) }
 						disabled={ busy }
 					>
-						{ __( 'Cancel', 'ai-content-image-seo' ) }
+						{ __( 'Cancel', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 				) : (
 					<Button
@@ -211,14 +219,17 @@ function JobPanel( { job, onControl, busy } ) {
 						onClick={ () => onControl( 'cancel' ) }
 						disabled={ busy }
 					>
-						{ __( 'Clear', 'ai-content-image-seo' ) }
+						{ __( 'Clear', 'wbd-content-image-seo-assistant' ) }
 					</Button>
 				) }
 			</div>
 			{ job.errors?.length > 0 && (
 				<details className="ai-cis-errors">
 					<summary>
-						{ __( 'Failed images', 'ai-content-image-seo' ) }
+						{ __(
+							'Failed images',
+							'wbd-content-image-seo-assistant'
+						) }
 					</summary>
 					<ul>
 						{ job.errors.map( ( e, i ) => (
@@ -237,7 +248,10 @@ function AltCell( { item } ) {
 	if ( item.image_type === 'decorative' ) {
 		return (
 			<em>
-				{ __( 'Decorative (empty by design)', 'ai-content-image-seo' ) }
+				{ __(
+					'Decorative (empty by design)',
+					'wbd-content-image-seo-assistant'
+				) }
 			</em>
 		);
 	}
@@ -246,7 +260,7 @@ function AltCell( { item } ) {
 	}
 	return (
 		<span className="ai-cis-missing">
-			{ __( 'Missing', 'ai-content-image-seo' ) }
+			{ __( 'Missing', 'wbd-content-image-seo-assistant' ) }
 		</span>
 	);
 }
@@ -315,7 +329,7 @@ function BulkTab() {
 					speak(
 						__(
 							'Bulk optimization completed.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						)
 					);
 					loadStats();
@@ -344,7 +358,12 @@ function BulkTab() {
 			} );
 			setJob( res );
 			setSelected( [] );
-			speak( __( 'Bulk optimization started.', 'ai-content-image-seo' ) );
+			speak(
+				__(
+					'Bulk optimization started.',
+					'wbd-content-image-seo-assistant'
+				)
+			);
 		} catch ( e ) {
 			setError( errorInfo( e ) );
 		}
@@ -377,7 +396,10 @@ function BulkTab() {
 	return (
 		<div className="ai-cis-page">
 			<Section
-				title={ __( 'Media Library', 'ai-content-image-seo' ) }
+				title={ __(
+					'Media Library',
+					'wbd-content-image-seo-assistant'
+				) }
 				actions={
 					<Button
 						variant="secondary"
@@ -385,7 +407,10 @@ function BulkTab() {
 						isBusy={ scanning }
 						disabled={ scanning }
 					>
-						{ __( 'Scan Library', 'ai-content-image-seo' ) }
+						{ __(
+							'Scan Library',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 				}
 			>
@@ -395,7 +420,10 @@ function BulkTab() {
 					<dl className="ai-cis-stats">
 						<div>
 							<dt>
-								{ __( 'Total Images', 'ai-content-image-seo' ) }
+								{ __(
+									'Total Images',
+									'wbd-content-image-seo-assistant'
+								) }
 							</dt>
 							<dd>{ stats.total }</dd>
 						</div>
@@ -403,7 +431,7 @@ function BulkTab() {
 							<dt>
 								{ __(
 									'Missing Alt Text',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</dt>
 							<dd>{ stats.missing_alt }</dd>
@@ -412,7 +440,7 @@ function BulkTab() {
 							<dt>
 								{ __(
 									'Missing Title',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</dt>
 							<dd>{ stats.missing_title }</dd>
@@ -421,14 +449,17 @@ function BulkTab() {
 							<dt>
 								{ __(
 									'Missing Description',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								) }
 							</dt>
 							<dd>{ stats.missing_description }</dd>
 						</div>
 						<div>
 							<dt>
-								{ __( 'Decorative', 'ai-content-image-seo' ) }
+								{ __(
+									'Decorative',
+									'wbd-content-image-seo-assistant'
+								) }
 							</dt>
 							<dd>{ stats.decorative }</dd>
 						</div>
@@ -439,13 +470,18 @@ function BulkTab() {
 			<ErrorNotice error={ error } onDismiss={ () => setError( null ) } />
 			<JobPanel job={ job } onControl={ control } busy={ busy } />
 
-			<Section title={ __( 'Bulk Optimizer', 'ai-content-image-seo' ) }>
+			<Section
+				title={ __(
+					'Bulk Optimizer',
+					'wbd-content-image-seo-assistant'
+				) }
+			>
 				{ ! d.canBulk && (
 					<Notice status="info" isDismissible={ false }>
 						<p>
 							{ __(
 								'Bulk optimization is available to editors and administrators.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 							) }
 						</p>
 					</Notice>
@@ -453,7 +489,10 @@ function BulkTab() {
 				<div className="ai-cis-bulk-options">
 					<fieldset className="ai-cis-fieldset ai-cis-inline">
 						<legend>
-							{ __( 'Fields to fill', 'ai-content-image-seo' ) }
+							{ __(
+								'Fields to fill',
+								'wbd-content-image-seo-assistant'
+							) }
 						</legend>
 						{ fieldLabels.map( ( f ) => (
 							<CheckboxControl
@@ -477,17 +516,17 @@ function BulkTab() {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Overwrite existing metadata',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						help={
 							overwrite
 								? __(
 										'Existing values will be replaced.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'Only empty fields (and default filename titles) are filled.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 						}
 						checked={ overwrite }
@@ -499,7 +538,10 @@ function BulkTab() {
 					<SelectControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label={ __( 'Filter', 'ai-content-image-seo' ) }
+						label={ __(
+							'Filter',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ filter }
 						options={ d.options.imageFilters }
 						onChange={ ( v ) => {
@@ -510,7 +552,10 @@ function BulkTab() {
 					/>
 					<SearchControl
 						__nextHasNoMarginBottom
-						label={ __( 'Search images', 'ai-content-image-seo' ) }
+						label={ __(
+							'Search images',
+							'wbd-content-image-seo-assistant'
+						) }
 						value={ search }
 						onChange={ ( v ) => {
 							setSearch( v );
@@ -524,18 +569,18 @@ function BulkTab() {
 					<EmptyState
 						title={ __(
 							'No images need optimization.',
-							'ai-content-image-seo'
+							'wbd-content-image-seo-assistant'
 						) }
 						text={
 							filter === 'missing_alt' ||
 							filter === 'missing_metadata'
 								? __(
 										'Your media library is already optimized.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 								: __(
 										'No images match this filter.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 								  )
 						}
 					/>
@@ -558,7 +603,7 @@ function BulkTab() {
 									/* translators: %d: number of selected images. */
 									__(
 										'Optimize Selected (%d)',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									),
 									selected.length
 								) }
@@ -577,7 +622,7 @@ function BulkTab() {
 									/* translators: %d: number of matching images. */
 									__(
 										'Optimize all %d matching images',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									),
 									list.total
 								) }
@@ -586,7 +631,7 @@ function BulkTab() {
 								<span className="description">
 									{ __(
 										'A job is already in progress.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</span>
 							) }
@@ -599,7 +644,7 @@ function BulkTab() {
 											__nextHasNoMarginBottom
 											label={ __(
 												'Select all on this page',
-												'ai-content-image-seo'
+												'wbd-content-image-seo-assistant'
 											) }
 											className="ai-cis-sr-label"
 											checked={ allOnPage }
@@ -625,25 +670,25 @@ function BulkTab() {
 									<th scope="col">
 										{ __(
 											'Image',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</th>
 									<th scope="col">
 										{ __(
 											'Alt Text',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</th>
 									<th scope="col">
 										{ __(
 											'Title',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</th>
 									<th scope="col">
 										{ __(
 											'Used in',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										) }
 									</th>
 								</tr>
@@ -662,7 +707,7 @@ function BulkTab() {
 													/* translators: %s: file name. */
 													__(
 														'Select %s',
-														'ai-content-image-seo'
+														'wbd-content-image-seo-assistant'
 													),
 													item.filename
 												) }
@@ -710,7 +755,7 @@ function BulkTab() {
 														<span className="ai-cis-badge is-error">
 															{ __(
 																'Failed',
-																'ai-content-image-seo'
+																'wbd-content-image-seo-assistant'
 															) }
 														</span>
 													) }
@@ -719,7 +764,7 @@ function BulkTab() {
 														<span className="ai-cis-badge is-warn">
 															{ __(
 																'Waiting for limit reset',
-																'ai-content-image-seo'
+																'wbd-content-image-seo-assistant'
 															) }
 														</span>
 													) }
@@ -728,7 +773,7 @@ function BulkTab() {
 														<span className="ai-cis-badge">
 															{ __(
 																'Queued',
-																'ai-content-image-seo'
+																'wbd-content-image-seo-assistant'
 															) }
 														</span>
 													) }
@@ -755,14 +800,17 @@ function BulkTab() {
 									disabled={ page <= 1 }
 									onClick={ () => setPage( page - 1 ) }
 								>
-									{ __( 'Previous', 'ai-content-image-seo' ) }
+									{ __(
+										'Previous',
+										'wbd-content-image-seo-assistant'
+									) }
 								</Button>
 								<span>
 									{ sprintf(
 										/* translators: 1: current page, 2: total pages. */
 										__(
 											'Page %1$d of %2$d',
-											'ai-content-image-seo'
+											'wbd-content-image-seo-assistant'
 										),
 										page,
 										list.total_pages
@@ -773,7 +821,10 @@ function BulkTab() {
 									disabled={ page >= list.total_pages }
 									onClick={ () => setPage( page + 1 ) }
 								>
-									{ __( 'Next', 'ai-content-image-seo' ) }
+									{ __(
+										'Next',
+										'wbd-content-image-seo-assistant'
+									) }
 								</Button>
 							</div>
 						) }
@@ -782,7 +833,7 @@ function BulkTab() {
 				<p className="description">
 					{ __(
 						'Images are processed a few at a time in the background (Action Scheduler or WP-Cron). Keeping this page open speeds things up. Each processed image counts as one image generation; images that already have the selected fields are skipped without using AI.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 			</Section>
@@ -804,17 +855,19 @@ function AutomationTab() {
 			<Section
 				title={ __(
 					'Automatic Image Optimization',
-					'ai-content-image-seo'
+					'wbd-content-image-seo-assistant'
 				) }
 			>
 				<p>
-					<strong>{ __( 'Status:', 'ai-content-image-seo' ) }</strong>{ ' ' }
+					<strong>
+						{ __( 'Status:', 'wbd-content-image-seo-assistant' ) }
+					</strong>{ ' ' }
 					{ d.defaults.autoOptimize
 						? __(
 								'Enabled. New uploads are optimized in the background.',
-								'ai-content-image-seo'
+								'wbd-content-image-seo-assistant'
 						  )
-						: __( 'Disabled.', 'ai-content-image-seo' ) }
+						: __( 'Disabled.', 'wbd-content-image-seo-assistant' ) }
 				</p>
 				{ usage && (
 					<>
@@ -823,7 +876,7 @@ function AutomationTab() {
 								/* translators: %d: images waiting. */
 								__(
 									'Images waiting in the queue: %d',
-									'ai-content-image-seo'
+									'wbd-content-image-seo-assistant'
 								),
 								usage.auto_queue
 							) }
@@ -833,7 +886,7 @@ function AutomationTab() {
 								<p>
 									{ __(
 										'AI usage limit reached. New images will remain unprocessed until the limit resets.',
-										'ai-content-image-seo'
+										'wbd-content-image-seo-assistant'
 									) }
 								</p>
 							</Notice>
@@ -843,7 +896,7 @@ function AutomationTab() {
 				<p className="description">
 					{ __(
 						'Automation only fills empty fields, respects the monthly automation limit and never retries failed images automatically. Use the Bulk Optimizer with the "Failed / Not Processed" filter to retry.',
-						'ai-content-image-seo'
+						'wbd-content-image-seo-assistant'
 					) }
 				</p>
 				{ d.isManager && (
@@ -851,7 +904,10 @@ function AutomationTab() {
 						variant="secondary"
 						href={ d.pages.settings + '&tab=images' }
 					>
-						{ __( 'Automation Settings', 'ai-content-image-seo' ) }
+						{ __(
+							'Automation Settings',
+							'wbd-content-image-seo-assistant'
+						) }
 					</Button>
 				) }
 			</Section>
@@ -878,15 +934,24 @@ export default function ImageAI() {
 				tabs={ [
 					{
 						name: 'bulk',
-						title: __( 'Bulk Optimizer', 'ai-content-image-seo' ),
+						title: __(
+							'Bulk Optimizer',
+							'wbd-content-image-seo-assistant'
+						),
 					},
 					{
 						name: 'single',
-						title: __( 'Single Image', 'ai-content-image-seo' ),
+						title: __(
+							'Single Image',
+							'wbd-content-image-seo-assistant'
+						),
 					},
 					{
 						name: 'automation',
-						title: __( 'Automation', 'ai-content-image-seo' ),
+						title: __(
+							'Automation',
+							'wbd-content-image-seo-assistant'
+						),
 					},
 				] }
 			>

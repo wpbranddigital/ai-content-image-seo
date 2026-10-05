@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class AI_CIS_Admin {
 
-	const SLUG = 'ai-content-image-seo';
+	const SLUG = 'wbd-content-image-seo-assistant';
 
 	/**
 	 * Hook suffixes of plugin pages.
@@ -52,37 +52,37 @@ final class AI_CIS_Admin {
 	public static function pages() {
 		$pages = array(
 			self::SLUG           => array(
-				'title' => __( 'Dashboard', 'ai-content-image-seo' ),
+				'title' => __( 'Dashboard', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'edit_posts',
 				'view'  => 'dashboard',
 			),
 			'ai-cis-content'     => array(
-				'title' => __( 'Content AI', 'ai-content-image-seo' ),
+				'title' => __( 'Content AI', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'edit_posts',
 				'view'  => 'content',
 			),
 			'ai-cis-image'       => array(
-				'title' => __( 'Image AI', 'ai-content-image-seo' ),
+				'title' => __( 'Image AI', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'upload_files',
 				'view'  => 'image',
 			),
 			'ai-cis-seo'         => array(
-				'title' => __( 'SEO Assistant', 'ai-content-image-seo' ),
+				'title' => __( 'SEO Assistant', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'edit_posts',
 				'view'  => 'seo',
 			),
 			'ai-cis-woocommerce' => array(
-				'title' => __( 'WooCommerce', 'ai-content-image-seo' ),
+				'title' => __( 'WooCommerce', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'edit_products',
 				'view'  => 'woocommerce',
 			),
 			'ai-cis-usage'       => array(
-				'title' => __( 'Usage', 'ai-content-image-seo' ),
+				'title' => __( 'Usage', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'edit_posts',
 				'view'  => 'usage',
 			),
 			'ai-cis-settings'    => array(
-				'title' => __( 'Settings', 'ai-content-image-seo' ),
+				'title' => __( 'Settings', 'wbd-content-image-seo-assistant' ),
 				'cap'   => 'manage_options',
 				'view'  => 'settings',
 			),
@@ -102,8 +102,8 @@ final class AI_CIS_Admin {
 	 */
 	public static function register_menu() {
 		self::$hooks[] = add_menu_page(
-			__( 'AI Content & Image SEO', 'ai-content-image-seo' ),
-			__( 'AI Content & SEO', 'ai-content-image-seo' ),
+			__( 'WBD Content & Image SEO', 'wbd-content-image-seo-assistant' ),
+			__( 'AI Content & SEO', 'wbd-content-image-seo-assistant' ),
 			'edit_posts',
 			self::SLUG,
 			array( __CLASS__, 'render' ),
@@ -114,7 +114,7 @@ final class AI_CIS_Admin {
 		foreach ( self::pages() as $slug => $page ) {
 			self::$hooks[] = add_submenu_page(
 				self::SLUG,
-				$page['title'] . ' ‹ ' . __( 'AI Content & Image SEO', 'ai-content-image-seo' ),
+				$page['title'] . ' ‹ ' . __( 'WBD Content & Image SEO', 'wbd-content-image-seo-assistant' ),
 				$page['title'],
 				$page['cap'],
 				$slug,
@@ -144,11 +144,11 @@ final class AI_CIS_Admin {
 		$view  = isset( $pages[ $slug ] ) ? $pages[ $slug ]['view'] : 'dashboard';
 		?>
 		<div class="wrap ai-cis-wrap">
-			<h1 class="screen-reader-text"><?php echo esc_html( isset( $pages[ $slug ] ) ? $pages[ $slug ]['title'] : __( 'AI Content & Image SEO', 'ai-content-image-seo' ) ); ?></h1>
+			<h1 class="screen-reader-text"><?php echo esc_html( isset( $pages[ $slug ] ) ? $pages[ $slug ]['title'] : __( 'WBD Content & Image SEO', 'wbd-content-image-seo-assistant' ) ); ?></h1>
 			<div id="ai-cis-admin-root" data-view="<?php echo esc_attr( $view ); ?>">
-				<p><?php esc_html_e( 'Loading…', 'ai-content-image-seo' ); ?></p>
+				<p><?php esc_html_e( 'Loading…', 'wbd-content-image-seo-assistant' ); ?></p>
 			</div>
-			<noscript><p><?php esc_html_e( 'AI Content & Image SEO requires JavaScript to be enabled.', 'ai-content-image-seo' ); ?></p></noscript>
+			<noscript><p><?php esc_html_e( 'WBD Content & Image SEO requires JavaScript to be enabled.', 'wbd-content-image-seo-assistant' ); ?></p></noscript>
 		</div>
 		<?php
 	}
@@ -202,7 +202,7 @@ final class AI_CIS_Admin {
 		$handle = 'ai-cis-' . $name;
 
 		wp_enqueue_script( $handle, AI_CIS_URL . 'build/' . $name . '.js', $asset['dependencies'], $asset['version'], true );
-		wp_set_script_translations( $handle, 'ai-content-image-seo', AI_CIS_PATH . 'languages' );
+		wp_set_script_translations( $handle, 'wbd-content-image-seo-assistant', AI_CIS_PATH . 'languages' );
 
 		if ( is_readable( AI_CIS_PATH . 'build/' . $name . '.css' ) ) {
 			wp_enqueue_style( $handle, AI_CIS_URL . 'build/' . $name . '.css', array( 'wp-components' ), $asset['version'] );
@@ -325,7 +325,7 @@ final class AI_CIS_Admin {
 		if ( current_user_can( 'manage_options' ) ) {
 			array_unshift(
 				$links,
-				'<a href="' . esc_url( admin_url( 'admin.php?page=ai-cis-settings' ) ) . '">' . esc_html__( 'Settings', 'ai-content-image-seo' ) . '</a>'
+				'<a href="' . esc_url( admin_url( 'admin.php?page=ai-cis-settings' ) ) . '">' . esc_html__( 'Settings', 'wbd-content-image-seo-assistant' ) . '</a>'
 			);
 		}
 		return $links;
@@ -340,9 +340,9 @@ final class AI_CIS_Admin {
 		if ( ! function_exists( 'wp_add_privacy_policy_content' ) ) {
 			return;
 		}
-		$content = '<p>' . esc_html__( 'This site uses the AI Content & Image SEO Assistant plugin. When an editor uses an AI feature, or when automatic image optimization is enabled, the selected content (for example post text, image files and image context, product details, or the text and star ratings of product reviews) is sent to the AI provider configured by the site administrator to generate suggestions.', 'ai-content-image-seo' ) . '</p>'
-			. '<p>' . esc_html__( 'Reviewer names, email addresses, IP addresses, customer accounts, passwords and payment information are never sent. No data is sent to the plugin author.', 'ai-content-image-seo' ) . '</p>';
+		$content = '<p>' . esc_html__( 'This site uses the WBD Content & Image SEO Assistant plugin. When an editor uses an AI feature, or when automatic image optimization is enabled, the selected content (for example post text, image files and image context, product details, or the text and star ratings of product reviews) is sent to the AI provider configured by the site administrator to generate suggestions.', 'wbd-content-image-seo-assistant' ) . '</p>'
+			. '<p>' . esc_html__( 'Reviewer names, email addresses, IP addresses, customer accounts, passwords and payment information are never sent. No data is sent to the plugin author.', 'wbd-content-image-seo-assistant' ) . '</p>';
 
-		wp_add_privacy_policy_content( __( 'AI Content & Image SEO Assistant', 'ai-content-image-seo' ), wp_kses_post( $content ) );
+		wp_add_privacy_policy_content( __( 'WBD Content & Image SEO Assistant', 'wbd-content-image-seo-assistant' ), wp_kses_post( $content ) );
 	}
 }

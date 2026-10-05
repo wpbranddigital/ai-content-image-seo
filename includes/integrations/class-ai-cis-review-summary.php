@@ -86,16 +86,16 @@ final class AI_CIS_Review_Summary {
 	 */
 	public static function generate( $product_id, $language = '', $request_id = '' ) {
 		if ( ! AI_CIS_WooCommerce::is_active() ) {
-			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		$product = wc_get_product( $product_id );
 		if ( ! $product ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'ai-content-image-seo' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'Product not found.', 'wbd-content-image-seo-assistant' ), array( 'status' => 404 ) );
 		}
 
 		$reviews = self::get_reviews( $product_id );
 		if ( empty( $reviews ) ) {
-			return new WP_Error( 'ai_cis_no_reviews', __( 'This product has no approved reviews yet, so there is nothing to summarize.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_no_reviews', __( 'This product has no approved reviews yet, so there is nothing to summarize.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$result = AI_CIS_AI_Manager::run(
@@ -174,23 +174,23 @@ final class AI_CIS_Review_Summary {
 		}
 
 		$html  = '<div class="ai-cis-review-summary">';
-		$html .= '<h3>' . esc_html__( 'What customers say', 'ai-content-image-seo' ) . '</h3>';
+		$html .= '<h3>' . esc_html__( 'What customers say', 'wbd-content-image-seo-assistant' ) . '</h3>';
 		$html .= '<p>' . esc_html( $data['summary'] ) . '</p>';
 		if ( ! empty( $data['pros'] ) ) {
-			$html .= '<p><strong>' . esc_html__( 'Pros', 'ai-content-image-seo' ) . '</strong></p><ul class="ai-cis-review-pros">';
+			$html .= '<p><strong>' . esc_html__( 'Pros', 'wbd-content-image-seo-assistant' ) . '</strong></p><ul class="ai-cis-review-pros">';
 			foreach ( $data['pros'] as $pro ) {
 				$html .= '<li>' . esc_html( $pro ) . '</li>';
 			}
 			$html .= '</ul>';
 		}
 		if ( ! empty( $data['cons'] ) ) {
-			$html .= '<p><strong>' . esc_html__( 'Cons', 'ai-content-image-seo' ) . '</strong></p><ul class="ai-cis-review-cons">';
+			$html .= '<p><strong>' . esc_html__( 'Cons', 'wbd-content-image-seo-assistant' ) . '</strong></p><ul class="ai-cis-review-cons">';
 			foreach ( $data['cons'] as $con ) {
 				$html .= '<li>' . esc_html( $con ) . '</li>';
 			}
 			$html .= '</ul>';
 		}
-		$html .= '<p class="ai-cis-review-note"><small>' . esc_html__( 'AI-generated summary based on customer reviews.', 'ai-content-image-seo' ) . '</small></p>';
+		$html .= '<p class="ai-cis-review-note"><small>' . esc_html__( 'AI-generated summary based on customer reviews.', 'wbd-content-image-seo-assistant' ) . '</small></p>';
 		$html .= '</div>';
 
 		return $html;

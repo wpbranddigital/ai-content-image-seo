@@ -218,7 +218,7 @@ final class AI_CIS_REST_API {
 				'callback'            => array( __CLASS__, 'refresh_models' ),
 				'permission_callback' => array( __CLASS__, 'can_manage' ),
 				'args'                => array(
-					'provider' => self::enum_arg( AI_CIS_Settings::key_providers(), 'openai' ),
+					'provider' => self::enum_arg( array_keys( AI_CIS_AI_Manager::provider_classes() ), 'wp_ai_connector' ),
 				),
 			)
 		);
@@ -526,7 +526,7 @@ final class AI_CIS_REST_API {
 			array(
 				'methods'             => WP_REST_Server::READABLE,
 				'callback'            => array( __CLASS__, 'bulk_status' ),
-				'permission_callback' => array( __CLASS__, 'can_upload' ),
+				'permission_callback' => array( __CLASS__, 'can_bulk' ),
 			)
 		);
 		register_rest_route(
@@ -769,7 +769,7 @@ final class AI_CIS_REST_API {
 	 */
 	public static function validate_non_empty( $value ) {
 		if ( ! is_string( $value ) || '' === trim( $value ) ) {
-			return new WP_Error( 'rest_invalid_param', __( 'This field is required.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'rest_invalid_param', __( 'This field is required.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		return true;
 	}
@@ -870,7 +870,7 @@ final class AI_CIS_REST_API {
 		return rest_ensure_response(
 			array(
 				'success' => true,
-				'message' => __( 'Connection successful. The AI provider responded.', 'ai-content-image-seo' ),
+				'message' => __( 'Connection successful. The AI provider responded.', 'wbd-content-image-seo-assistant' ),
 				'reply'   => substr( sanitize_text_field( $result ), 0, 100 ),
 			)
 		);
@@ -885,7 +885,7 @@ final class AI_CIS_REST_API {
 	public static function refresh_models( $request ) {
 		$provider = AI_CIS_AI_Manager::get_provider( (string) $request->get_param( 'provider' ) );
 		if ( ! $provider instanceof AI_CIS_Provider_Base ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This provider does not support model listing.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This provider does not support model listing.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		$models = $provider->refresh_models();
 		if ( is_wp_error( $models ) ) {
@@ -1022,7 +1022,7 @@ final class AI_CIS_REST_API {
 			}
 			$items[] = array(
 				'id'       => $post->ID,
-				'title'    => '' !== $post->post_title ? $post->post_title : __( '(no title)', 'ai-content-image-seo' ),
+				'title'    => '' !== $post->post_title ? $post->post_title : __( '(no title)', 'wbd-content-image-seo-assistant' ),
 				'type'     => $post->post_type,
 				'status'   => $post->post_status,
 				'modified' => $post->post_modified,
@@ -1088,7 +1088,7 @@ final class AI_CIS_REST_API {
 
 		$result = wp_update_post( wp_slash( $data ), true );
 		if ( is_wp_error( $result ) ) {
-			return new WP_Error( 'ai_cis_save_failed', __( 'The content could not be saved.', 'ai-content-image-seo' ), array( 'status' => 500 ) );
+			return new WP_Error( 'ai_cis_save_failed', __( 'The content could not be saved.', 'wbd-content-image-seo-assistant' ), array( 'status' => 500 ) );
 		}
 
 		return rest_ensure_response( array( 'saved' => true ) );
@@ -1231,7 +1231,7 @@ final class AI_CIS_REST_API {
 	public static function apply_image_metadata( $request ) {
 		$id = absint( $request->get_param( 'attachment_id' ) );
 		if ( ! AI_CIS_Image_Optimizer::is_image( $id ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		$raw    = (array) $request->get_param( 'values' );
@@ -1288,7 +1288,7 @@ final class AI_CIS_REST_API {
 	public static function get_image( $request ) {
 		$id = absint( $request['id'] );
 		if ( ! AI_CIS_Image_Optimizer::is_image( $id ) ) {
-			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ai_cis_invalid_input', __( 'This file is not an image.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 		return rest_ensure_response( AI_CIS_Image_Optimizer::item( $id ) );
 	}
@@ -1346,7 +1346,7 @@ final class AI_CIS_REST_API {
 	 * @return WP_Error
 	 */
 	private static function woocommerce_inactive() {
-		return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active. Install and activate WooCommerce to use product features.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+		return new WP_Error( 'ai_cis_woocommerce_inactive', __( 'WooCommerce is not active. Install and activate WooCommerce to use product features.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 	}
 
 	/**
@@ -1420,7 +1420,7 @@ final class AI_CIS_REST_API {
 		} elseif ( is_scalar( $raw ) ) {
 			$value = 'title' === $field ? sanitize_text_field( (string) $raw ) : wp_kses_post( (string) $raw );
 		} else {
-			return new WP_Error( 'rest_invalid_param', __( 'Invalid value.', 'ai-content-image-seo' ), array( 'status' => 400 ) );
+			return new WP_Error( 'rest_invalid_param', __( 'Invalid value.', 'wbd-content-image-seo-assistant' ), array( 'status' => 400 ) );
 		}
 
 		return rest_ensure_response(

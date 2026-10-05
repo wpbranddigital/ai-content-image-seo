@@ -42,11 +42,11 @@ final class AI_CIS_Media_Library {
 		}
 
 		$fields['ai_cis_generate'] = array(
-			'label' => __( 'AI Metadata', 'ai-content-image-seo' ),
+			'label' => __( 'AI Metadata', 'wbd-content-image-seo-assistant' ),
 			'input' => 'html',
 			'html'  => '<button type="button" class="button ai-cis-media-generate" data-attachment-id="' . esc_attr( (string) $post->ID ) . '">'
-				. esc_html__( 'Generate AI Metadata', 'ai-content-image-seo' ) . '</button>',
-			'helps' => __( 'Generate alt text, title, caption and description. You review everything before it is saved.', 'ai-content-image-seo' ),
+				. esc_html__( 'Generate AI Metadata', 'wbd-content-image-seo-assistant' ) . '</button>',
+			'helps' => __( 'Generate alt text, title, caption and description. You review everything before it is saved.', 'wbd-content-image-seo-assistant' ),
 		);
 
 		return $fields;
@@ -70,7 +70,7 @@ final class AI_CIS_Media_Library {
 			);
 
 			$actions['ai_cis_generate'] = '<a href="' . esc_url( $url ) . '" class="ai-cis-media-generate" data-attachment-id="' . esc_attr( (string) $post->ID ) . '">'
-				. esc_html__( 'Generate AI Metadata', 'ai-content-image-seo' ) . '</a>';
+				. esc_html__( 'Generate AI Metadata', 'wbd-content-image-seo-assistant' ) . '</a>';
 		}
 		return $actions;
 	}
@@ -83,7 +83,7 @@ final class AI_CIS_Media_Library {
 	 */
 	public static function register_bulk_action( $actions ) {
 		if ( current_user_can( AI_CIS_REST_API::bulk_capability() ) ) {
-			$actions['ai_cis_optimize'] = __( 'Generate AI metadata (missing fields)', 'ai-content-image-seo' );
+			$actions['ai_cis_optimize'] = __( 'Generate AI metadata (missing fields)', 'wbd-content-image-seo-assistant' );
 		}
 		return $actions;
 	}
@@ -162,7 +162,7 @@ final class AI_CIS_Media_Library {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only display.
 		$code    = sanitize_key( wp_unslash( $_GET['ai_cis_error'] ) );
 		$message = 'ai_cis_job_exists' === $code
-			? __( 'A bulk optimization is already in progress. Resume or cancel it first.', 'ai-content-image-seo' )
+			? __( 'A bulk optimization is already in progress. Resume or cancel it first.', 'wbd-content-image-seo-assistant' )
 			: AI_CIS_AI_Manager::friendly_message( $code );
 		echo '<div class="notice notice-error is-dismissible"><p>' . esc_html( $message ) . '</p></div>';
 	}
